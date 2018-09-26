@@ -1,13 +1,11 @@
 package kr.ac.hongik.fruitking.user.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.ac.hongik.fruitking.notify.service.NotifyService;
 import kr.ac.hongik.fruitking.user.dao.UserDao;
 import kr.ac.hongik.fruitking.user.dto.User;
 import kr.ac.hongik.fruitking.user.service.UserService;
@@ -36,9 +34,7 @@ public class UserServiceImpl implements UserService{
 	public User registUser(User user) {
 		long userId = userDao.insert(user);
 		user.setUserId((int)userId);
-//		if(1 == 1)
-//			throw new RuntimeException("test exception");
-//			
+		
 		return user;
 	}
 

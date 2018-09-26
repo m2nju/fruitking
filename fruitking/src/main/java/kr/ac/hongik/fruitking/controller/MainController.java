@@ -70,12 +70,11 @@ public class MainController {
 	
 	@RequestMapping(path = "/registUser")
 	public String write(@ModelAttribute User user, HttpServletRequest request) {
-		
 		String clientIp = request.getRemoteAddr();
 		System.out.println("clientIp : " + clientIp);
 		userService.registUser(user);
 		
-		return "redirect:/index"; // 해당 path로 리다이렉트 한다.
+		return "redirect:/"; // 해당 path로 리다이렉트 한다.
 	}
 
 	@GetMapping(path = "/happy") // 일반적인 GET메소드 리다이렉션

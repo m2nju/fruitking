@@ -14,6 +14,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원 정보 조회하기</title>
+
 </head>
 <body>
 	<%
@@ -82,19 +83,31 @@
 				is_man = false;
 			}
 			int defaultGrade = 2;
-			
-			request.setAttribute("userEmail",email);
-			request.setAttribute("userName",name);
-			request.setAttribute("userAge",age);
-			request.setAttribute("userBirth",birthday);
-			request.setAttribute("userIsMan",is_man);
-			request.setAttribute("userGrade", defaultGrade);
-			
-			response.sendRedirect("registUser");
-			
+
+			//request.setAttribute("userEmail",email);
+			//request.setAttribute("userName",name);
+			//request.setAttribute("userAge",age);
+			//request.setAttribute("userBirth",birthday);
+			//request.setAttribute("userIsMan",is_man);
+			//request.setAttribute("userGrade", defaultGrade);
+
+			//response.sendRedirect("registUser");
+	%>
+			<form  method="post" action="registUser">
+		 		<input type="hidden" name="userEmail" value="<%=email%>"><br> 
+				<input type="hidden" name="userName" value="<%=name%>"><br>
+				<input type="hidden" name="userAge" value="<%=age%>"><br>
+				<input type="hidden" name="userBirth" value="<%=birthday%>"><br>
+				<input type="hidden" name="userIsMan" value="<%=is_man%>"><br>
+				<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
+				 
+				<input type="submit" value="등록">
+			</form>
+	<%
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	%>
+	
 </body>
 </html>
