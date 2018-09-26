@@ -13,12 +13,22 @@
 </script>
 </head>
 <body>
-	<a href="./"><img src="img/logo.png"/></a>
-	
+	<a href="./"><img src="img/logo.png" /></a>
+
 	<br>
 	<a href="happy">happy.jsp로 이동</a>
-	<a href="naverLogin">네이버로그인</a>
 
+	<%
+		//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
+		//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
+		
+		String userName = (String)session.getAttribute("userName");
+		if(!(userName == null)){	// 엑세스토큰이 쿠키에 보관되어 있다면 
+			out.println(userName + "님 안녕하세요.<br>");
+		}else{
+	%>
+	<a href="naverLogin">네이버로그인</a>
+		<% }%>
 	<div class="tab">
 		<div class="tabmenu">
 			<div class="tablinks" onclick="openTab(event)">사이트 소개</div>

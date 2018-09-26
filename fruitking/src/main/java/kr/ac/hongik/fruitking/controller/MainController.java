@@ -104,5 +104,9 @@ public class MainController {
 		return "naver/userinfo";
 	}
 
-
+	@RequestMapping(value = "/qna")
+	public String qeustionAndAnswer() {
+		return "/tab/qna";
+	}
+	
 }

@@ -13,22 +13,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원 정보 조회하기</title>
+<title>회원 등록 조회 중</title>
 
 </head>
 <body>
+	<h2>Fruit King 회원 여부 검사 후, 자동으로 회원 등록이 완료됩니다.</h2>
 	<%
-		Cookie[] cookies = request.getCookies(); // 요청정보로부터 쿠키를 가져온다.
-		String access_token = ""; // 네이버 엑세스 토큰
-		String refresh_token = ""; // 리프레시 토큰	
-
-		for (int i = 0; i < cookies.length; i++) { // 쿠키 배열을 반복문으로 돌린다.
-			if (cookies[i].getName().toString().equals("access_token")) {
-				access_token = cookies[i].getValue(); // 쿠키의 값을 가져온다.
-			} else if (cookies[i].getName().toString().equals("refresh_token")) {
-				refresh_token = cookies[i].getValue();
-			}
-		}
+		String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰
+		String refresh_token = (String)session.getAttribute("refresh_token"); // 리프레시 토큰	
+		
 		String header = "Bearer " + access_token; // Bearer 다음에 공백 추가
 		try {
 			String apiURL = "https://openapi.naver.com/v1/nid/me";
@@ -83,15 +76,13 @@
 				is_man = false;
 			}
 			int defaultGrade = 2;
-
-			//request.setAttribute("userEmail",email);
-			//request.setAttribute("userName",name);
-			//request.setAttribute("userAge",age);
-			//request.setAttribute("userBirth",birthday);
-			//request.setAttribute("userIsMan",is_man);
-			//request.setAttribute("userGrade", defaultGrade);
-
-			//response.sendRedirect("registUser");
+			
+			session.setAttribute("userEmail",email);
+			session.setAttribute("userName",name);
+			//session.setAttribute("userAge",age);
+			//session.setAttribute("userBirth",birthday);
+			//session.setAttribute("userIsMan",is_man);
+			//session.setAttribute("userGrade",defaultGrade);
 	%>
 			<form  method="post" name=registform action="registUser">
 		 		<input type="hidden" name="userEmail" value="<%=email%>"><br> 
@@ -102,13 +93,11 @@
 				<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
 				 
 				<script>document.registform.submit();</script>
-				<!-- <input type="submit" value="등록"> -->
 			</form>
 	<%
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	%>
-	
 </body>
 </html>
