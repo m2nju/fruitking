@@ -49,7 +49,7 @@
 				response1.append(inputLine);
 			}
 			br.close();
-			out.println(response1.toString()); // 네이버에서 받아온 회원 정보를 출력
+/* 			out.println(response1.toString()); // 네이버에서 받아온 회원 정보를 출력 */
 
 			String id = "";
 			String nickname = "";
@@ -93,7 +93,7 @@
 
 			//response.sendRedirect("registUser");
 	%>
-			<form  method="post" action="registUser">
+			<form  method="post" name=registform action="registUser">
 		 		<input type="hidden" name="userEmail" value="<%=email%>"><br> 
 				<input type="hidden" name="userName" value="<%=name%>"><br>
 				<input type="hidden" name="userAge" value="<%=age%>"><br>
@@ -101,7 +101,8 @@
 				<input type="hidden" name="userIsMan" value="<%=is_man%>"><br>
 				<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
 				 
-				<input type="submit" value="등록">
+				<script>document.registform.submit();</script>
+				<!-- <input type="submit" value="등록"> -->
 			</form>
 	<%
 		} catch (Exception e) {
