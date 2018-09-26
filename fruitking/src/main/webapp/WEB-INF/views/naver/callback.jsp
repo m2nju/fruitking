@@ -60,10 +60,10 @@
 
 
 				access_token = (String) jsonObj.get("access_token"); // 엑세스 토큰을 변수에 저장함
-				out.println("<br><br>access_token : " + access_token);
+				//out.println("<br><br>access_token : " + access_token);
 
 				refresh_token = (String) jsonObj.get("refresh_token"); // 리프레시 토큰을 저장함
-				out.println("<br>refresh_token : " + refresh_token);
+				//out.println("<br>refresh_token : " + refresh_token);
 
 				session.setAttribute("access_token",access_token);
 				session.setAttribute("refresh_token",refresh_token);
