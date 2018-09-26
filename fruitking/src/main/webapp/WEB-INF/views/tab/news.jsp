@@ -58,7 +58,7 @@
 		keyword = "과일";	
 	}
 	else{
-		keyword = keyword + "&&과일"; // 검색의 정확도를 높히기 위해 "과일" 키워드 가져야 검색되도록
+		keyword = keyword + "&&과일"; // 검색의 정확도를 높히기 위해 "과일" 키워드도 가져야 검색되도록
 	}
 	String clientId = "wcz84T9Q8lZKWx4REGlt";//애플리케이션 클라이언트 아이디값";
 	String clientSecret = "3aESDNOM7h";//애플리케이션 클라이언트 시크릿값";
