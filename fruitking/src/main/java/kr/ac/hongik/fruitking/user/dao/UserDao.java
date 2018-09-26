@@ -50,4 +50,9 @@ public class UserDao {
 	public int selectCount() {
 		return jdbc.queryForObject(SELECT_COUNT, Collections.emptyMap(), Integer.class);
 	}
+	
+	public int countByEmail(String userEmail) {
+		Map<String, ?> params = Collections.singletonMap("user_email", userEmail);
+		return jdbc.queryForObject(COUNT_BY_EMAIL, params, Integer.class);
+	}
 }

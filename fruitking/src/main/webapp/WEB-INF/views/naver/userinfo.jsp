@@ -1,3 +1,8 @@
+<%@page import="kr.ac.hongik.fruitking.user.dto.User"%>
+<%@page import="kr.ac.hongik.fruitking.config.ApplicationConfig"%>
+<%@page import="org.springframework.context.annotation.AnnotationConfigApplicationContext"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@page import="kr.ac.hongik.fruitking.user.service.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.BufferedReader"%>
@@ -83,6 +88,14 @@
 			//session.setAttribute("userBirth",birthday);
 			//session.setAttribute("userIsMan",is_man);
 			//session.setAttribute("userGrade",defaultGrade);
+			
+			ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class); 
+			UserService userService = ac.getBean(UserService.class);
+			
+			User user = new User();
+			user.setUserEmail(email);
+			if(!userService.isUser(user)){
+				System.out.println("fruitking의 회원이 아닙니다. 회원으로 등록합니다.");
 	%>
 			<form  method="post" name=registform action="registUser">
 		 		<input type="hidden" name="userEmail" value="<%=email%>"><br> 
@@ -95,6 +108,11 @@
 				<script>document.registform.submit();</script>
 			</form>
 	<%
+			}
+			else{
+				System.out.println("이미 존재하는 회원입니다.");
+				response.sendRedirect("./");
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}

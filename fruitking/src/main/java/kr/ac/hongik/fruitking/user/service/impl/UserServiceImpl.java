@@ -43,4 +43,14 @@ public class UserServiceImpl implements UserService{
 		return userDao.selectCount();
 	}
 	
+	@Override
+	@Transactional(readOnly=false)
+	public boolean isUser(User user) {
+		int count =  userDao.countByEmail(user.getUserEmail());
+		if (count == 0) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 }
