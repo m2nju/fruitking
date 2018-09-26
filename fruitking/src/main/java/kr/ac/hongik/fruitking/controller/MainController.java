@@ -88,6 +88,8 @@ public class MainController {
 	public String happy() {
 		return "happy"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/happy.jsp가 열린다. (지워도 똑같음 default가 ~~/views/*.jsp 이기 때문임)
 	}//commit test2
+	
+	
 
 	@RequestMapping(value = "/naverLogin")
 	public String naverLogin(HttpSession session) {
