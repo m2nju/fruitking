@@ -84,12 +84,12 @@ public class MainController {
 
 	@RequestMapping(value = "/news")
 	public String news(HttpSession session) {
-		return "/tab/news";
+		return "tab/news";
 	}
 	
 	@RequestMapping(value = "/naverLogin")
 	public String naverLogin(HttpSession session) {
-		return "/naver/naverlogin";
+		return "naver/naverlogin";
 	}
 
 	@RequestMapping(value = "/callBack")
@@ -104,7 +104,7 @@ public class MainController {
 
 	@RequestMapping(value = "/qna")
 	public String qeustionAndAnswer() {
-		return "/tab/qna";
+		return "tab/qna";
 	}
 	
 }
