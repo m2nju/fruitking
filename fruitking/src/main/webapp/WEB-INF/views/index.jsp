@@ -16,7 +16,6 @@
 	<a href="./"><img src="img/logo.png" /></a>
 
 	<br>
-	<a href="happy">happy.jsp로 이동</a>
 
 	<%
 		//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
