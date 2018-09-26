@@ -78,7 +78,6 @@
 
 				response.addCookie(access_token_cookie); // 클라이언트 응답에 쿠키를 추가한다.
 				response.addCookie(refresh_token_cookie);
-
 				
 				response.sendRedirect("userinfo");
 			}

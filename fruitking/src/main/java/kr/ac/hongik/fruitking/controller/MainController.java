@@ -70,12 +70,6 @@ public class MainController {
 	
 	@RequestMapping(path = "/registUser")
 	public String write(@ModelAttribute User user, HttpServletRequest request) {
-		String userEmail = (String) request.getAttribute("userEmail");
-		String userName = (String) request.getAttribute("userName");
-		int age = (int) request.getAttribute("userAge");
-		String userBirth = (String) request.getAttribute("userBirth");
-		Boolean userIsMan = (Boolean) request.getAttribute("userIsMan");
-		int userGrade = (int ) request.getAttribute("userGrade");
 		
 		String clientIp = request.getRemoteAddr();
 		System.out.println("clientIp : " + clientIp);
@@ -87,7 +81,9 @@ public class MainController {
 	@GetMapping(path = "/happy") // 일반적인 GET메소드 리다이렉션
 	public String happy() {
 		return "happy"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/happy.jsp가 열린다. (지워도 똑같음 default가 ~~/views/*.jsp 이기 때문임)
-	}//commit test2
+	}
+	
+	
 
 	@RequestMapping(value = "/news")
 	public String news(HttpSession session) {
