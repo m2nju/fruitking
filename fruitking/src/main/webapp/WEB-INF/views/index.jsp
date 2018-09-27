@@ -15,12 +15,21 @@
 <style>
       #floatMenu {
        position: absolute;
-       width: 50px;
-       height: 50px;
        right: 50px;
        top: 10px;
-       background-color: #606060;
-       color: #fff;
+       background-color: bisque;
+       color: #ffffff;
+       text-align: center;
+      }
+      #floatMenu > a{
+      		text-decoration: none;
+      		width: 150px;
+       		height: 150px;
+       		background-color: bisque;
+      }
+      #floatMenu > a > img{
+      		width: 100px;
+      		height: 100px;
       }
 </style>
 <script>
@@ -131,7 +140,9 @@
 	<!-- 배너 -->
 	</div>
 	<div id="floatMenu">
-		<a href="#top">플로팅 메뉴</a>
+		<a href="#top">맨 위로</a><br>
+		<a href="http://www.customs.go.kr/kcshome/index.jsp"><img src="img/kcs.png" /></a><br>
+		<a href="./"><img src="img/logo.png" /></a>
 	</div>
       <!-- 배너 -->
 </body>
