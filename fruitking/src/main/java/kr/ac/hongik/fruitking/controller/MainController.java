@@ -98,7 +98,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/userinfo")
-	public String userInfo(HttpServletRequest request) throws Exception {
+	public String userInformation(HttpServletRequest request) throws Exception {
 		return "naver/userinfo";
 	}
 
@@ -107,4 +107,8 @@ public class MainController {
 		return "tab/qna";
 	}
 	
+	@RequestMapping(value = "/info")
+	public String information() {
+		return "tab/info";
+	}
 }
