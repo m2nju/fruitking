@@ -3,6 +3,7 @@ package kr.ac.hongik.fruitking.notify.dao;
 import java.util.Date;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.ac.hongik.fruitking.config.ApplicationConfig;
@@ -29,6 +30,8 @@ public class NotifyDaoTest {
 		log.setMethod("insert");
 		log.setRegdate(new Date());
 		logDao.insert(log);
+		
+		((ConfigurableApplicationContext)ac).close();
 	}
 
 }

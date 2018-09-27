@@ -1,6 +1,8 @@
+<%@page import="org.springframework.context.ConfigurableApplicationContext"%>
 <%@page import="kr.ac.hongik.fruitking.user.dto.User"%>
 <%@page import="kr.ac.hongik.fruitking.config.ApplicationConfig"%>
-<%@page import="org.springframework.context.annotation.AnnotationConfigApplicationContext"%>
+<%@page
+	import="org.springframework.context.annotation.AnnotationConfigApplicationContext"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="kr.ac.hongik.fruitking.user.service.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -24,9 +26,9 @@
 <body>
 	<h2>Fruit King 회원 여부 검사 후, 자동으로 회원 등록이 완료됩니다.</h2>
 	<%
-		String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰
-		String refresh_token = (String)session.getAttribute("refresh_token"); // 리프레시 토큰	
-		
+		String access_token = (String) session.getAttribute("access_token"); // 네이버 엑세스 토큰
+		String refresh_token = (String) session.getAttribute("refresh_token"); // 리프레시 토큰	
+
 		String header = "Bearer " + access_token; // Bearer 다음에 공백 추가
 		try {
 			String apiURL = "https://openapi.naver.com/v1/nid/me";
@@ -47,7 +49,7 @@
 				response1.append(inputLine);
 			}
 			br.close();
-/* 			out.println(response1.toString()); // 네이버에서 받아온 회원 정보를 출력 */
+			/* 			out.println(response1.toString()); // 네이버에서 받아온 회원 정보를 출력 */
 
 			String id = "";
 			String nickname = "";
@@ -81,35 +83,37 @@
 				is_man = false;
 			}
 			int defaultGrade = 2;
-			
-			session.setAttribute("userEmail",email);
-			session.setAttribute("userName",name);
+
+			session.setAttribute("userEmail", email);
+			session.setAttribute("userName", name);
 			//session.setAttribute("userAge",age);
 			//session.setAttribute("userBirth",birthday);
 			//session.setAttribute("userIsMan",is_man);
 			//session.setAttribute("userGrade",defaultGrade);
-			
-			ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class); 
+
+			ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 			UserService userService = ac.getBean(UserService.class);
-			
+
 			User user = new User();
 			user.setUserEmail(email);
-			if(!userService.isUser(user)){
+			if (!userService.isUser(user)) {
 				System.out.println("fruitking의 회원이 아닙니다. 회원으로 등록합니다.");
 	%>
-			<form  method="post" name=registform action="registUser">
-		 		<input type="hidden" name="userEmail" value="<%=email%>"><br> 
-				<input type="hidden" name="userName" value="<%=name%>"><br>
-				<input type="hidden" name="userAge" value="<%=age%>"><br>
-				<input type="hidden" name="userBirth" value="<%=birthday%>"><br>
-				<input type="hidden" name="userIsMan" value="<%=is_man%>"><br>
-				<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
-				 
-				<script>document.registform.submit();</script>
-			</form>
+	<form method="post" name=registform action="registUser">
+		<input type="hidden" name="userEmail" value="<%=email%>"><br>
+		<input type="hidden" name="userName" value="<%=name%>"><br>
+		<input type="hidden" name="userAge" value="<%=age%>"><br>
+		<input type="hidden" name="userBirth" value="<%=birthday%>"><br>
+		<input type="hidden" name="userIsMan" value="<%=is_man%>"><br>
+		<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
+
+		<script>
+			document.registform.submit();
+		</script>
+	</form>
 	<%
-			}
-			else{
+		((ConfigurableApplicationContext)ac).close();
+			} else {
 				System.out.println("이미 존재하는 회원입니다.");
 				response.sendRedirect("./");
 			}

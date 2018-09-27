@@ -1,6 +1,7 @@
 package kr.ac.hongik.fruitking.user.dao;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.ac.hongik.fruitking.config.ApplicationConfig;
@@ -25,6 +26,8 @@ public class UserDaoTest {
 	
 		Long userId = userDao.insert(user);
 		System.out.println("user_id : " + userId);
+		
+		((ConfigurableApplicationContext)ac).close();
 	}
 
 }

@@ -3,6 +3,7 @@ package kr.ac.hongik.fruitking.notify.service.impl;
 import java.util.Date;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.ac.hongik.fruitking.config.ApplicationConfig;
@@ -23,6 +24,8 @@ public class NotifyServiceTest {
 		Notify result = notifyService.addNotify(notify, "127.0.0.1");
 		System.out.println(result);
 		
+		
+		((ConfigurableApplicationContext)ac).close();
 	}
 
 }

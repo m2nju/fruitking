@@ -1,6 +1,7 @@
 package kr.ac.hongik.fruitking.user.service.impl;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.ac.hongik.fruitking.config.ApplicationConfig;
@@ -20,5 +21,7 @@ public class UserServiceTest {
 		user.setUserGrade(2);
 		User result = userService.registUser(user);
 		System.out.println(result);
+		
+		((ConfigurableApplicationContext)ac).close();
 	}
 }
