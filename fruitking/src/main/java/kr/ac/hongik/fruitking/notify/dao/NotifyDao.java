@@ -59,25 +59,23 @@ public class NotifyDao {
 		Map<String, ?> params = Collections.singletonMap("id", id);
 		System.out.println(id + "select Notify");
 
-		
-		 Notify notify = new Notify(); notify.setId(((Integer)27).longValue());
-		 notify.setWriter("민주"); notify.setTitle("제목"); notify.setContent("내용");
-		 notify.setRegdate(new Date());
-		 // 이렇게 직접 넣어서 하면 되는데 jdbc로 읽어오는 거만 하면 될 거 같음
-		 
-		 
-		/*Notify notify = jdbc.queryForObject(SELECT_NOTIFY, new Object[] { 1212L }, new RowMapper<Notify>() {
-			public Notify mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Notify notify = new Notify();
-				notify.setId(rs.getLong("id"));
-				notify.setWriter(rs.getString("writer"));
-				notify.setTitle(rs.getString("title"));
-				notify.setContent(rs.getString("content"));
-				notify.setRegdate(rs.getDate("regdate"));
-				return notify;
-			}
-		}*/
+		Notify notify = new Notify();
+		notify.setId(((Integer) 27).longValue());
+		notify.setWriter("민주");
+		notify.setTitle("제목");
+		notify.setContent("내용");
+		notify.setRegdate(new Date());
+		// 이렇게 직접 넣어서 하면 되는데 jdbc로 읽어오는 거만 하면 될 거 같음
 
+		/*
+		 * Notify notify = jdbc.queryForObject(SELECT_NOTIFY, new Object[] { 1212L },
+		 * new RowMapper<Notify>() { public Notify mapRow(ResultSet rs, int rowNum)
+		 * throws SQLException { Notify notify = new Notify();
+		 * notify.setId(rs.getLong("id")); notify.setWriter(rs.getString("writer"));
+		 * notify.setTitle(rs.getString("title"));
+		 * notify.setContent(rs.getString("content"));
+		 * notify.setRegdate(rs.getDate("regdate")); return notify; } }
+		 */
 
 		return notify;
 	}

@@ -63,10 +63,11 @@ public class MainController {
 	@GetMapping(path = "/notify/view") // 프로젝트명 fruitking 뒤에 들어오는 경로 ex: http://localhost:8080/fruitking/notify 배포시
 	// ROOT로 만들면 http://fruitking.cf/notify
 	public String viewNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
-// start로 시작하는 방명록 목록 구하기
 		Notify notify = notifyService.getNotify(id);
-
-		return "tab/notify/notify"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify/notify.jsp가 열린다.
+		
+		model.addAttribute("notify", notify);
+		
+		return "tab/notify/view"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify/notify.jsp가 열린다.
 	}
 
 	@RequestMapping(value = "/writeNotify")
