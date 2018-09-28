@@ -6,6 +6,17 @@ h2 {text-align: center}
 h2,h4 {
 	margin: 0px;
 }
+a, a:hover {
+	color: #000000;
+	text_decoration: none;
+}
+.logo {
+	text-align: center;
+}
+.login {
+	text-align: right;
+	margin-right: 10px;
+}
 .container {
   padding-right: 15px;
   padding-left: 15px;

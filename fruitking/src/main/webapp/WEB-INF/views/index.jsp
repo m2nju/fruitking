@@ -8,11 +8,20 @@
 <meta charset="UTF-8">
 <title>Fruit King</title>
 <link rel="stylesheet" href="css/maincss.css">
-<script>
-	
-</script>
+
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <style>
+	a, a:hover {
+		color: #000000;
+		text_decoration: none;
+	}
+	.logo {
+		text-align: center;
+	}
+	.login {
+		text-align: right;
+		margin-right: 10px;
+	}
       #floatMenu {
        position: absolute;
        right: 50px;
@@ -52,22 +61,24 @@
 </script>
 </head>
 <body>
-     <div id="top" style="height:2500px"><!-- 배너 -->
-	<a href="./"><img src="img/logo.png" /></a>
-
-	<br>
-
-	<%
-		//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
-		//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
-		
-		String userName = (String)session.getAttribute("userName");
-		if(!(userName == null)){	// 엑세스토큰이 쿠키에 보관되어 있다면 
-			out.println(userName + "님 안녕하세요.<br>");
-		}else{
-	%>
-	<a href="naverLogin">네이버로그인</a>
+    <div id="top" style="height:2500px"><!-- 배너 -->
+    <div class="logo">
+		<a href="./"><img src="img/logo.png" /></a>
+    </div>
+    <div class="login">
+		<br>
+		<%
+			//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
+			//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
+			
+			String userName = (String)session.getAttribute("userName");
+			if(!(userName == null)){	// 엑세스토큰이 쿠키에 보관되어 있다면 
+				out.println(userName + "님 안녕하세요.<br>");
+			}else{
+		%>
+		<a href="naverLogin">네이버로그인</a>
 		<% }%>
+    </div>
 	<div class="tab">
 		<div class="tabmenu">
 			<div class="tablinks" onclick="openTab(event)">사이트 소개</div>
@@ -84,6 +95,15 @@
 
 		<section class="content"> </section>
 	</div>
+	<!-- 배너 -->
+	</div>
+	
+	<div id="floatMenu">
+		<a href="#top">맨 위로</a><br>
+		<a href="http://www.customs.go.kr/kcshome/index.jsp"><img src="img/kcs.png" /></a><br>
+		<a href="./"><img src="img/logo.png" /></a>
+	</div>
+	<!-- 배너 -->
 
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-latest.js"></script>
@@ -137,14 +157,6 @@
 	<script id="tabcontent" type="my-template">
 		<iframe src="./{html}" id="Iframe" width="100%" height="100%" min-height="200px" scrolling="no" frameborder="0" onload="autosize()"></iframe> 
 	</script>
-	<!-- 배너 -->
-	</div>
-	<div id="floatMenu">
-		<a href="#top">맨 위로</a><br>
-		<a href="http://www.customs.go.kr/kcshome/index.jsp"><img src="img/kcs.png" /></a><br>
-		<a href="./"><img src="img/logo.png" /></a>
-	</div>
-      <!-- 배너 -->
 </body>
 </html>
 

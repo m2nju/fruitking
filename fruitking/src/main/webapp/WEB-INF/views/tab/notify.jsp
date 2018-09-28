@@ -14,6 +14,28 @@
 	<br> 공지사항 전체 수 : ${count }
 	<br>
 	<br>
+	<div>
+		<table class="table table-striped" style="text-align: center;	border: 1px solid #dddddd;">
+			<thead>
+				<tr>
+					<th style="background-color: #eeeeee; text-align: center;">번호</th>
+					<th style="background-color: #eeeeee; text-align: center;">작성자</th>
+					<th style="background-color: #eeeeee; text-align: center;">제목</th>
+					<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:forEach items="${list}" var="notify">
+				<tr>
+					<td>${notify.id }</td>
+					<td>${notify.writer }</td>
+					<td><a href="view?id=${notify.id }">${notify.title }</a></td>
+					<td>${notify.regdate }</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
 
 	<c:forEach items="${list}" var="notify">
 		${notify.id }<br>
