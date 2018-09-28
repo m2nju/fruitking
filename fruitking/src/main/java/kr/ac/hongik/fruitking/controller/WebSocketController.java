@@ -84,5 +84,4 @@ public class WebSocketController {
         logger.info("Session "+session.getId()+" has ended");
         sessionList.remove(session);
     }
-    
 }
