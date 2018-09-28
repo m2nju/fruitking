@@ -23,6 +23,9 @@ public class NotifyDaoTest {
 		notify.setRegdate(new Date());
 		Long id = notifyDao.insert(notify);
 		System.out.println("id : " + id);
+		Integer y = 27;
+		long x = y.longValue();
+		System.out.println(notifyDao.selectNotify(x));
 		
 		LogDao logDao = ac.getBean(LogDao.class);
 		Log log = new Log();
@@ -32,6 +35,8 @@ public class NotifyDaoTest {
 		logDao.insert(log);
 		
 		((ConfigurableApplicationContext)ac).close();
+		
+		
 	}
 
 }

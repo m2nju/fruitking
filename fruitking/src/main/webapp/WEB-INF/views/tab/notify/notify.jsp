@@ -29,7 +29,7 @@
 				<tr>
 					<td>${notify.id }</td>
 					<td>${notify.writer }</td>
-					<td><a href="view?id=${notify.id }">${notify.title }</a></td>
+					<td><a href="notify/view?id=${notify.id }">${notify.title }</a></td>
 					<td>${notify.regdate }</td>
 				</tr>
 			</c:forEach>

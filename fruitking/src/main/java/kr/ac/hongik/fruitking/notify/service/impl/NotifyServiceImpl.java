@@ -27,6 +27,13 @@ public class NotifyServiceImpl implements NotifyService{
 		List<Notify> list = notifyDao.selectAll(start, NotifyService.LIMIT);
 		return list;
 	}
+	
+	@Override
+	@Transactional
+	public Notify getNotify(Long id) {
+		Notify notify = notifyDao.selectNotify(id);
+		return notify;
+	}
 
 	@Override
 	@Transactional(readOnly=false)

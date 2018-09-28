@@ -28,7 +28,7 @@ import kr.ac.hongik.fruitking.user.service.UserService;
 public class MainController {
 	@Autowired
 	NotifyService notifyService;
-	
+
 	@Autowired
 	UserService userService;
 
@@ -57,9 +57,18 @@ public class MainController {
 		model.addAttribute("count", count);
 		model.addAttribute("pageStartList", pageStartList);
 
-		return "tab/notify"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify.jsp가 열린다.
+		return "tab/notify/notify"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify.jsp가 열린다.
 	}
-	
+
+	@GetMapping(path = "/notify/view") // 프로젝트명 fruitking 뒤에 들어오는 경로 ex: http://localhost:8080/fruitking/notify 배포시
+	// ROOT로 만들면 http://fruitking.cf/notify
+	public String viewNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
+// start로 시작하는 방명록 목록 구하기
+		Notify notify = notifyService.getNotify(id);
+
+		return "tab/notify/notify"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify/notify.jsp가 열린다.
+	}
+
 	@RequestMapping(value = "/writeNotify")
 	public String view(HttpServletRequest request) {
 		return "tab/notify/writeNotify";
@@ -72,13 +81,13 @@ public class MainController {
 		notifyService.addNotify(notify, clientIp);
 		return "redirect:/notify"; // 해당 path로 리다이렉트 한다.
 	}
-	
+
 	@RequestMapping(path = "/registUser")
 	public String write(@ModelAttribute User user, HttpServletRequest request) {
 		String clientIp = request.getRemoteAddr();
 		System.out.println("clientIp : " + clientIp);
 		userService.registUser(user);
-		
+
 		return "redirect:/"; // 해당 path로 리다이렉트 한다.
 	}
 
@@ -86,12 +95,12 @@ public class MainController {
 //	public String happy() {
 //		return "happy"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/happy.jsp가 열린다. (지워도 똑같음 default가 ~~/views/*.jsp 이기 때문임)
 //	}	
-	
+
 	@RequestMapping(value = "/news")
 	public String news(HttpSession session) {
 		return "tab/news";
 	}
-	
+
 	@RequestMapping(value = "/naverLogin")
 	public String naverLogin(HttpSession session) {
 		return "naver/naverlogin";
@@ -101,7 +110,7 @@ public class MainController {
 	public String callBack(HttpServletRequest request) throws Exception {
 		return "naver/callback";
 	}
-	
+
 	@RequestMapping(value = "/userinfo")
 	public String userInformation(HttpServletRequest request) throws Exception {
 		return "naver/userinfo";
@@ -111,11 +120,10 @@ public class MainController {
 	public String qeustionAndAnswer() {
 		return "tab/qna";
 	}
-	
+
 	@RequestMapping(value = "/info")
 	public String information() {
 		return "tab/info";
 	}
 
-	
 }
