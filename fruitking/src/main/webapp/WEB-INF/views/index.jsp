@@ -61,43 +61,42 @@
 </script>
 </head>
 <body>
-    <div id="top" style="height:2500px"><!-- 배너 -->
-    <div class="logo">
-		<a href="./"><img src="img/logo.png" /></a>
-    </div>
-    <div class="login">
-		<br>
-		<%
-			//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
-			//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
-			
-			String userName = (String)session.getAttribute("userName");
-			if(!(userName == null)){	// 엑세스토큰이 쿠키에 보관되어 있다면 
-				out.println(userName + "님 안녕하세요.<br>");
-			}else{
-		%>
-		<a href="naverLogin">네이버로그인</a>
-		<% }%>
-    </div>
-	<div class="tab">
-		<div class="tabmenu">
-			<div class="tablinks" onclick="openTab(event)">사이트 소개</div>
-			<div class="tablinks" onclick="openTab(event)">과일 거래량</div>
-			<div class="tablinks" onclick="openTab(event)">날씨</div>
-			<div class="tablinks" onclick="openTab(event)">조세</div>
-			<div class="tablinks" onclick="openTab(event)">물류</div>
-			<div class="tablinks" onclick="openTab(event)">경매가</div>
-			<div class="tablinks" onclick="openTab(event)">판매가</div>
-			<div class="tablinks" onclick="openTab(event)">관련뉴스</div>
-			<div class="tablinks" onclick="openTab(event)">공지사항</div>
-			<div class="tablinks" onclick="openTab(event)">문의하기</div>
-		</div>
-
-		<section class="content"> </section>
-	</div>
-	<!-- 배너 -->
-	</div>
+    <div id="top" style="height:2500px">
+	    <div class="logo">
+			<a href="./"><img src="img/logo.png" /></a>
+	    </div>
+	    <div class="login">
+			<br>
+			<%
+				//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
+				//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
+				
+				String userName = (String)session.getAttribute("userName");
+				if(!(userName == null)){	// 엑세스토큰이 쿠키에 보관되어 있다면 
+					out.println(userName + "님 안녕하세요.<br>");
+				}else{
+			%>
+			<a href="naverLogin">네이버로그인</a>
+			<% }%>
+	    </div>
+		<div class="tab">
+			<div class="tabmenu">
+				<div class="tablinks" onclick="openTab(event)">사이트 소개</div>
+				<div class="tablinks" onclick="openTab(event)">과일 거래량</div>
+				<div class="tablinks" onclick="openTab(event)">날씨</div>
+				<div class="tablinks" onclick="openTab(event)">조세</div>
+				<div class="tablinks" onclick="openTab(event)">물류</div>
+				<div class="tablinks" onclick="openTab(event)">경매가</div>
+				<div class="tablinks" onclick="openTab(event)">판매가</div>
+				<div class="tablinks" onclick="openTab(event)">관련뉴스</div>
+				<div class="tablinks" onclick="openTab(event)">공지사항</div>
+				<div class="tablinks" onclick="openTab(event)">문의하기</div>
+			</div>
 	
+			<section class="content"> </section>
+		</div>
+	</div>
+		<!-- 배너 -->
 	<div id="floatMenu">
 		<a href="#top">맨 위로</a><br>
 		<a href="http://www.customs.go.kr/kcshome/index.jsp"><img src="img/kcs.png" /></a><br>
@@ -156,7 +155,7 @@
 		})
 	</script>
 	<script id="tabcontent" type="my-template">
-		<iframe src="./{html}" id="Iframe" width="100%" height="100%" min-height="200px" scrolling="no" frameborder="0" onload="autosize()"></iframe> 
+		<iframe src="./{html}" id="Iframe" style="display: block; width: 100%; height: 100%;" scrolling="no" frameborder="0" onLoad="autosize()"></iframe> 
 	</script>
 </body>
 </html>
