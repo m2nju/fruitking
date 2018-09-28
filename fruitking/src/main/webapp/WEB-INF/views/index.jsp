@@ -110,9 +110,10 @@
 	<script>
 		function autosize() { //ifame 크기 맞춰주는 함수
 			var oFrame = top.document.getElementById("Iframe");
-			contentHeight = oFrame.contentWindow.document.body.scrollHeight;
-			if (contentHeight < 100) { //content 최소 높이
-				contentHeight = 100;
+			contentHeight = oFrame.contentWindow.document.body.scrollHeight + 
+			oFrame.contentWindow.document.body.offsetHeight - oFrame.contentWindow.document.body.clientHeight;
+			if (contentHeight < 300) { //content 최소 높이
+				contentHeight = 300;
 			}
 			oFrame.style.height = String(contentHeight + 30) + "px"; //content 높이 자동 맞춤
 		}

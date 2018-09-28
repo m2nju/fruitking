@@ -38,7 +38,11 @@ public class NotifyDao {
 	    		params.put("limit", limit);
 	        return jdbc.query(SELECT_PAGING, params, rowMapper);
 	    }
-
+	    
+	    public Notify select(Long id) {
+	    	Map<String, ?> params = Collections.singletonMap("id", id);
+	    	return jdbc.queryForObject(SELECT_NOTIFY, params, Notify.class);
+	    }
 
 		public Long insert(Notify notify) {
 			SqlParameterSource params = new BeanPropertySqlParameterSource(notify);

@@ -15,6 +15,7 @@
 <style>
 body {
 		background: #eee;
+		height: 530px;
 }
 
 .flexslider {
@@ -283,9 +284,10 @@ body {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.0/jquery.flexslider-min.js"></script>
 <script>
      $('.flexslider').flexslider({
-	animation: "slide",
-	controlNav: false
-});
+		animation: "slide",
+		controlNav: false
+	});
+
 </script>
 </body>
 
