@@ -35,6 +35,10 @@
 			</c:forEach>
 			</tbody>
 		</table>
+		<c:forEach items="${pageStartList}" var="pageIndex" varStatus="status">
+		<a href="notify?start=${pageIndex}">${status.index +1 }</a>&nbsp; &nbsp;
+		</c:forEach>
+		<a href="writeNotify" class="btn btn-primary pull-right">글쓰기</a>
 	</div>
 
 	<c:forEach items="${list}" var="notify">
@@ -45,13 +49,6 @@
 		${notify.regdate }<br>
 	</c:forEach>
 	
-	<br>
-
-	<c:forEach items="${pageStartList}" var="pageIndex" varStatus="status">
-		<a href="notify?start=${pageIndex}">${status.index +1 }</a>&nbsp; &nbsp;
-	</c:forEach>
-
-	<br>
 	<br>
 	
 	<form method="post" action="write">

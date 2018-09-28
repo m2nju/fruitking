@@ -59,6 +59,11 @@ public class MainController {
 
 		return "tab/notify"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify.jsp가 열린다.
 	}
+	
+	@RequestMapping(value = "/writeNotify")
+	public String view(HttpServletRequest request) {
+		return "tab/notify/writeNotify";
+	}
 
 	@PostMapping(path = "/write")
 	public String write(@ModelAttribute Notify notify, HttpServletRequest request) {
@@ -81,7 +86,7 @@ public class MainController {
 //	public String happy() {
 //		return "happy"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/happy.jsp가 열린다. (지워도 똑같음 default가 ~~/views/*.jsp 이기 때문임)
 //	}	
-
+	
 	@RequestMapping(value = "/news")
 	public String news(HttpSession session) {
 		return "tab/news";
