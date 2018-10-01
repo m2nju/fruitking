@@ -126,5 +126,10 @@ public class MainController {
 	public String information() {
 		return "tab/info";
 	}
+	
+	@RequestMapping(value = "/chat")
+	public String chatting() {
+		return "chatWebSocket";
+	}
 
 }
