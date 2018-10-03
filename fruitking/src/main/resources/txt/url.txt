@@ -8,23 +8,11 @@
         "html" : "volume"
     },
     {
-        "name" : "날씨",
+        "name" : "날씨 및 조세",
         "html" : "weather"
     },
     {
-        "name" : "조세",
-        "html" : "tax"
-    },
-    {
-        "name" : "물류",
-        "html" : "logistics"
-    },
-    {
-        "name" : "경매가",
-        "html" : "auction"
-    },
-    {
-        "name" : "판매가",
+        "name" : "경매 및 판매가",
         "html" : "price"
     },
     {

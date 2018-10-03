@@ -1,5 +1,7 @@
 package kr.ac.hongik.fruitking.notify.service.impl;
 
+import static kr.ac.hongik.fruitking.notify.dao.NotifyDaoSqls.SELECT_NOTIFY;
+
 import java.util.Date;
 import java.util.List;
 
@@ -32,8 +34,6 @@ public class NotifyServiceImpl implements NotifyService{
 	@Transactional
 	public Notify getNotify(Long id) {
 		Notify notify = notifyDao.selectNotify(id);
-		//System.out.println("service까지 왔는가? " + notifyDao.selectNotify(id));	// 되는지 확인하는 구문이고 완성 후 지울 것
-		
 		return notify;
 	}
 

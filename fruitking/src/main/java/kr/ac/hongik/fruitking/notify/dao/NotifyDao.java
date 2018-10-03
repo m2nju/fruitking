@@ -55,20 +55,8 @@ public class NotifyDao {
 
 	}
 
-	public Notify selectNotify(Long id) {
-		Map<String, ?> params = Collections.singletonMap("id", id);
-		System.out.println(id + "select Notify");
-
-		Notify notify = new Notify();
-		notify.setId(((Integer) 27).longValue());
-		notify.setWriter("민주");
-		notify.setTitle("제목");
-		notify.setContent("내용");
-		notify.setRegdate(new Date());
-		// 이렇게 직접 넣어서 하면 되는데 jdbc로 읽어오는 거만 하면 될 거 같음
-
-		//Notify notify = jdbc.queryForList();
-
+	public Notify selectNotify(Long id) {		
+		Notify notify = jdbc.queryForObject(SELECT_NOTIFY, Collections.singletonMap("id", id), rowMapper);
 		return notify;
 	}
 
