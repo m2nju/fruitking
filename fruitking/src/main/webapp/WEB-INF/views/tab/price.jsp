@@ -1,54 +1,207 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/price.css"/>
+<title>Line_Controls_Chart</title>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<!-- google charts -->
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
-	<h1>Vertical Bar Graph</h1>
-	<div class="vGraph">
-		<ul>
-			<li><span class="gTerm">SUN</span><span class="gBar" style="height:0%"><span>0%</span></span></li>
-			<li><span class="gTerm">MON</span><span class="gBar" style="height:20%"><span>20%</span></span></li>
-			<li><span class="gTerm">TUE</span><span class="gBar" style="height:30%"><span>30%</span></span></li>
-			<li><span class="gTerm">WED</span><span class="gBar" style="height:40%"><span>40%</span></span></li>
-			<li><span class="gTerm">THU</span><span class="gBar" style="height:50%"><span>50%</span></span></li>
-			<li><span class="gTerm">FRI</span><span class="gBar" style="height:60%"><span>60%</span></span></li>
-			<li><span class="gTerm">SAT</span><span class="gBar" style="height:100%"><span>100%</span></span></li>
-		</ul>
+
+	<h4>사이트 방문자 성별 현황 그래프</h4>
+
+	<div id="Line_Controls_Chart">
+		<!-- 라인 차트 생성할 영역 -->
+		<div id="lineChartArea" style="padding: 0px 20px 0px 0px;"></div>
+		<!-- 컨트롤바를 생성할 영역 -->
+		<div id="controlsArea" style="padding: 0px 20px 0px 0px;"></div>
 	</div>
-	<div id="wrap">
-		<nav class="left">
-			<div class="tab">
-				<button class="tablinks active" onclick="openTab(event, 'tab1')">탭1</button>
-				<button class="tablinks" onclick="openTab(event, 'tab2')">탭2</button>
-				<button class="tablinks" onclick="openTab(event, 'tab3')">탭3</button>
-			</div>
-		</nav>
-		
-		<div class="right">
-			<div id="tab1" class="tabcontent" style="display: block;">탭 1의 내용입니다. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, porro officia dolorum minus quae saepe quo a modi eligendi est reiciendis vel corporis voluptatum possimus quas fuga doloribus. Quo, tenetur.</div>
-			<div id="tab2" class="tabcontent" style="display: none;">탭 2의 내용입니다. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat excepturi, similique mollitia eius esse placeat libero adipisci omnis consequuntur quas vel dolor voluptate labore debitis sit nostrum natus necessitatibus quod!</div>
-			<div id="tab3" class="tabcontent" style="display: none;">탭 3의 내용입니다. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae maxime optio, corporis recusandae mollitia soluta facere, iure culpa eveniet atque nihil sunt. Omnis adipisci quas maiores sequi cumque magnam ducimus!</div>
-			<!-- <button type="button" onclick="$('link').attr('href', '')">CSS(X)</button> -->
-			<!-- <button type="button" onclick="$('link').attr('href', 'vGraph.css')">CSS(O)</button> -->
-		</div>
-	</div>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-	<script>
-		function openTab(evt, tabName) { 
-			var i, tabcontent, tablinks; tabcontent = document.getElementsByClassName("tabcontent");// 컨텐츠를 불러옵니다.
-			for (i = 0; i < tabcontent.length; i++) { 
-				tabcontent[i].style.display = "none"; //컨텐츠를 모두 숨깁니다. 
-			}
-			tablinks = document.getElementsByClassName("tablinks"); //탭을 불러옵니다. 
-			for (i = 0; i < tablinks.length; i++) { 
-				tablinks[i].className = tablinks[i].className.replace(" active", ""); //탭을 초기화시킵니다.
-			}
-			document.getElementById(tabName).style.display = "block"; //해당되는 컨텐츠만 보여줍니다.
-			evt.currentTarget.className += " active"; //클릭한 탭을 활성화시킵니다.
-		}
-	</script>
+
 </body>
+
+<script>
+	var chartDrowFun = {
+
+		chartDrow : function() {
+			var chartData = '';
+
+			//날짜형식 변경하고 싶으시면 이 부분 수정하세요.
+			var chartDateformat = 'yyyy년MM월dd일';
+			//라인차트의 라인 수
+			var chartLineCount = 10;
+			//컨트롤러 바 차트의 라인 수
+			var controlLineCount = 10;
+
+			function drawDashboard() {
+
+				var data = new google.visualization.DataTable();
+				//그래프에 표시할 컬럼 추가
+				data.addColumn('datetime', '날짜');
+				data.addColumn('number', '남성');
+				data.addColumn('number', '여성');
+				data.addColumn('number', '전체');
+
+				//그래프에 표시할 데이터
+				var dataRow = [];
+
+				for (var i = 0; i <= 29; i++) { //랜덤 데이터 생성
+					var total = Math.floor(Math.random() * 300) + 1;
+					var man = Math.floor(Math.random() * total) + 1;
+					var woman = total - man;
+
+					dataRow = [ new Date('2017', '09', i, '10'), man, woman,
+							total ];
+					data.addRow(dataRow);
+				}
+
+				var chart = new google.visualization.ChartWrapper({
+					chartType : 'LineChart',
+					containerId : 'lineChartArea', //라인 차트 생성할 영역
+					options : {
+						isStacked : 'percent',
+						focusTarget : 'category',
+						height : 500,
+						width : '100%',
+						legend : {
+							position : "top",
+							textStyle : {
+								fontSize : 13
+							}
+						},
+						pointSize : 5,
+						tooltip : {
+							textStyle : {
+								fontSize : 12
+							},
+							showColorCode : true,
+							trigger : 'both'
+						},
+						hAxis : {
+							format : chartDateformat,
+							gridlines : {
+								count : chartLineCount,
+								units : {
+									years : {
+										format : [ 'yyyy년' ]
+									},
+									months : {
+										format : [ 'MM월' ]
+									},
+									days : {
+										format : [ 'dd일' ]
+									},
+									hours : {
+										format : [ 'HH시' ]
+									}
+								}
+							},
+							textStyle : {
+								fontSize : 12
+							}
+						},
+						vAxis : {
+							minValue : 100,
+							viewWindow : {
+								min : 0
+							},
+							gridlines : {
+								count : -1
+							},
+							textStyle : {
+								fontSize : 12
+							}
+						},
+						animation : {
+							startup : true,
+							duration : 1000,
+							easing : 'in'
+						},
+						annotations : {
+							pattern : chartDateformat,
+							textStyle : {
+								fontSize : 15,
+								bold : true,
+								italic : true,
+								color : '#871b47',
+								auraColor : '#d799ae',
+								opacity : 0.8,
+								pattern : chartDateformat
+							}
+						}
+					}
+				});
+
+				var control = new google.visualization.ControlWrapper({
+					controlType : 'ChartRangeFilter',
+					containerId : 'controlsArea', //control bar를 생성할 영역
+					options : {
+						ui : {
+							chartType : 'LineChart',
+							chartOptions : {
+								chartArea : {
+									'width' : '60%',
+									'height' : 80
+								},
+								hAxis : {
+									'baselineColor' : 'none',
+									format : chartDateformat,
+									textStyle : {
+										fontSize : 12
+									},
+									gridlines : {
+										count : controlLineCount,
+										units : {
+											years : {
+												format : [ 'yyyy년' ]
+											},
+											months : {
+												format : [ 'MM월' ]
+											},
+											days : {
+												format : [ 'dd일' ]
+											},
+											hours : {
+												format : [ 'HH시' ]
+											}
+										}
+									}
+								}
+							}
+						},
+						filterColumnIndex : 0
+					}
+				});
+
+				var date_formatter = new google.visualization.DateFormat({
+					pattern : chartDateformat
+				});
+				date_formatter.format(data, 0);
+
+				var dashboard = new google.visualization.Dashboard(document
+						.getElementById('Line_Controls_Chart'));
+				window.addEventListener('resize', function() {
+					dashboard.draw(data);
+				}, false); //화면 크기에 따라 그래프 크기 변경
+				dashboard.bind([ control ], [ chart ]);
+				dashboard.draw(data);
+
+			}
+			google.charts.setOnLoadCallback(drawDashboard);
+
+		}
+	}
+
+	$(document).ready(function() {
+		google.charts.load('current', {
+			'packages' : [ 'line', 'controls' ]
+		});
+		chartDrowFun.chartDrow(); //chartDrow() 실행
+	});
+</script>
 </html>
