@@ -99,7 +99,7 @@
 	
 	<div id="floatMenu">
 		<a href="http://www.customs.go.kr/kcshome/index.jsp" target="_blank"><img src="img/kcs.png" /></a><br>
-		<a href="https://www.kamis.or.kr/customer/main/main.do" target="_blank"><img src="img/kamis.png" /></a><br>
+		<a href="https://www.kamis.or.kr/customer/main/main.do" target="_blank"><img src="img/kamisLogo.png" /></a><br>
 		<a href="#top">맨 위로</a>
 	</div>
 
