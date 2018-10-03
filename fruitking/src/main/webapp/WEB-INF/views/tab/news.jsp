@@ -43,26 +43,78 @@
 </style>
 </head>
 <body>
+	<% 
+	String k1, k2, k3, k4;
+	k1 = null;
+	k2 = null;
+	k3 = null;
+	k4 = null;
+	k1 = request.getParameter("f1");
+	k2 = request.getParameter("f2");
+	k3 = request.getParameter("f3");
+	k4 = request.getParameter("f4");
+	%>
 	<div class=selectSection>
 	<form method=post>
-		<input type="radio" name="chk_info" value="과일" checked="checked">과일
-		<input type="radio" name="chk_info" value="사과">사과
-		<input type="radio" name="chk_info" value="바나나">바나나
-		<input type="radio" name="chk_info" value="오렌지">오렌지
+		<% if(k1 == null){
+		%><input type="checkbox" name="f1" value="과일">과일<%
+		}else{%>
+			<input type="checkbox" name="f1" value="과일" checked="checked">과일
+		<%	
+		}
+		%>
+		<% if(k1 == null){
+		%><input type="checkbox" name="f2" value="사과">사과<%
+		}else{%>
+			<input type="checkbox" name="f2" value="사과" checked="checked">사과
+		<%	
+		}
+		%>
+		<% if(k3 == null){
+		%><input type="checkbox" name="f3" value="바나나">바나나<%
+		}else{%>
+			<input type="checkbox" name="f3" value="바나나" checked="checked">바나나
+		<%	
+		}
+		%>
+		<% if(k4 == null){
+		%><input type="checkbox" name="f4" value="오렌지">오렌지<%
+		}else{%>
+			<input type="checkbox" name="f4" value="오렌지" checked="checked">오렌지
+		<%	
+		}
+		%>
 		<input type="submit" value="검색">
 	</form>
 	</div>
-<% 
-	String keyword;
-	if((keyword = request.getParameter("chk_info")) == null){
-		keyword = "과일";	
+<%
+	String key = "";
+	if(k1 != null){
+		key += k1;
 	}
-	else{
-		keyword = keyword + "&&과일"; // 검색의 정확도를 높히기 위해 "과일" 키워드도 가져야 검색되도록
+	if(k2 != null){
+		key += "&&" + k2;
 	}
+	if(k3 != null){
+		key += "&&" + k3;
+	}
+	if(k4 != null){
+		key += "&&" + k4;
+	}
+	if(key == "") key = "과일";
+	%>
+	<!--
+	<h3><%=k1%></h3>
+	<h3><%=k2%></h3>
+	<h3><%=k3%></h3>
+	<h3><%=k4%></h3>
+	<h3><%=key%></h3>
+	 -->
+	<%
 	String clientId = "wcz84T9Q8lZKWx4REGlt";//애플리케이션 클라이언트 아이디값";
 	String clientSecret = "3aESDNOM7h";//애플리케이션 클라이언트 시크릿값";
-    String text = URLEncoder.encode(keyword, "UTF-8"); //검색어";
+    //String text = URLEncoder.encode(keyword1, "UTF-8"); //검색어";
+    String text = URLEncoder.encode(key, "UTF-8"); //검색어";
     String display = "10"; //표시할 기사 갯수
     String sort = "sim"; //sim : 유사도 순		date : 날짜 순
     String apiURL = "https://openapi.naver.com/v1/search/news.json?query="+ text + "&display="+ display +"&start=1&sort=" + sort;
