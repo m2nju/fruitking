@@ -26,7 +26,7 @@
        position: absolute;
        right: 25px;
        top: 450px;
-       background-color: bisque;
+       background-color: white;
        color: #ffffff;
        text-align: center;
       }
@@ -34,11 +34,15 @@
       		text-decoration: none;
       		width: 150px;
        		height: 150px;
-       		background-color: bisque;
+       		padding: 5px;
       }
       #floatMenu > a > img{
-      		width: 100px;
-      		height: 100px;
+      		width: 70px;
+      		height: 70px;
+      		border: solid 3px;
+      		border-color: #aaa;
+      		background-color: #aaa;
+      		border-radius: 10px;
       }
 </style>
 <script>
@@ -94,9 +98,9 @@
 	</div>
 	
 	<div id="floatMenu">
-		<a href="#top">맨 위로</a><br>
 		<a href="http://www.customs.go.kr/kcshome/index.jsp" target="_blank"><img src="img/kcs.png" /></a><br>
-		<a href="https://www.kamis.or.kr/customer/main/main.do" target="_blank"><img src="img/kamis.png" /></a>
+		<a href="https://www.kamis.or.kr/customer/main/main.do" target="_blank"><img src="img/kamis.png" /></a><br>
+		<a href="#top">맨 위로</a>
 	</div>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
