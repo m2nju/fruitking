@@ -36,26 +36,9 @@
 			</tbody>
 		</table>
 		<c:forEach items="${pageStartList}" var="pageIndex" varStatus="status">
-		<a href="notify?start=${pageIndex}">${status.index +1 }</a>&nbsp; &nbsp;
+			<a href="notify?start=${pageIndex}">${status.index +1 }</a>&nbsp; &nbsp;
 		</c:forEach>
 		<a href="writeNotify" class="btn btn-primary pull-right">글쓰기</a>
 	</div>
-
-	<c:forEach items="${list}" var="notify">
-		${notify.id }<br>
-		${notify.writer }<br>
-		${notify.title }<br>
-		${notify.content }<br>
-		${notify.regdate }<br>
-	</c:forEach>
-	
-	<br>
-	
-	<form method="post" action="write">
-		writer : <input type="text" name="writer"><br> 
-		title : <input type="text" name="title"><br>
-		<textarea name="content" cols="60" rows="6"></textarea>	<br> 
-		<input type="submit" value="등록">
-	</form>
 </body>
 </html>

@@ -82,30 +82,24 @@
 		<div class="tab">
 			<div class="tabmenu">
 				<div class="tablinks" onclick="openTab(event)">사이트 소개</div>
-				<div class="tablinks" onclick="openTab(event)">과일 거래량</div>
-				<div class="tablinks" onclick="openTab(event)">날씨</div>
-				<div class="tablinks" onclick="openTab(event)">조세</div>
-				<div class="tablinks" onclick="openTab(event)">물류</div>
-				<div class="tablinks" onclick="openTab(event)">경매가</div>
-				<div class="tablinks" onclick="openTab(event)">판매가</div>
+				<div class="tablinks" onclick="openTab(event)">날씨 및 조세</div>
+				<div class="tablinks" onclick="openTab(event)">경매 및 판매가</div>
 				<div class="tablinks" onclick="openTab(event)">관련뉴스</div>
 				<div class="tablinks" onclick="openTab(event)">공지사항</div>
 				<div class="tablinks" onclick="openTab(event)">문의하기</div>
 			</div>
 	
-			<section class="content"> </section>
+			<section class="content"></section>
 		</div>
 	</div>
-		<!-- 배너 -->
-	<div id="floatMenu">
+	
+<!-- 	<div id="floatMenu">
 		<a href="#top">맨 위로</a><br>
 		<a href="http://www.customs.go.kr/kcshome/index.jsp"><img src="img/kcs.png" /></a><br>
 		<a href="./"><img src="img/logo.png" /></a>
-	</div>
-	<!-- 배너 -->
+	</div> -->
 
-	<script type="text/javascript"
-		src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
 		function autosize() { //ifame 크기 맞춰주는 함수
 			var oFrame = top.document.getElementById("Iframe");
@@ -132,7 +126,7 @@
 
 			for (var i = 0, len = data.length; i < len; i++) {
 				if (data[i].name === clickedName) {
-					resultHTML = html.replace("{html}", data[i].html)
+					resultHTML = html.replace("{html}", data[i].html);
 					break;
 				}
 			}

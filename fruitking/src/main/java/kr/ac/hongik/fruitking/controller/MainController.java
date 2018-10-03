@@ -39,7 +39,7 @@ public class MainController {
 		List<Notify> list = notifyService.getNotifies(start);
 
 		// 전체 페이지수 구하기
-		int count = notifyService.getCount();
+		int count = notifyService.getCount(); 
 		int pageCount = count / NotifyService.LIMIT;
 		if (count % NotifyService.LIMIT > 0)
 			pageCount++;
@@ -60,14 +60,14 @@ public class MainController {
 		return "tab/notify/notify"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify.jsp가 열린다.
 	}
 
-	@GetMapping(path = "/notify/view") // 프로젝트명 fruitking 뒤에 들어오는 경로 ex: http://localhost:8080/fruitking/notify 배포시
-	// ROOT로 만들면 http://fruitking.cf/notify
+	@GetMapping(path = "/notify/view")
 	public String viewNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
 		Notify notify = notifyService.getNotify(id);
 		
 		model.addAttribute("notify", notify);
+		model.addAttribute("id", id);
 		
-		return "tab/notify/view"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify/notify.jsp가 열린다.
+		return "tab/notify/view";
 	}
 
 	@RequestMapping(value = "/writeNotify")
@@ -116,6 +116,16 @@ public class MainController {
 	public String userInformation(HttpServletRequest request) throws Exception {
 		return "naver/userinfo";
 	}
+	
+	@RequestMapping(value = "/weather")
+	public String weather(HttpSession session) {
+		return "tab/weather";
+	}
+	
+	@RequestMapping(value = "/price")
+	public String price(HttpSession session) {
+		return "tab/price";
+	}
 
 	@RequestMapping(value = "/qna")
 	public String qeustionAndAnswer() {
@@ -126,10 +136,10 @@ public class MainController {
 	public String information() {
 		return "tab/info";
 	}
-	
-	@RequestMapping(value = "/chart")
-	public String chart() {
-		return "chart/chart";
+
+	@RequestMapping(value = "/chat")
+	public String chatting() {
+		return "chatWebSocket";
 	}
 
 }
