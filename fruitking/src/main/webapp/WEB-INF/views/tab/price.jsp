@@ -12,7 +12,7 @@
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
-<body>
+<body style="height: 800px;">
 
 	<h4>사이트 방문자 성별 현황 그래프</h4>
 
