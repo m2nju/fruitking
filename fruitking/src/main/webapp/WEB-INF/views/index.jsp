@@ -145,7 +145,7 @@
 
 		var tabmenu = document.querySelector(".tabmenu");
 		tabmenu.addEventListener("click", function(evt) {
-			sendAjax("txt/url.txt", evt.target.innerHTML);
+			sendAjax("txt/html.txt", evt.target.innerHTML);
 		})
 	</script>
 	<script id="tabcontent" type="my-template">

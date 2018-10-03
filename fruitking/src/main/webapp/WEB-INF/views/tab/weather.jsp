@@ -48,12 +48,20 @@
 </script>
 </head>
 <body>
-	<button onclick="weatherCall(seoul)">서울</button>
-	<button onclick="weatherCall(daegu)">대구</button>
-	<button onclick="weatherCall(busan)">부산</button>
+	<button onclick="weatherCall(australia)">호주</button>
+	<button onclick="weatherCall(canada)">캐나다</button>
+	<button onclick="weatherCall(chile)">칠레</button>
+	<button onclick="weatherCall(china)">중국</button>
+	<button onclick="weatherCall(portugal)">포르투갈</button>
+	<button onclick="weatherCall(spain)">스페인</button>
+	<button onclick="weatherCall(italia)">이탈리아</button>
+	<button onclick="weatherCall(india)">인도</button>
+	<button onclick="weatherCall(newzealand)">뉴질랜드</button>
+	<button onclick="weatherCall(peru)">페루</button>
+	<button onclick="weatherCall(turkey)">터키</button>
 	<button onclick="weatherCall(florida)">플로리다</button>
-	<button onclick="weatherCall(newyork)">뉴욕</button>
-	<button onclick="weatherCall(sanfrancisco)">샌프란시스코</button><br>
+	<button onclick="weatherCall(sanfrancisco)">샌프란시스코</button>
+	<button onclick="weatherCall(vietnam)">베트남</button>
 
 	<h1></h1>
 	온도 : <div class="weatherInfo" id="temp"></div><br>
@@ -62,14 +70,11 @@
 	풍속 : <div class="weatherInfo" id="windSpeed"></div><br>
 	운량 : <div class="weatherInfo" id="clouds"></div><br>
 	
-	<div id="map_view" style="width:500px; height:500px;"></div>
+	<div id="map_view" style="width:940px; height:705px;"></div>
 	
 	<script type="text/javascript">
-		var seoul = {name:"seoul", x:"37.556817", y:"126.989516", zoom:7};
-		var daegu = {name:"daegu", x:"35.835504", y:"128.551723", zoom:7};
-		var busan = {name:"busan", x:"35.161796", y:"129.041613", zoom:7};
-		var florida = {name:"florida", x:"27.760675", y:"-81.416535", zoom:5};
-		var newyork = {name:"new york", x:"40.688927", y:"-74.003385", zoom:6};
+		
+		var florida = {name:"florida", x:"27.760675", y:"-81.416535", zoom:6};
 		var sanfrancisco = {name:"san francisco", x:"37.768852", y:"-122.422174", zoom:5};
 		
 		var weatherIconImgURL;
