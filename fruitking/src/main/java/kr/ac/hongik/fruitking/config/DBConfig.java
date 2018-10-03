@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 public class DBConfig implements TransactionManagementConfigurer {
 	private String driverClassName = "com.mysql.jdbc.Driver";
 	
-	private String url = "jdbc:mysql://fruitking.czxyyplvdfua.us-east-2.rds.amazonaws.com/fruitking?useUnicode=true&characterEncoding=utf8&autoReconnect=true&verifyServerCertificate=false&useSSL=false";
+	private String url = "jdbc:mysql://fruitking.czirbxernaor.ap-northeast-2.rds.amazonaws.com/fruitking?useUnicode=true&characterEncoding=utf8&autoReconnect=true&verifyServerCertificate=false&useSSL=false";
 
 	private String username = "master";
 
