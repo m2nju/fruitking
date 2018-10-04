@@ -16,7 +16,6 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
-	<!-- <websocket:mapping handler="chatHandler" path="/chat-ws"></websocket:mapping> -->
 	<servlet>
 		<servlet-name>DBCPInit</servlet-name>
 		<servlet-class>jdbc.DBCPInit</servlet-class>
