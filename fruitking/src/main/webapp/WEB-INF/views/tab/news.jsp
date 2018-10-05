@@ -118,11 +118,11 @@
 	//}
 	if(key == "") key = "과일";
 	%>
-	
+	<!--
 	<h3>ㅇ<%=k1%>ㅇ</h3>
 	<h3>ㅇ<%=k2%>ㅇ</h3>
 	<h3>ㅇ<%=key%>ㅇ</h3>
-	
+	 -->
 	<%
 	String clientId = "wcz84T9Q8lZKWx4REGlt";//애플리케이션 클라이언트 아이디값";
 	String clientSecret = "3aESDNOM7h";//애플리케이션 클라이언트 시크릿값";
