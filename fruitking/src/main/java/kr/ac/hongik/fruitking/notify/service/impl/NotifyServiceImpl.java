@@ -48,6 +48,20 @@ public class NotifyServiceImpl implements NotifyService{
 		logDao.insert(log);
 		return deleteCount;
 	}
+	
+	@Override
+	@Transactional(readOnly=false)
+	public int updateNotify(Notify notify, String ip) {
+		notify.setRegdate(new Date());
+		int updateCount = notifyDao.update(notify);
+		Log log = new Log();
+		log.setIp(ip);
+		log.setMethod("insert");
+		log.setRegdate(new Date());
+		logDao.insert(log);
+		 
+		return updateCount;
+	}
 
 	@Override
 	@Transactional(readOnly=false)

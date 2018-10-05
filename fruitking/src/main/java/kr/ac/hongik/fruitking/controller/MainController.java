@@ -59,26 +59,51 @@ public class MainController {
 
 		return "tab/notify/notify"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify.jsp가 열린다.
 	}
+	
+	@GetMapping(path = "/notify/updateNotify")	//공지사항 수정하기
+	public String updateNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
+		Notify notify = notifyService.getNotify(id);
+		
+		model.addAttribute("notify", notify);
+		model.addAttribute("id", id);
+		
+		return "tab/notify/updateNotify";
+	}
 
-	@GetMapping(path = "/notify/view")
+	@PostMapping(path = "/notify/update")	//공지사항 수정
+	public String update(@ModelAttribute Notify notify, HttpServletRequest request, @RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
+		String clientIp = request.getRemoteAddr();
+		notifyService.updateNotify(notify, clientIp);
+		model.addAttribute(id);
+		return "tab/notify/viewNotify"; // 해당 path로 리다이렉트 한다.
+	}
+	
+	@GetMapping(path = "/notify/deleteNotify")	//공지사항상세보기
+	public String deleteNotify(@ModelAttribute Notify notify, HttpServletRequest request, @RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
+		String clientIp = request.getRemoteAddr();
+		notifyService.deleteNotify(id, clientIp);
+		
+		return "redirect:/notify";
+	}
+
+	@GetMapping(path = "/notify/viewNotify")	//공지사항상세보기
 	public String viewNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
 		Notify notify = notifyService.getNotify(id);
 		
 		model.addAttribute("notify", notify);
 		model.addAttribute("id", id);
 		
-		return "tab/notify/view";
+		return "tab/notify/viewNotify";
 	}
 
-	@RequestMapping(value = "/writeNotify")
-	public String view(HttpServletRequest request) {
+	@RequestMapping(value = "/writeNotify")	//공지사항 작성하기
+	public String write(HttpServletRequest request) {
 		return "tab/notify/writeNotify";
 	}
 
-	@PostMapping(path = "/write")
+	@PostMapping(path = "/write")	//공지사항 추가
 	public String write(@ModelAttribute Notify notify, HttpServletRequest request) {
 		String clientIp = request.getRemoteAddr();
-		System.out.println("clientIp : " + clientIp);
 		notifyService.addNotify(notify, clientIp);
 		return "redirect:/notify"; // 해당 path로 리다이렉트 한다.
 	}

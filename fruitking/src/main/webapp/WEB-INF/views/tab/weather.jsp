@@ -21,83 +21,154 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_6z_sVa7_dirTxeWwFTWhExf4V2UyfMU&callback=initMap&region=KR"></script>
+
+</head>
+<body onload="initialize()">
+<!-- 	<button onclick="weatherCall(spain)">스페인</button>
+	<button onclick="weatherCall(italia)">이탈리아</button>
+	<button onclick="weatherCall(india)">인도</button>
+	<button onclick="weatherCall(canada)">캐나다</button>
+	<button onclick="weatherCall(chile)">칠레</button>
+	<button onclick="weatherCall(china)">중국</button>
+	<button onclick="weatherCall(vietnam)">베트남</button>
+	<button onclick="weatherCall(newzealand)">뉴질랜드</button>
+	<button onclick="weatherCall(peru)">페루</button>
+	<button onclick="weatherCall(turkey)">터키</button> -->
+	<button onclick="weatherCall(australia)">오스트레일리아</button>
+	<button onclick="weatherCall(portugal)">포르투갈</button>
+	<button onclick="weatherCall(florida)">플로리다</button>
+	<button onclick="weatherCall(sanfrancisco)">샌프란시스코</button>
+	<br>
+	<div id="map" style="width:940px; height:705px;"></div>
+	
+<script type="text/javascript">
+	var temp, humidity, description, windSpeed, clouds;	
+	var florida = {name:"florida", x:"27.760675", y:"-81.416535", zoom:6};
+	var sanfrancisco = {name:"san francisco", x:"37.768852", y:"-122.422174", zoom:5};
+	var australia = {name:"australia", x:"-24.446094", y:"134.696140", zoom:4};
+	var portugal = {name:"portugal", x:"39.600134", y:"-8.075996", zoom:5};
+	
+	var weatherIconImgURL;
+	function weatherCall(city){
+		name = city.name;
+		x = city.x;
+		y = city.y;
+		zoom = city.zoom;
+		var key = "1042afb6d0833b90b43ecbaccad5b137";
+		var apiURI = "http://api.openweathermap.org/data/2.5/weather?q="+name+"&appid="+key;
+		$.ajax({
+			url: apiURI,
+			success: function(result) {
+				temp = (result.main.temp - 273.15).toFixed(2) + "˚C";
+				humidity = result.main.humidity + "%";
+				description = result.weather[0].description;
+				windSpeed = result.wind.speed + "m/s";
+				clouds = result.clouds.all + "%";
+			}
+		});
+		mapLoad(name, x, y, zoom);
+	};
+</script>
 <script>
-	function initialize(name, x, y, zoom) {
-		/*
-		http://openapi.map.naver.com/api/geocode.php?key=f32441ebcd3cc9de474f8081df1e54e3&encoding=euc-kr&coord=LatLng&query=서울특별시 노원구 섬밭로 258
-		위의 링크에서 뒤에 주소를 적으면 x,y 값을 구할수 있습니다.
-		*/
+	function mapLoad(name, x, y, zoom) {
 		var zoomLevel = zoom; // 첫 로딩시 보일 지도의 확대 레벨
 		var markerTitle = name; // 현재 위치 마커에 마우스를 올렸을때 나타나는 이름
-		
+		var markerMaxWidth = 300;
+		//말풍선
+		var contentString	= '<div>' +
+			'<h2>' + name + '</h2>'+
+			'온도 : <div class="weatherInfo" id="temp">'+ temp +'</div><br>' +
+			'습도 : <div class="weatherInfo" id="humidity">' + humidity + '</div><br>' +
+			'날씨 : <div class="weatherInfo" id="description">' + description + '</div><br>' +
+			'풍속 : <div class="weatherInfo" id="windSpeed">' + windSpeed + '</div><br>' +
+			'운량 : <div class="weatherInfo" id="clouds">' + clouds + '</div><br>' +
+			'</div>';
+	
 		var myLatlng = new google.maps.LatLng(x, y);
 		var mapOptions = {
 			zoom: zoomLevel,
 			center: myLatlng,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
-		var map = new google.maps.Map(document.getElementById('map_view'), mapOptions);
-		
+		var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: map,
 			title: markerTitle
 		});
+		var infowindow = new google.maps.InfoWindow(
+			{
+				content: contentString,
+				maxWidth: markerMaxWidth
+			}
+		);
+		
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.open(map, marker);
+		});
+	}
+</script>
+<script>
+	function initialize() {
+		var locations = [
+			    ['florida', 27.760675, -81.416535, 6],
+			    ['san francisco', 37.768852, -122.422174, 5],
+			    ['australia', -24.446094, 134.696140, 5],
+			    ['portugal', 39.600134, -8.075996, 5]
+			];
+		
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 2,
+			center: new google.maps.LatLng(35, 150),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+		
+		var contentString, marker, infowindow, i, temp, humidity, description, windSpeed, clouds;
+		var key = "1042afb6d0833b90b43ecbaccad5b137";
+		for (i = 0; i < locations.length; i++) {
+			var apiURI = "http://api.openweathermap.org/data/2.5/weather?q="+locations[i][0]+"&appid="+key;
+			$.ajax({
+				url: apiURI,
+				success: function(result) {
+					temp = (result.main.temp - 273.15).toFixed(2) + "˚C";
+					humidity = result.main.humidity + "%";
+					description = innerHTML=result.weather[0].description;
+					windSpeed = result.wind.speed + "m/s";
+					clouds = result.clouds.all + "%";
+				}
+			});
+			marker = new google.maps.Marker({
+				position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+				map: map
+			});
+			0
+			contentString	= '<div>' +
+			'<h2>' + name + '</h2>'+
+			'온도 : <div class="weatherInfo" id="temp">'+ temp +'</div><br>' +
+			'습도 : <div class="weatherInfo" id="humidity">' + humidity + '</div><br>' +
+			'날씨 : <div class="weatherInfo" id="description">' + description + '</div><br>' +
+			'풍속 : <div class="weatherInfo" id="windSpeed">' + windSpeed + '</div><br>' +
+			'운량 : <div class="weatherInfo" id="clouds">' + clouds + '</div><br>' +
+			'</div>';
+			
+			infowindow = new google.maps.InfoWindow(
+				{
+					content: contentString,
+					maxWidth: 300
+				}
+			);
+			
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				return function() {
+					infowindow.setContent(contentString);
+					infowindow.open(map, marker);
+				}
+			})(marker, i));
+		}
 		
 	}
 </script>
 </head>
-<body>
-	<button onclick="weatherCall(australia)">호주</button>
-	<button onclick="weatherCall(canada)">캐나다</button>
-	<button onclick="weatherCall(chile)">칠레</button>
-	<button onclick="weatherCall(china)">중국</button>
-	<button onclick="weatherCall(portugal)">포르투갈</button>
-	<button onclick="weatherCall(spain)">스페인</button>
-	<button onclick="weatherCall(italia)">이탈리아</button>
-	<button onclick="weatherCall(india)">인도</button>
-	<button onclick="weatherCall(newzealand)">뉴질랜드</button>
-	<button onclick="weatherCall(peru)">페루</button>
-	<button onclick="weatherCall(turkey)">터키</button>
-	<button onclick="weatherCall(florida)">플로리다</button>
-	<button onclick="weatherCall(sanfrancisco)">샌프란시스코</button>
-	<button onclick="weatherCall(vietnam)">베트남</button>
-
-	<h1></h1>
-	온도 : <div class="weatherInfo" id="temp"></div><br>
-	습도 : <div class="weatherInfo" id="humidity"></div><br>
-	상세 날씨 : <div class="weatherInfo" id="description"></div><br>
-	풍속 : <div class="weatherInfo" id="windSpeed"></div><br>
-	운량 : <div class="weatherInfo" id="clouds"></div><br>
-	
-	<div id="map_view" style="width:940px; height:705px;"></div>
-	
-	<script type="text/javascript">
-		
-		var florida = {name:"florida", x:"27.760675", y:"-81.416535", zoom:6};
-		var sanfrancisco = {name:"san francisco", x:"37.768852", y:"-122.422174", zoom:5};
-		
-		var weatherIconImgURL;
-		function weatherCall(city){
-			name = city.name;
-			x = city.x;
-			y = city.y;
-			zoom = city.zoom;
-			initialize(name, x, y, zoom);
-			var key = "1042afb6d0833b90b43ecbaccad5b137";
-			var apiURI = "http://api.openweathermap.org/data/2.5/weather?q="+name+"&appid="+key;
-			$.ajax({
-				url: apiURI,
-				success: function(result) {
-				   
-					document.getElementById("temp").innerHTML=(result.main.temp - 273.15).toFixed(2) + "˚C";
-					document.getElementById("humidity").innerHTML=result.main.humidity + "%";
-					document.getElementById("description").innerHTML=result.weather[0].description;
-					document.getElementById("windSpeed").innerHTML=result.wind.speed + "m/s";
-					document.getElementById("clouds").innerHTML=result.clouds.all + "%";
-				}
-			});
-		};
-	</script>
 </body>
 </html>

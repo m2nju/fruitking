@@ -10,5 +10,6 @@ public interface NotifyService {
 	public Notify getNotify(Long id);
 	public int deleteNotify(Long id, String ip);
 	public Notify addNotify(Notify notify, String ip);
+	public int updateNotify(Notify notify, String ip);
 	public int getCount();
 }

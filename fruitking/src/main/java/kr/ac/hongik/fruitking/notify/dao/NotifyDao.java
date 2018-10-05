@@ -59,7 +59,16 @@ public class NotifyDao {
 		Notify notify = jdbc.queryForObject(SELECT_NOTIFY, Collections.singletonMap("id", id), rowMapper);
 		return notify;
 	}
-
+	
+	public int update(Notify notify) {
+		Map<String, String> params = new HashMap<>();
+		params.put("id", String.valueOf(notify.getId()));
+		params.put("writer", notify.getWriter());
+		params.put("title", notify.getTitle());
+		params.put("content", notify.getContent());
+		return jdbc.update(UPDATE_BY_ID, params);
+	}
+	
 	public Long insert(Notify notify) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(notify);
 		return insertAction.executeAndReturnKey(params).longValue();

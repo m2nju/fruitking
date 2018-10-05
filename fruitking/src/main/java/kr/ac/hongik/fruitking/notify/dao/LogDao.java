@@ -26,4 +26,9 @@ public class LogDao {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(log);
 		return insertAction.executeAndReturnKey(params).longValue();
 	}
+	
+	public Long update(Log log) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(log);
+		return insertAction.executeAndReturnKey(params).longValue();
+	}
 }
