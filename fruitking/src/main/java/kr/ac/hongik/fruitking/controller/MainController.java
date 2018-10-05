@@ -1,5 +1,10 @@
 package kr.ac.hongik.fruitking.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -162,9 +167,65 @@ public class MainController {
 		return "tab/info";
 	}
 
-	@RequestMapping(value = "/chart")
-	public String chatting() {
-		return "chart/chart";
+	@RequestMapping(value = "/predict")
+	public String predict() {
+		return "tab/predict/inputDateForm";
 	}
 
+	@PostMapping(path = "/getPrice")
+	public String getPrice(@RequestParam(name = "date", required = false, defaultValue = "0") String date,ModelMap model) {
+		System.out.println(date + "의 가격 예측 모델 API 호출");
+		model.addAttribute("date", date); // 현재 response에 date라는 이름으로 date 값을 저장하는 spring에서 제공하는 메서드임.
+		int price = 0; // API를 통해 얻어온 가격의 값을 여기에 담을 수 있도록.
+		String result_str = "";
+		URL url = null;
+		URLConnection urlConnection = null;
+		// URL 주소
+		String sUrl = "http://fruitking.tk:5000/price";	// api url 경로
+		// 파라미터 이름
+		String paramName = "date";
+		// 파라미터 이름에 대한 값
+		String paramValue = date;
+		try {
+			// Get방식으로 전송 하기
+			url = new URL(sUrl + "?" + paramName + "=" + paramValue);
+			urlConnection = url.openConnection();
+			
+			if(urlConnection != null) {	// api에  정상적으로 연결이 되었는지 확인
+				System.out.println("연결 성공!");
+			}
+			else {
+				System.out.println("연결 실패..");
+			}
+			
+			int i;	// StringBuffer를 통해 InputStream을 String의 형태로 변환
+			InputStream is = urlConnection.getInputStream();
+			StringBuffer buffer = new StringBuffer();
+			byte[] b = new byte[4096];
+			while( (i = is.read(b)) != -1){ 	
+				buffer.append(new String(b, 0, i));
+			}
+			result_str = buffer.toString();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		price = Integer.parseInt(result_str);	// 결과로 전달받은 String 형태의 가격 정보를 Integer 형태로 변환
+		
+		
+		model.addAttribute("price", price);		// Response에 가격을 저장 ( view에서 사용할 수 있도록 )
+
+		return "tab/predict/getPrice";
+	}
+
+	@RequestMapping(value = "/chart")
+	public String chart() {
+		return "chart/chart";
+	}
+	
+	@RequestMapping(value = "/chat")
+	public String chat() {
+		return "chat/";
+	}
 }
