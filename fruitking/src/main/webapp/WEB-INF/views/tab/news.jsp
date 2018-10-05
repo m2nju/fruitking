@@ -44,43 +44,43 @@
 </head>
 <body>
 	<% 
-	String k1, k2, k3, k4;
+	String k1, k2;
+	int firstIn = 1;
 	k1 = null;
 	k2 = null;
-	k3 = null;
-	k4 = null;
 	k1 = request.getParameter("f1");
 	k2 = request.getParameter("f2");
-	k3 = request.getParameter("f3");
-	k4 = request.getParameter("f4");
 	%>
 	<div class=selectSection>
 	<form method=post>
-		<% if(k1 == null){
-		%><input type="checkbox" name="f1" value="과일">과일<%
+		<%
+		if((k1 == null) && (firstIn == 0)){//처음 과일 검색
+		%><input id="case1" type="checkbox" name="f1" value="과일" checked="checked">과일<%
+		}else if(k1 != null && k1.equals("과일")){%>
+			<input id="case3" type="checkbox" name="f1" value="과일" checked="checked">과일<%	
+		}else{//첫 검색도 아니고 과일 체크박스도 선택하지 않은 경우
+		%><input id="case2" type="checkbox" name="f1" value="과일">과일<%
+		}
+		firstIn = 0;
+		%>
+		<% if(k2 != null && k2.equals("사과")){
+		%><input type="radio" name="f2" value="사과" checked="checked">사과<%
 		}else{%>
-			<input type="checkbox" name="f1" value="과일" checked="checked">과일
+			<input type="radio" name="f2" value="사과" >사과
 		<%	
 		}
 		%>
-		<% if(k1 == null){
-		%><input type="checkbox" name="f2" value="사과">사과<%
+		<% if(k2 != null && k2.equals("바나나")){
+		%><input type="radio" name="f2" value="바나나" checked="checked">바나나<%
 		}else{%>
-			<input type="checkbox" name="f2" value="사과" checked="checked">사과
+			<input type="radio" name="f2" value="바나나" >바나나
 		<%	
 		}
 		%>
-		<% if(k3 == null){
-		%><input type="checkbox" name="f3" value="바나나">바나나<%
+		<% if(k2 != null && k2.equals("오렌지")){
+		%><input type="radio" name="f2" value="오렌지" checked="checked">오렌지<%
 		}else{%>
-			<input type="checkbox" name="f3" value="바나나" checked="checked">바나나
-		<%	
-		}
-		%>
-		<% if(k4 == null){
-		%><input type="checkbox" name="f4" value="오렌지">오렌지<%
-		}else{%>
-			<input type="checkbox" name="f4" value="오렌지" checked="checked">오렌지
+			<input type="radio" name="f2" value="오렌지" >오렌지
 		<%	
 		}
 		%>
@@ -95,20 +95,18 @@
 	if(k2 != null){
 		key += "&&" + k2;
 	}
-	if(k3 != null){
-		key += "&&" + k3;
-	}
-	if(k4 != null){
-		key += "&&" + k4;
-	}
+	//if(k3 != null){
+	//	key += "&&" + k3;
+	//}
+	//if(k4 != null){
+	//	key += "&&" + k4;
+	//}
 	if(key == "") key = "과일";
 	%>
-	<!--
-	<h3><%=k1%></h3>
-	<h3><%=k2%></h3>
-	<h3><%=k3%></h3>
-	<h3><%=k4%></h3>
-	<h3><%=key%></h3>
+	<!-- 
+	<h3>ㅇ<%=k1%>ㅇ</h3>
+	<h3>ㅇ<%=k2%>ㅇ</h3>
+	<h3>ㅇ<%=key%>ㅇ</h3>
 	 -->
 	<%
 	String clientId = "wcz84T9Q8lZKWx4REGlt";//애플리케이션 클라이언트 아이디값";
