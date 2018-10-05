@@ -286,8 +286,8 @@
 </script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: relative;">
-        <a class="navbar-brand" href="./"><img src="img/logo.png" style="width:50%, height: auto;"/></a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./"><img src="img/logo.png" style="width:auto; height: 80px;"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -298,25 +298,28 @@
                 <a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">관련뉴스</a>
 	            <a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
 	            <a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">문의하기</a>
-	            <a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">로그인</a>
+	            <%
+					//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
+					//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
+					
+					String userName = (String)session.getAttribute("userName");
+					if(!(userName == null)){	// 엑세스토큰이 쿠키에 보관되어 있다면 
+						out.println(userName + "님 안녕하세요.<br>");
+				%>
+	            <a id="tablinks" class="nav-item nav-link" href="logout">로그아웃</a>
+				<%
+					}else{
+				%>
+	            <a id="tablinks" class="nav-item nav-link" href="naverLogin">로그인</a>
+				<%
+					}
+				%>
             </div>
         </div>
     </nav>
-    <div id="top" style="height:2500px position: fixed;">
-	    <div class="login">
-			<br>
-			<%
-				//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
-				//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
-				
-				String userName = (String)session.getAttribute("userName");
-				if(!(userName == null)){	// 엑세스토큰이 쿠키에 보관되어 있다면 
-					out.println(userName + "님 안녕하세요.<br>");
-				}else{
-			%>
-			<a href="naverLogin">네이버로그인</a>
-			<% }%>
-	    </div>
+	    
+    <div id="top" style="height:2500px;">
+
 		<section class="content">
 			<div class="flexslider left">
 				<ul class="slides">
