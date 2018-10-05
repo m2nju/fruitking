@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -224,8 +222,10 @@ public class MainController {
 		return "chart/chart";
 	}
 	
-	@RequestMapping(value = "/chat")
+	@RequestMapping(value = "/chat2")
 	public String chat() {
-		return "chat/websocket-echo";
+		return "chat/chat";
 	}
+	
+
 }
