@@ -226,6 +226,6 @@ public class MainController {
 	
 	@RequestMapping(value = "/chat")
 	public String chat() {
-		return "chat/";
+		return "chat/websocket-echo";
 	}
 }
