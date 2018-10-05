@@ -170,11 +170,11 @@ public class MainController {
 				System.out.println("연결 실패..");
 			}
 			
-			int i;	// string buffer를 통해 InputStream을 String의 형태로 변환
+			int i;	// StringBuffer를 통해 InputStream을 String의 형태로 변환
 			InputStream is = urlConnection.getInputStream();
 			StringBuffer buffer = new StringBuffer();
 			byte[] b = new byte[4096];
-			while( (i = is.read(b)) != -1){
+			while( (i = is.read(b)) != -1){ 	
 				buffer.append(new String(b, 0, i));
 			}
 			result_str = buffer.toString();
@@ -194,6 +194,11 @@ public class MainController {
 	@RequestMapping(value = "/chart")
 	public String chart() {
 		return "chart/chart";
+	}
+	
+	@RequestMapping(value = "/chat")
+	public String chat() {
+		return "chat/";
 	}
 
 }

@@ -1,5 +1,6 @@
 package kr.ac.hongik.fruitking.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,6 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/txt/**").addResourceLocations("/resources/txt/").setCachePeriod(31556926);
     }
 	
-
     // default servlet handler를 사용하게 합니다.
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -42,5 +42,5 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         return resolver;
-    }
+    } 
 }
