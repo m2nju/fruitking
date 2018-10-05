@@ -11,9 +11,6 @@ a, a:hover {
 	color: #000000;
 	text_decoration: none;
 }
-.logo {
-	text-align: center;
-}
 .login {
 	text-align: right;
 	margin-right: 10px;
@@ -50,7 +47,6 @@ a, a:hover {
 }
 .content {
 	padding: 3%;
-	background-color: rgb(253,255,244);
 }
 .tabcontent {
 	border: none;

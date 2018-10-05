@@ -236,51 +236,51 @@ body {
 </head>
 <body>
 	<div class="flexslider left">
-	<ul class="slides">
-		<li>
-			<img src="img/apple.jpg/">
-			<div class="meta">
-				<h1>Data Mining</h1>
-				<h2>십수년 간의 각종 공공데이터를 수집하여 정제</h2>
-				<div class="category">
-					<p>수확량, 기후, 조세, 물류량, 수입가격, 도매가, 소매가, 트렌드 등 과실류 가격에 영향을 주는 모든 데이터를 확보</p>
-					<!--<span></span>-->
+		<ul class="slides">
+			<li>
+				<img src="img/apple.jpg/">
+				<div class="meta">
+					<h1>Data Mining</h1>
+					<h2>십수년 간의 각종 공공데이터를 수집하여 정제</h2>
+					<div class="category">
+						<p>수확량, 기후, 조세, 물류량, 수입가격, 도매가, 소매가, 트렌드 등 과실류 가격에 영향을 주는 모든 데이터를 확보</p>
+						<!--<span></span>-->
+					</div>
 				</div>
-			</div>
-		</li>
-		<li>
-			<img src="img/fruitmarket.jpg">
-			<div class="meta">
-				<h1>Visualize Statistics Data</h1>
-				<h2>통계 자료를 시각화하여 제공</h2>
-				<div class="category">
-					<p>실시간으로 모든 데이터를 한 눈에 볼 수 있게 직관적으로 도표화하여 서비스 제공</p>
-					<!-- <span>Category</span>  -->
+			</li>
+			<li>
+				<img src="img/fruitmarket.jpg">
+				<div class="meta">
+					<h1>Visualize Statistics Data</h1>
+					<h2>통계 자료를 시각화하여 제공</h2>
+					<div class="category">
+						<p>실시간으로 모든 데이터를 한 눈에 볼 수 있게 직관적으로 도표화하여 서비스 제공</p>
+						<!-- <span>Category</span>  -->
+						</div>
+					</div>
+			</li>
+			<li>
+				<img src="img/fruitmarket2.jpg">
+				<div class="meta">
+					<h1>Price Prediction</h1>
+					<h2>인공지능 - 딥러닝을 통한 가격 예측</h2>
+					<div class="category">
+						<p>정제한 데이터를 기반으로 가격 예측 모델을 제작하고 과실류 가격 전망을 예측</p>
+					</div>
 				</div>
-			</div>
-		</li>
-		<li>
-			<img src="img/fruitmarket2.jpg">
-			<div class="meta">
-				<h1>Price Prediction</h1>
-				<h2>인공지능 - 딥러닝을 통한 가격 예측</h2>
-				<div class="category">
-					<p>정제한 데이터를 기반으로 가격 예측 모델을 제작하고 과실류 가격 전망을 예측</p>
+			</li>
+			<li>
+				<img src="img/fruitimage.jpg">
+				<div class="meta">
+					<h1>Trend Recognition</h1>
+					<h2>과실류 가격 트렌드 파악</h2>
+					<div class="category">
+						<p>과일 키워드 기준으로 뉴스를 크롤링하여 빠른 시간에 트렌트를 파악</p>
+					</div>
 				</div>
-			</div>
-		</li>
-		<li>
-			<img src="img/fruitimage.jpg">
-			<div class="meta">
-				<h1>Trend Recognition</h1>
-				<h2>과실류 가격 트렌드 파악</h2>
-				<div class="category">
-					<p>과일 키워드 기준으로 뉴스를 크롤링하여 빠른 시간에 트렌트를 파악</p>
-				</div>
-			</div>
-		</li>
-	</ul>
-</div>
+			</li>
+		</ul>
+	</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.0/jquery.flexslider-min.js"></script>
 <script>
      $('.flexslider').flexslider({

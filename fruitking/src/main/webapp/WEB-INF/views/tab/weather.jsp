@@ -24,7 +24,7 @@
 
 </head>
 <body onload="initialize()">
-<!-- 	<button onclick="weatherCall(spain)">스페인</button>
+ 	<button onclick="weatherCall(spain)">스페인</button>
 	<button onclick="weatherCall(italia)">이탈리아</button>
 	<button onclick="weatherCall(india)">인도</button>
 	<button onclick="weatherCall(canada)">캐나다</button>
@@ -33,7 +33,7 @@
 	<button onclick="weatherCall(vietnam)">베트남</button>
 	<button onclick="weatherCall(newzealand)">뉴질랜드</button>
 	<button onclick="weatherCall(peru)">페루</button>
-	<button onclick="weatherCall(turkey)">터키</button> -->
+	<button onclick="weatherCall(turkey)">터키</button>
 	<button onclick="weatherCall(australia)">오스트레일리아</button>
 	<button onclick="weatherCall(portugal)">포르투갈</button>
 	<button onclick="weatherCall(florida)">플로리다</button>
@@ -43,10 +43,20 @@
 	
 <script type="text/javascript">
 	var temp, humidity, description, windSpeed, clouds;	
+	var spain = {name:"spain", x:"37.740431", y:"-3.798545", zoom:6};
+	var italia = {name:"italia", x:"42.747164", y:"12.482229", zoom:6};
+	var india = {name:"india", x:"23.155863", y:"79.274986", zoom:5};
+	var canada = {name:"canada", x:"54.900407", y:"-124.822772", zoom:3};
+	var chile = {name:"chile", x:"-27.059213", y:"-69.940916", zoom:5};
+	var china = {name:"china", x:"34.163425", y:"104.113050", zoom:5};
+	var vietnam = {name:"vietnam", x:"13.616213", y:"108.387259", zoom:6};
+	var newzealand = {name:"newzealand", x:"-41.952664", y:"172.736174", zoom:6};
+	var peru = {name:"peru", x:"-10.566522", y:"-76.015074", zoom:6};
+	var turkey = {name:"turkey", x:"39.809856", y:"35.225156", zoom:6};
 	var florida = {name:"florida", x:"27.760675", y:"-81.416535", zoom:6};
 	var sanfrancisco = {name:"san francisco", x:"37.768852", y:"-122.422174", zoom:5};
 	var australia = {name:"australia", x:"-24.446094", y:"134.696140", zoom:4};
-	var portugal = {name:"portugal", x:"39.600134", y:"-8.075996", zoom:5};
+	var portugal = {name:"portugal", x:"39.600134", y:"-8.075996", zoom:7};
 	
 	var weatherIconImgURL;
 	function weatherCall(city){
