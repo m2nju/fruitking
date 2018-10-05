@@ -63,25 +63,40 @@
 		}
 		firstIn = 0;
 		%>
-		<% if(k2 != null && k2.equals("사과")){
-		%><input type="radio" name="f2" value="사과" checked="checked">사과<%
+		<% if(k2 != null && k2.equals("레몬")){
+		%><input type="radio" name="f2" value="레몬" checked="checked">레몬<%
 		}else{%>
-			<input type="radio" name="f2" value="사과" >사과
-		<%	
+			<input type="radio" name="f2" value="레몬" >레몬<%	
+		}
+		%>
+		<% if(k2 != null && k2.equals("망고")){
+		%><input type="radio" name="f2" value="망고" checked="checked">망고<%
+		}else{%>
+			<input type="radio" name="f2" value="망고" >망고<%	
 		}
 		%>
 		<% if(k2 != null && k2.equals("바나나")){
 		%><input type="radio" name="f2" value="바나나" checked="checked">바나나<%
 		}else{%>
-			<input type="radio" name="f2" value="바나나" >바나나
-		<%	
+			<input type="radio" name="f2" value="바나나" >바나나	<%	
+		}
+		%>
+		<% if(k2 != null && k2.equals("사과")){
+		%><input type="radio" name="f2" value="사과" checked="checked">사과<%
+		}else{%>
+			<input type="radio" name="f2" value="사과" >사과<%	
 		}
 		%>
 		<% if(k2 != null && k2.equals("오렌지")){
 		%><input type="radio" name="f2" value="오렌지" checked="checked">오렌지<%
 		}else{%>
-			<input type="radio" name="f2" value="오렌지" >오렌지
-		<%	
+			<input type="radio" name="f2" value="오렌지" >오렌지	<%	
+		}
+		%>
+		<% if(k2 != null && k2.equals("포도")){
+		%><input type="radio" name="f2" value="포도" checked="checked">포도<%
+		}else{%>
+			<input type="radio" name="f2" value="포도" >포도<%	
 		}
 		%>
 		<input type="submit" value="검색">
@@ -103,11 +118,11 @@
 	//}
 	if(key == "") key = "과일";
 	%>
-	<!-- 
+	
 	<h3>ㅇ<%=k1%>ㅇ</h3>
 	<h3>ㅇ<%=k2%>ㅇ</h3>
 	<h3>ㅇ<%=key%>ㅇ</h3>
-	 -->
+	
 	<%
 	String clientId = "wcz84T9Q8lZKWx4REGlt";//애플리케이션 클라이언트 아이디값";
 	String clientSecret = "3aESDNOM7h";//애플리케이션 클라이언트 시크릿값";
