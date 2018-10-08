@@ -375,11 +375,10 @@ translate3d
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div id="tabmenu" class="navbar-nav">
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">날씨
-				및 조세</a> <a id="tablinks" class="nav-item nav-link"
-				onclick="openTab(event)">경매 및 판매가</a> <a id="tablinks"
-				class="nav-item nav-link" onclick="openTab(event)">관련뉴스</a> <a
-				id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">날씨 및 조세</a> 
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">경매 및 판매가</a> 
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">관련뉴스</a> 
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
 			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">문의하기</a>
 			<%
 				//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
