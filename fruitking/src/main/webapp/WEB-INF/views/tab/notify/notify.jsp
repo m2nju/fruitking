@@ -38,7 +38,14 @@
 		<c:forEach items="${pageStartList}" var="pageIndex" varStatus="status">
 			<a href="notify?start=${pageIndex}">${status.index +1 }</a>&nbsp; &nbsp;
 		</c:forEach>
-		<a href="writeNotify" class="btn btn-primary pull-right">글쓰기</a>
+		<% 
+		int grade = (Integer)session.getAttribute("userGrade");
+		if (grade <= 1 ){
+		%>
+			<a href="writeNotify" class="btn btn-primary pull-right">글쓰기</a>
+		<%
+		}
+		%>
 	</div>
 </body>
 </html>

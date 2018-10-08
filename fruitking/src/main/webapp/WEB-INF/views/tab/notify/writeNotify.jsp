@@ -21,9 +21,9 @@
 					<tr>
 						<td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="20"></td>
 					</tr>
-					<tr>
-						<td><input type="text" class="form-control" placeholder="작성자" name="writer" maxlength="20"></td>
-					</tr>
+					<% String writer = (String)session.getAttribute("userName"); %>
+					<input type="hidden" class="form-control" placeholder="작성자" name="writer" value="<%=writer %>"maxlength="20">
+					
 					<tr>			
 						<td><textarea class="form-control" placeholder="글 내용" name="content" style="height: 350px"></textarea></td>
 					</tr>

@@ -221,10 +221,7 @@ public class MainController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
 		price = Integer.parseInt(result_str);	// 결과로 전달받은 String 형태의 가격 정보를 Integer 형태로 변환
-		
-		
 		model.addAttribute("price", price);		// Response에 가격을 저장 ( view에서 사용할 수 있도록 )
 
 		return "tab/predict/getPrice";
@@ -239,6 +236,5 @@ public class MainController {
 	public String chat() {
 		return "chat/chat";
 	}
-	
 
 }
