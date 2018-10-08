@@ -232,9 +232,4 @@ public class MainController {
 		return "chart/chart";
 	}
 	
-	@RequestMapping(value = "/chat2")
-	public String chat() {
-		return "chat/chat";
-	}
-
 }
