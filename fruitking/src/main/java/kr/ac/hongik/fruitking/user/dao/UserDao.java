@@ -38,10 +38,11 @@ public class UserDao {
 		Map<String, Integer> params = new HashMap<>();
 		return jdbc.query(SELECT_ALL, params, rowMapper);
 	}
-
-	public String selectNameById(Long userId) {
-		User user = jdbc.queryForObject(SELECT_NAME_BY_ID, Collections.singletonMap("user_id", userId), rowMapper);
-		return user.getUserName();
+	
+	public User selectUserById(Long userId) {
+		System.out.println("UserDao의 selectUserById() 호출");
+		
+		return jdbc.queryForObject(SELECT_USER_BY_ID, Collections.singletonMap("user_id", userId), rowMapper);
 	}
 	
 	public Long insert(User user) {
@@ -58,8 +59,8 @@ public class UserDao {
 		return jdbc.queryForObject(SELECT_COUNT, Collections.emptyMap(), Integer.class);
 	}
 	
-	public int countByEmail(String userEmail) {
+	public int selectIdByEmail(String userEmail) {
 		Map<String, ?> params = Collections.singletonMap("user_email", userEmail);
-		return jdbc.queryForObject(COUNT_BY_EMAIL, params, Integer.class);
+		return jdbc.queryForObject(SELECT_ID_BY_EMAIL, params, Integer.class);
 	}
 }

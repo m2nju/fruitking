@@ -120,10 +120,6 @@ public class MainController {
 		return "redirect:/"; // 해당 path로 리다이렉트 한다.
 	}
 
-//	@GetMapping(path = "/happy") // 일반적인 GET메소드 리다이렉션
-//	public String happy() {
-//		return "happy"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/happy.jsp가 열린다. (지워도 똑같음 default가 ~~/views/*.jsp 이기 때문임)
-//	}	
 
 	@RequestMapping(value = "/news")
 	public String news(HttpSession session) {
@@ -144,6 +140,22 @@ public class MainController {
 	@RequestMapping(value = "/userInfo")
 	public String userInformation(HttpServletRequest request) throws Exception {
 		return "naver/userinfo";
+	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		
+		session.removeAttribute("access_token"); 
+		session.removeAttribute("refresh_token");
+		session.removeAttribute("userEmail");
+		session.removeAttribute("userName");
+		session.removeAttribute("userAge");
+		session.removeAttribute("userBirth");
+		session.removeAttribute("userIsMan");
+		session.removeAttribute("userGrade");
+		
+		return "naver/logout";
 	}
 	
 	@RequestMapping(value = "/weather")
