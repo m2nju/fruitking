@@ -137,10 +137,11 @@ public class MainController {
 
 	@RequestMapping(value = "/callBack")
 	public String callBack(HttpServletRequest request) throws Exception {
+		//System.out.println("Controller에서 callBack 호출");
 		return "naver/callback";
 	}
 
-	@RequestMapping(value = "/userinfo")
+	@RequestMapping(value = "/userInfo")
 	public String userInformation(HttpServletRequest request) throws Exception {
 		return "naver/userinfo";
 	}

@@ -1,5 +1,6 @@
 package kr.ac.hongik.fruitking.user.dao;
 
+import static kr.ac.hongik.fruitking.notify.dao.NotifyDaoSqls.SELECT_NOTIFY;
 import static kr.ac.hongik.fruitking.user.dao.UserDaoSqls.*;
 
 import java.util.Collections;
@@ -17,6 +18,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.hongik.fruitking.notify.dto.Notify;
 import kr.ac.hongik.fruitking.user.dto.User;
 
 @Repository
@@ -37,6 +39,11 @@ public class UserDao {
 		return jdbc.query(SELECT_ALL, params, rowMapper);
 	}
 
+	public String selectNameById(Long userId) {
+		User user = jdbc.queryForObject(SELECT_NAME_BY_ID, Collections.singletonMap("user_id", userId), rowMapper);
+		return user.getUserName();
+	}
+	
 	public Long insert(User user) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		return insertAction.executeAndReturnKey(params).longValue();

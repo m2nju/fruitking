@@ -1,4 +1,5 @@
-<%@page import="org.springframework.context.ConfigurableApplicationContext"%>
+<%@page
+	import="org.springframework.context.ConfigurableApplicationContext"%>
 <%@page import="kr.ac.hongik.fruitking.user.dto.User"%>
 <%@page import="kr.ac.hongik.fruitking.config.ApplicationConfig"%>
 <%@page
@@ -26,6 +27,7 @@
 <body>
 	<h2>Fruit King 회원 여부 검사 후, 자동으로 회원 등록이 완료됩니다.</h2>
 	<%
+		//System.out.println("userinfo.jsp 호출");
 		String access_token = (String) session.getAttribute("access_token"); // 네이버 엑세스 토큰
 		String refresh_token = (String) session.getAttribute("refresh_token"); // 리프레시 토큰	
 
@@ -98,21 +100,21 @@
 			user.setUserEmail(email);
 			if (!userService.isUser(user)) {
 				System.out.println("fruitking의 회원이 아닙니다. 회원으로 등록합니다.");
-	%>
-	<form method="post" name=registform action="registUser">
-		<input type="hidden" name="userEmail" value="<%=email%>"><br>
-		<input type="hidden" name="userName" value="<%=name%>"><br>
-		<input type="hidden" name="userAge" value="<%=age%>"><br>
-		<input type="hidden" name="userBirth" value="<%=birthday%>"><br>
-		<input type="hidden" name="userIsMan" value="<%=is_man%>"><br>
-		<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
-
-		<script>
-			document.registform.submit();
-		</script>
-	</form>
-	<%
-		((ConfigurableApplicationContext)ac).close();
+				%>
+				<form method="post" name=registform action="registUser">
+					<input type="hidden" name="userEmail" value="<%=email%>"><br>
+					<input type="hidden" name="userName" value="<%=name%>"><br>
+					<input type="hidden" name="userAge" value="<%=age%>"><br>
+					<input type="hidden" name="userBirth" value="<%=birthday%>"><br>
+					<input type="hidden" name="userIsMan" value="<%=is_man%>"><br>
+					<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
+			
+					<script>
+						document.registform.submit();
+					</script>
+				</form>
+				<%
+				((ConfigurableApplicationContext) ac).close();
 			} else {
 				System.out.println("이미 존재하는 회원입니다.");
 				response.sendRedirect("./");
