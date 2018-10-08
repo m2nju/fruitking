@@ -15,7 +15,8 @@
 	<br>
 	<br>
 	<div>
-		<table class="table table-striped" style="text-align: center;	border: 1px solid #dddddd;">
+		<table class="table table-striped"
+			style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
 					<th style="background-color: #eeeeee; text-align: center;">번호</th>
@@ -25,26 +26,29 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${list}" var="notify">
-				<tr>
-					<td>${notify.id }</td>
-					<td>${notify.writer }</td>
-					<td><a href="notify/viewNotify?id=${notify.id }">${notify.title }</a></td>
-					<td>${notify.regdate }</td>
-				</tr>
-			</c:forEach>
+				<c:forEach items="${list}" var="notify">
+					<tr>
+						<td>${notify.id }</td>
+						<td>${notify.writer }</td>
+						<td><a href="notify/viewNotify?id=${notify.id }">${notify.title }</a></td>
+						<td>${notify.regdate }</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 		<c:forEach items="${pageStartList}" var="pageIndex" varStatus="status">
 			<a href="notify?start=${pageIndex}">${status.index +1 }</a>&nbsp; &nbsp;
 		</c:forEach>
-		<% 
-		int grade = (Integer)session.getAttribute("userGrade");
-		if (grade <= 1 ){
-		%>
-			<a href="writeNotify" class="btn btn-primary pull-right">글쓰기</a>
 		<%
-		}
+			if (session.getAttribute("userId") != "null") {
+				System.out.println("현재 세션에 유저의 정보가 있습니다.");
+				int grade = (Integer) session.getAttribute("userGrade");
+				if (grade <= 1) {
+		%>
+					<a href="writeNotify" class="btn btn-primary pull-right">글쓰기</a>
+		<%
+				}
+			}else{ System.out.println("현재 세션에 유저의 정보가 없습니다." ); }
 		%>
 	</div>
 </body>
