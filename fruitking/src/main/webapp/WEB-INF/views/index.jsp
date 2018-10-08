@@ -400,7 +400,7 @@ translate3d
 					<!-- Modal content-->
 					<div class="modal-content">
 						<div class="modal-header">
-							<h4 class="modal-title">회원 정보 조회</h4>
+							<h4 class="	">회원 정보 조회</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 
 						</div>
