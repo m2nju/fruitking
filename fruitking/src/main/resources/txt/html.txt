@@ -26,5 +26,9 @@
     {
         "name" : "문의하기",
         "html" : "qna"
+    },
+    {
+        "name" : "채팅",
+        "html" : "chatting"
     }
 ]
