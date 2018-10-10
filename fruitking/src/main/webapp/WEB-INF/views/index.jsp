@@ -40,7 +40,7 @@
 		#floatMenu {
 			position: absolute;
 			right: 25px;
-			top: 450px;
+			top: 120px;
 			background-color: white;
 			color: #ffffff;
 			text-align: center;
