@@ -16,7 +16,7 @@
         "html" : "price"
     },
     {
-        "name" : "관련뉴스",
+        "name" : "관련 뉴스",
         "html" : "news"
     },
     {
@@ -28,7 +28,7 @@
         "html" : "qna"
     },
     {
-        "name" : "채팅",
+        "name" : "실시간 채팅",
         "html" : "chatting"
     }
 ]

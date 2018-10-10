@@ -40,15 +40,19 @@
 			<a href="notify?start=${pageIndex}">${status.index +1 }</a>&nbsp; &nbsp;
 		</c:forEach>
 		<%
-			if (session.getAttribute("userId") != "null") {
-				System.out.println("현재 세션에 유저의 정보가 있습니다.");
-				int grade = (Integer) session.getAttribute("userGrade");
-				if (grade <= 1) {
-		%>
-					<a href="writeNotify" class="btn btn-primary pull-right">글쓰기</a>
-		<%
-				}
-			}else{ System.out.println("현재 세션에 유저의 정보가 없습니다." ); }
+			try{
+				if (session.getAttribute("userId") != "null") {
+					System.out.println("현재 세션에 유저의 정보가 있습니다.");
+					int grade = (Integer) session.getAttribute("userGrade");
+					if (grade <= 1) {
+			%>
+						<a href="writeNotify" class="btn btn-primary pull-right">글쓰기</a>
+			<%
+					}
+				}else{ System.out.println("현재 세션에 유저의 정보가 없습니다." ); }
+			}catch (Exception e){
+				System.out.println(e);
+			}
 		%>
 	</div>
 </body>

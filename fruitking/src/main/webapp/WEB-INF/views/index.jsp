@@ -377,10 +377,10 @@ translate3d
 		<div id="tabmenu" class="navbar-nav">
 			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">날씨 및 조세</a> 
 			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">경매 및 판매가</a> 
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">관련뉴스</a> 
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">관련 뉴스</a> 
 			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
 			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">문의하기</a>
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">채팅</a>
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">실시간 채팅</a>
 			<%
 				//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
 				//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
