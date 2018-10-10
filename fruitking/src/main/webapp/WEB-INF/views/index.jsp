@@ -283,7 +283,9 @@
 		<a href="https://www.kamis.or.kr/customer/main/main.do" target="_blank"><img src="img/kamisLogo.png"/></a>
 		<br>
 		<a href="http://m.kma.go.kr/m/index.jsp" target="_blank"><img src="img/kmaLogo.jpg"/></a>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br>
+		<a href="http://www.okdab.kr/main.do" target="_blank"><img src="img/okdabLogo.png"/></a>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<img id="upbutton" onclick="goTop()" width="40" src="img/up.png"/>
 		
 	</div>
