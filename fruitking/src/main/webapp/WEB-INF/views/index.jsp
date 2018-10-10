@@ -278,9 +278,11 @@
 </head>
 <body>
 	<div id="floatMenu">
-		<a href="http://www.customs.go.kr/kcshome/index.jsp" target="_blank"><img src="img/kcs.png" /></a>
+		<a href="http://www.customs.go.kr/kcshome/index.jsp" target="_blank"><img src="img/kcsLogo.png" /></a>
 		<br>
 		<a href="https://www.kamis.or.kr/customer/main/main.do" target="_blank"><img src="img/kamisLogo.png"/></a>
+		<br>
+		<a href="http://m.kma.go.kr/m/index.jsp" target="_blank"><img src="img/kmaLogo.jpg"/></a>
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<img id="upbutton" onclick="goTop()" width="40" src="img/up.png"/>
 		
