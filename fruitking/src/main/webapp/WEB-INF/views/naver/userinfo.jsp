@@ -51,7 +51,7 @@
 				response1.append(inputLine);
 			}
 			br.close();
-			/* 			out.println(response1.toString()); // 네이버에서 받아온 회원 정보를 출력 */
+			/*out.println(response1.toString()); // 네이버에서 받아온 회원 정보를 출력 */
 
 			String id = "";
 			String nickname = "";
@@ -85,8 +85,6 @@
 				is_man = false;
 			}
 			int defaultGrade = 2;
-			
-			out.println("<script>alert('" + name + "님 환영합니다.');</script>");
 
 			ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 			UserService userService = ac.getBean(UserService.class);
