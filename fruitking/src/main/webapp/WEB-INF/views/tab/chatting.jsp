@@ -44,6 +44,7 @@
 					$('#messages').append('<li>' + msg.message + '</li>');
 				}
 				console.log('Received Message : ' + msg.type);
+				document.getElementById('sendbutton').click();
 			});
 
 			$('#sendbutton').on('click', function() {
@@ -53,6 +54,7 @@
 					input = encodeURIComponent('<%=userName%>' + ' : ' + input);
 	
 					sock.send(input);
+					
 					$('#myMessage').val('');
 				}
 				$("#mydiv").scrollTop($("#mydiv")[0].scrollHeight);
@@ -64,7 +66,7 @@
 			            document.getElementById('sendbutton').click();
 			        }
 			    };
-
+				
 			    document.getElementById('sendbutton').onclick =doSomething;
 			}
 		})
