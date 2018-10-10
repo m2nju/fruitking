@@ -11,7 +11,8 @@
 <script type="text/javascript"
 	src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
 </head>
-<body style="height: 800px;">
+<body>
+	<div id="mydiv" style="overflow-y:auto; overflow-x:hidden; width:100%; height: 500px;">
 	<%
 		String userName = (String) session.getAttribute("userName");
 		if (userName == null){
@@ -54,6 +55,7 @@
 					sock.send(input);
 					$('#myMessage').val('');
 				}
+				$("#mydiv").scrollTop($("#mydiv")[0].scrollHeight);
 			});
 			
 			window.onload = function() {
@@ -68,6 +70,7 @@
 		})
 	</script>
 	<ul id="messages"></ul>
+	</div>
 	<input type="text" id="myMessage">
 	<button id="sendbutton">입력</button>
 	
