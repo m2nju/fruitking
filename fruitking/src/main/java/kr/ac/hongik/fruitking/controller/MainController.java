@@ -238,4 +238,9 @@ public class MainController {
 	public String chattest(HttpSession session) throws Exception {
 		return "tab/chatting";
 	}
+	
+	@RequestMapping(value = "bananaChart")
+	public String chartbanana(HttpSession session) throws Exception {
+		return "tab/chart/banana";
+	}
 }
