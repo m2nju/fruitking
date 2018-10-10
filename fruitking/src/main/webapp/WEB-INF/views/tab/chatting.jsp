@@ -1,3 +1,4 @@
+<%@ page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,13 +14,16 @@
 <body>
 	<%
 		String userName = (String) session.getAttribute("userName");
+		if (userName == null){
+			Random random = new Random();
+			userName = "비회원"+ Integer.toString(random.nextInt(10000)+10000);
+		} 
 	%>
 
 	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var sock = io.connect('http://fruitking.tk:9999');
-			var textt = "";
 			sock.on('connect', function() {
 				var connect_string = 'new_connect';
 				sock.send(connect_string);
@@ -44,18 +48,28 @@
 			$('#sendbutton').on('click', function() {
 				var input = $('#myMessage').val();
 				input = String(input);
-				input = encodeURIComponent('<%=userName%>' + ' : ' + input);
-
-				sock.send(input);
-				$('#myMessage').val('');
+				if(input != ""){
+					input = encodeURIComponent('<%=userName%>' + ' : ' + input);
+	
+					sock.send(input);
+					$('#myMessage').val('');
+				}
 			});
 			
+			window.onload = function() {
+			     document.getElementById('myMessage').onkeypress = function searchKeyPress(event) {
+			        if (event.keyCode == 13) {
+			            document.getElementById('sendbutton').click();
+			        }
+			    };
 
+			    document.getElementById('sendbutton').onclick =doSomething;
+			}
 		})
 	</script>
 	<ul id="messages"></ul>
 	<input type="text" id="myMessage">
-	<button id="sendbutton" onkeypress="JavaScript:press(this.form)">입력</button>
-
+	<button id="sendbutton">입력</button>
+	
 </body>
 </html>
