@@ -26,11 +26,9 @@ public class UserDao {
 	private RowMapper<User> rowMapper = BeanPropertyRowMapper.newInstance(User.class);
 
 	public UserDao(DataSource dataSource) {
-	        this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-	        this.insertAction = new SimpleJdbcInsert(dataSource)
-	                .withTableName("user")
-	                .usingGeneratedKeyColumns("user_id");
-	    }
+		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("user").usingGeneratedKeyColumns("user_id");
+	}
 
 	public List<User> selectAll() {
 		Map<String, Integer> params = new HashMap<>();
