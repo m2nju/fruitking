@@ -23,13 +23,9 @@
 		       $(window).scroll(function() {
 		        // 현재 스크롤 위치를 가져온다.
 			        var scrollTop = $(window).scrollTop();
-			        var newPosition = scrollTop + floatPosition + "px";      
-			        /* 애니메이션 없이 바로 따라감
-			         $("#floatMenu").css('top', newPosition);
-			         */
-			        $("#floatMenu").stop().animate({
-			         	"top" : newPosition
-		        	}, 500);
+			        var newPosition = scrollTop + floatPosition + "px";
+			         $("#floatMenu").css('top', newPosition);  //애니메이션 없이 바로 따라감
+			         // $("#floatMenu").stop().animate({"top" : newPosition}, 500);
 		       }).scroll();
 	      });
 	</script>
