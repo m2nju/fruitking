@@ -32,7 +32,6 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
    
     @Override	// default Controller를 설정.
     public void addViewControllers(final ViewControllerRegistry registry) {
-    		System.out.println("addViewControllers가 호출됩니다. ");
         registry.addViewController("/").setViewName("index");
     }
     
