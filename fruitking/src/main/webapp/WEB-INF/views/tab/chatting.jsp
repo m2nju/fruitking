@@ -40,11 +40,12 @@
 				if (msg.type === 'normal') {
 					
 					$('#messages').append('>> ' + decodeURIComponent(msg.message) + '<br>');
+
+					document.getElementById('sendbutton').click();
 				} else {
 					$('#messages').append('<li>' + msg.message + '</li>');
 				}
 				console.log('Received Message : ' + msg.type);
-				document.getElementById('sendbutton').click();
 			});
 
 			$('#sendbutton').on('click', function() {
