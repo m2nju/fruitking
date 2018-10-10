@@ -37,10 +37,10 @@
 
 			sock.on('message', function(msg) {
 				// console.log(type(msg));
-				if (msg.type === 'normal') {
-					
+				if (msg.type === 'normal') {	//	내가 보냈을 때.
 					$('#messages').append('>> ' + decodeURIComponent(msg.message) + '<br>');
-				} else {
+					document.getElementById('sendbutton').click();
+				} else {						// 	남이 보냈을 때.
 					$('#messages').append('<li>' + msg.message + '</li>');
 				}
 				console.log('Received Message : ' + msg.type);
@@ -54,9 +54,9 @@
 	
 					sock.send(input);
 					$('#myMessage').val('');
+					document.getElementById('sendbutton').click();
 				}
 				$("#mydiv").scrollTop($("#mydiv")[0].scrollHeight);
-				document.getElementById('sendbutton').click();
 			});
 			
 			window.onload = function() {
