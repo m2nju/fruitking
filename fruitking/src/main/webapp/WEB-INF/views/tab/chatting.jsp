@@ -54,10 +54,9 @@
 	
 					sock.send(input);
 					$('#myMessage').val('');
-
-					document.getElementById('sendbutton').click();
 				}
 				$("#mydiv").scrollTop($("#mydiv")[0].scrollHeight);
+				document.getElementById('sendbutton').click();
 			});
 			
 			window.onload = function() {
