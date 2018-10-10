@@ -16,7 +16,7 @@
 		String userName = (String) session.getAttribute("userName");
 		if (userName == null){
 			Random random = new Random();
-			userName = "비회원"+ Integer.toString(random.nextInt(10000)+10000);
+			userName = "비회원"+ Integer.toString(random.nextInt(90000)+10000);
 		} 
 	%>
 
