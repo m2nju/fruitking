@@ -1,6 +1,5 @@
 package kr.ac.hongik.fruitking.user.dao;
 
-import static kr.ac.hongik.fruitking.notify.dao.NotifyDaoSqls.SELECT_NOTIFY;
 import static kr.ac.hongik.fruitking.user.dao.UserDaoSqls.*;
 
 import java.util.Collections;
@@ -18,7 +17,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import kr.ac.hongik.fruitking.notify.dto.Notify;
 import kr.ac.hongik.fruitking.user.dto.User;
 
 @Repository

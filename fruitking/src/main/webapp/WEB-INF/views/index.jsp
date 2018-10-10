@@ -272,6 +272,8 @@
 	}
 }
 	</style>
+
+<head>
 <meta charset="UTF-8">
 <title>Fruit King</title>
 <link
@@ -293,6 +295,24 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		var floatPosition = parseInt($("#floatMenu").css('top'));
+		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+		$(window).scroll(function() {
+			// 현재 스크롤 위치를 가져온다.
+			var scrollTop = $(window).scrollTop();
+			var newPosition = scrollTop + floatPosition + "px";
+			/* 애니메이션 없이 바로 따라감
+			 $("#floatMenu").css('top', newPosition);
+			 */
+			$("#floatMenu").stop().animate({
+				"top" : newPosition
+			}, 500);
+		}).scroll();
+	});
+</script>
 <style>
 a, a:hover {
 	color: #000000;
@@ -327,10 +347,6 @@ a, a:hover {
 	border-color: #aaa;
 	background-color: #aaa;
 	border-radius: 10px;
-}
-
-section {
-	background: #eee;
 }
 
 .flexslider {
@@ -515,14 +531,14 @@ opacity
 none
 ;
 
-					
+		
 transform
 :
  
 none
 ;
 
-			
+	
 }
 }
 @
@@ -544,14 +560,14 @@ opacity
 none
 ;
 
-					
+		
 transform
 :
  
 none
 ;
 
-			
+	
 }
 }
 @
@@ -643,12 +659,14 @@ translate3d
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div id="tabmenu" class="navbar-nav">
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">날씨 및 조세</a> 
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">경매 및 판매가</a> 
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">관련뉴스</a> 
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">날씨
+				및 조세</a> <a id="tablinks" class="nav-item nav-link"
+				onclick="openTab(event)">경매 및 판매가</a> <a id="tablinks"
+				class="nav-item nav-link" onclick="openTab(event)">관련 뉴스</a> <a
+				id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
 			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">문의하기</a>
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">채팅</a>
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">실시간
+				채팅</a>
 			<%
 				//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
 				//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
