@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional(readOnly=false)
 	public User getUser(Long userId) {
-		System.out.println("UserService의 getUser() 호출");
+		//System.out.println("UserService의 getUser() 호출");
 		User user = userDao.selectUserById(userId);
 		return user;
 	}
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService{
 		int userId = 0;
 		try {
 		userId = userDao.selectIdByEmail(user.getUserEmail());
-		System.out.println("유저 아이디는 "+userId);
+		//System.out.println("유저 아이디는 "+userId);
 		}catch(Exception e) {
 			System.out.println(e);
 		}

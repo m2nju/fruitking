@@ -117,7 +117,7 @@ public class MainController {
 	@RequestMapping(path = "/registUser")
 	public String write(@ModelAttribute User user, HttpServletRequest request) {
 		String clientIp = request.getRemoteAddr();
-		System.out.println("clientIp : " + clientIp);
+		//System.out.println("clientIp : " + clientIp);
 		userService.registUser(user);
 
 		return "redirect:/"; // 해당 path로 리다이렉트 한다.
@@ -188,7 +188,7 @@ public class MainController {
 	@PostMapping(path = "/getPrice")
 	public String getPrice(@RequestParam(name = "date", required = false, defaultValue = "0") String date,
 			ModelMap model) {
-		System.out.println(date + "의 가격 예측 모델 API 호출");
+		//System.out.println(date + "의 가격 예측 모델 API 호출");
 		model.addAttribute("date", date); // 현재 response에 date라는 이름으로 date 값을 저장하는 spring에서 제공하는 메서드임.
 		int price = 0; // API를 통해 얻어온 가격의 값을 여기에 담을 수 있도록.
 		String result_str = "";
@@ -236,7 +236,6 @@ public class MainController {
 
 	@RequestMapping(value = "/chatting")
 	public String chattest(HttpSession session) throws Exception {
-		System.out.println("채팅 요청");
 		return "tab/chatting";
 	}
 }

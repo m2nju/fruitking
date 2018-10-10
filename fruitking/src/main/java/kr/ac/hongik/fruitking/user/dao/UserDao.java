@@ -38,8 +38,7 @@ public class UserDao {
 	}
 	
 	public User selectUserById(Long userId) {
-		System.out.println("UserDao의 selectUserById() 호출");
-		
+		//System.out.println("UserDao의 selectUserById() 호출");
 		return jdbc.queryForObject(SELECT_USER_BY_ID, Collections.singletonMap("user_id", userId), rowMapper);
 	}
 	

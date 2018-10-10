@@ -88,7 +88,7 @@
 
 			ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 			UserService userService = ac.getBean(UserService.class);
-
+			
 			User user = new User();
 			user.setUserEmail(email);
 			Integer isUser = userService.isUser(user);

@@ -71,8 +71,6 @@
 				session.setAttribute("access_token", access_token);
 				session.setAttribute("refresh_token", refresh_token);
 
-
-				out.println("<script>alert('ㅎㅇ');</script>");
 				response.sendRedirect("userInfo");
 				
 			}

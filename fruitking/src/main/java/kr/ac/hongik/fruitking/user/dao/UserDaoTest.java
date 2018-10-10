@@ -25,7 +25,7 @@ public class UserDaoTest {
 		user.setUserIsMan(true);
 	
 		Long userId = userDao.insert(user);
-		System.out.println("user_id : " + userId);
+		//System.out.println("user_id : " + userId);
 		
 		((ConfigurableApplicationContext)ac).close();
 	}
