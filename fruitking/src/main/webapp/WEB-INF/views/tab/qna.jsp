@@ -3,6 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+input {
+  border: 1px solid #bcbcbc;
+  border-radius: 5px;
+}
+textarea{
+  border: 1px solid #bcbcbc;
+  border-radius: 5px;
+}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -12,11 +22,11 @@
 		<div>
 			<label for="name">이름:</label> <input type="text" name="name">
 		</div>
-
+		<br>
 		<div>
 			<label for="name">이메일:</label> <input type="email" name="_replyto">
 		</div>
-
+		<br>
 		<div>
 			<label for="message">내용:</label>
 			<textarea name="message"></textarea>
