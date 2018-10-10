@@ -649,62 +649,53 @@ translate3d
 </head>
 <body>
 	
-	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
-		class="navbar-brand" href="./"><img src="img/logo.png"
-		style="width: auto; height: 80px;" /></a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-		aria-expanded="false" aria-label="Toggle navigation">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="./"><img src="img/logo.png" style="width: auto; height: 80px;"/></a>
+ 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">		
 		<div id="tabmenu" class="navbar-nav">
-			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">날씨
-				및 조세</a> <a id="tablinks" class="nav-item nav-link"
-				onclick="openTab(event)">경매 및 판매가</a> <a id="tablinks"
-				class="nav-item nav-link" onclick="openTab(event)">관련 뉴스</a> <a
-				id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">날씨 및 조세</a>
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">경매 및 판매가</a>
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">관련 뉴스</a>
+			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
 			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">문의하기</a>
 			<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">실시간 채팅</a>
-			<%
-				//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
-				//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
-
-				String userName = (String) session.getAttribute("userName");
-				if (!(userName == null)) { // 엑세스토큰이 쿠키에 보관되어 있다면 
-			%>
-			
-			<!-- Trigger the modal with a button -->
+		</div>
+		
+		<div class="navbar-nav">
+		<%
+			//String access_token = (String)session.getAttribute("access_token"); // 네이버 엑세스 토큰 
+			//String refresh_token = (String)session.getAttribute("refresh_token"); // 네이버 리프레시 토큰
+			String userName = (String) session.getAttribute("userName");
+			if (!(userName == null)) { // 엑세스토큰이 쿠키에 보관되어 있다면 
+		%>
 			<a class="nav-item nav-link" data-toggle="modal" data-target="#myModal">회원 정보 보기</a>
-
-			<!-- Modal -->
 			<div id="myModal" class="modal fade" role="dialog">
 				<div class="modal-dialog">
-
-					<!-- Modal content-->
 					<div class="modal-content">
 						<div class="modal-header">
 							<h4 class="	">회원 정보 조회</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-
 						</div>
+						
 						<div class="modal-body">
 							<p>
-								이름 :
-								<%=session.getAttribute("userName")%></p>
-							<p>
-								이메일 :
-								<%=session.getAttribute("userEmail")%></p>
-							<p>
-								연령대 :
-								<%=session.getAttribute("userAge")%>0 대
+								이름 : <%=session.getAttribute("userName")%>
 							</p>
 							<p>
-								생일 :
-								<%=session.getAttribute("userBirth")%></p>
+								이메일 : <%=session.getAttribute("userEmail")%>
+							</p>
+							<p>
+								연령대 : <%=session.getAttribute("userAge")%>0 대
+							</p>
+							<p>
+								생일 : <%=session.getAttribute("userBirth")%>
+							</p>
 							<p>
 								성별 :
-								<%
+							<%
 								if (session.getAttribute("userIsMan").equals(true)) {
 										out.print("남자");
 									} else {
@@ -714,7 +705,7 @@ translate3d
 							</p>
 							<p>
 								회원 등급 :
-								<%
+							<%
 								int grade = (Integer) session.getAttribute("userGrade");
 									if (grade == 0) {
 										out.print("관리자");
@@ -728,18 +719,18 @@ translate3d
 							%>
 							</p>
 						</div>
+						
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<a id="tablinks" class="nav-item nav-link" href="logout">로그아웃</a>
+			<a class="nav-item nav-link" href="logout">로그아웃</a>
 			<%
 				} else {
 			%>
-			<a id="tablinks" class="nav-item nav-link" href="naverLogin">로그인</a>
+			<a class="nav-item nav-link" href="naverLogin">로그인</a>
 			<%
 				}
 			%>
@@ -748,8 +739,7 @@ translate3d
 	</nav>
 
 	<div id="top" style="height: 2500px;">
-
-		<section class="content">
+	<section class="content">
 		<div class="flexslider left">
 			<ul class="slides">
 				<li><img src="img/apple.jpg/">
@@ -798,10 +788,8 @@ translate3d
 			src="img/kamisLogo.png" /></a><br> <a href="#top">맨 위로</a>
 	</div>
 
-	<script type="text/javascript"
-		src="http://code.jquery.com/jquery-latest.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.0/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.0/jquery.flexslider-min.js"></script>
 	<script>
 		$('.flexslider').flexslider({
 			animation : "slide",
@@ -858,7 +846,7 @@ translate3d
 		})
 	</script>
 	<script id="tabcontent" type="my-template">
-		<iframe src="./{html}" id="Iframe" style="display: block; width: 100%; height: 100%;" scrolling="no" frameborder="0" onLoad="autosize()"></iframe> 
+		<iframe src="./{html}" id="Iframe" style="display: block; width: 100%; height: 100%;" frameborder="0" onLoad="autosize()"></iframe> 
 	</script>
 </body>
 </html>

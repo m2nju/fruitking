@@ -11,7 +11,7 @@
 <script type="text/javascript"
 	src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
 </head>
-<body>
+<body style="height: 800px;">
 	<%
 		String userName = (String) session.getAttribute("userName");
 		if (userName == null){
