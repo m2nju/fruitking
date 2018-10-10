@@ -40,7 +40,7 @@
 		#floatMenu {
 			position: absolute;
 			right: 25px;
-			top: 450px;
+			top: 120px;
 			background-color: white;
 			color: #ffffff;
 			text-align: center;
@@ -281,8 +281,9 @@
 		<a href="http://www.customs.go.kr/kcshome/index.jsp" target="_blank"><img src="img/kcs.png" /></a>
 		<br>
 		<a href="https://www.kamis.or.kr/customer/main/main.do" target="_blank"><img src="img/kamisLogo.png"/></a>
-		<br>
-		<button type="button" onclick="goTop()">맨 위로 ↑</button>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+		<img id="upbutton" onclick="goTop()" width="40" src="img/up.png"/>
+		
 	</div>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="./"><img src="img/logo.png" style="width: auto; height: 80px;"/></a>
