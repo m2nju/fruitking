@@ -676,8 +676,7 @@ translate3d
 			%>
 			
 			<!-- Trigger the modal with a button -->
-			<a class="nav-item nav-link" data-toggle="modal"
-				data-target="#myModal">회원 정보 보기</a>
+			<a class="nav-item nav-link" data-toggle="modal" data-target="#myModal">회원 정보 보기</a>
 
 			<!-- Modal -->
 			<div id="myModal" class="modal fade" role="dialog">

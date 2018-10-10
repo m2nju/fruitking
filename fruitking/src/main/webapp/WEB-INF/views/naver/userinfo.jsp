@@ -85,8 +85,8 @@
 				is_man = false;
 			}
 			int defaultGrade = 2;
-
 			
+			out.println("<script>alert('" + name + "님 환영합니다.');</script>");
 
 			ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 			UserService userService = ac.getBean(UserService.class);
@@ -131,11 +131,9 @@
 				session.setAttribute("userBirth", user.getUserBirth());
 				session.setAttribute("userIsMan", user.getUserIsMan());
 				session.setAttribute("userGrade", user.getUserGrade());
-				
+
 				response.sendRedirect("./");
 			}
-			out.println("<script>alert('ㅎㅇ');</script>");
-			out.println("<script>alert('1');</script>");
 		} catch (Exception e) {
 			System.out.println(e);
 		}
