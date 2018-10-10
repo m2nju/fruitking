@@ -36,6 +36,7 @@
 	img{
 		border: solid 3px;
 		border-color: #ddd;
+		border-radius: 10px;
 	}
 	.selectSection{
 		text-align : right;
