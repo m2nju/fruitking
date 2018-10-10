@@ -720,7 +720,7 @@ translate3d
 						</div>
 					</div>
 				</div>
-				<a class="nav-item nav-link" href="logout">로그아웃</a>
+				<a class="nav-item nav-link" href="logout" onclick="return confirm('정말로 로그아웃하겠습니까?')">로그아웃</a>
 				<%
 					} else {
 				%>

@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <style>
+a, a:hover {
+	color: #000000;
+	text_decoration: none;
+	cursor: pointer;
+}
 	#main_menu {list-style: none;}
 	#main_menu>li {display:inline-block; width:200px; background:#f4f4f4; text-align: center; padding:10px 0;}
 	#main_menu>li>ul {list-style:none;display:none;position:absolute; background:#000; width:200px; margin-top:10px;}
@@ -24,20 +29,20 @@
 
 </head>
 <body onload="initialize()">
- 	<button onclick="weatherCall(spain)">스페인</button>
-	<button onclick="weatherCall(italia)">이탈리아</button>
-	<button onclick="weatherCall(india)">인도</button>
-	<button onclick="weatherCall(canada)">캐나다</button>
-	<button onclick="weatherCall(chile)">칠레</button>
-	<button onclick="weatherCall(china)">중국</button>
-	<button onclick="weatherCall(vietnam)">베트남</button>
-	<button onclick="weatherCall(newzealand)">뉴질랜드</button>
-	<button onclick="weatherCall(peru)">페루</button>
-	<button onclick="weatherCall(turkey)">터키</button>
-	<button onclick="weatherCall(australia)">오스트레일리아</button>
-	<button onclick="weatherCall(portugal)">포르투갈</button>
-	<button onclick="weatherCall(florida)">플로리다</button>
-	<button onclick="weatherCall(sanfrancisco)">샌프란시스코</button>
+ 	<div onclick="weatherCall(spain)">스페인</div>
+	<div onclick="weatherCall(italia)">이탈리아</div>
+	<div onclick="weatherCall(india)">인도</div>
+	<div onclick="weatherCall(canada)">캐나다</div>
+	<div onclick="weatherCall(chile)">칠레</div>
+	<div onclick="weatherCall(china)">중국</div>
+	<div onclick="weatherCall(vietnam)">베트남</div>
+	<div onclick="weatherCall(newzealand)">뉴질랜드</div>
+	<div onclick="weatherCall(peru)">페루</div>
+	<div onclick="weatherCall(turkey)">터키</div>
+	<div onclick="weatherCall(australia)">오스트레일리아</div>
+	<div onclick="weatherCall(portugal)">포르투갈</div>
+	<div onclick="weatherCall(florida)">플로리다</div>
+	<div onclick="weatherCall(sanfrancisco)">샌프란시스코</div>
 	<br>
 	<div id="map" style="width:940px; height:705px;"></div>
 	
