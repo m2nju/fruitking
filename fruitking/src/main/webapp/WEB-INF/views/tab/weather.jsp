@@ -5,10 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <style>
-.countryList{
-	cursor: pointer;
-	display: inline-block;
-}
+	.dropdown-submenu {
+	    position: relative;
+	}
+	
+	.dropdown-submenu .dropdown-menu {
+	    top: 0;
+	    left: 100%;
+	    margin-top: -1px;
+	}
+	div, li {
+		cursor: pointer;
+	}
 	#main_menu {list-style: none;}
 	#main_menu>li {display:inline-block; width:200px; background:#f4f4f4; text-align: center; padding:10px 0;}
 	#main_menu>li>ul {list-style:none;display:none;position:absolute; background:#000; width:200px; margin-top:10px;}
@@ -23,25 +31,42 @@
 		display: inline;
 	}
 </style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_6z_sVa7_dirTxeWwFTWhExf4V2UyfMU&callback=initMap&region=KR"></script>
 </head>
 <body onload="initialize()">
-	<div class="countryList" onclick="weatherCall(canada)">캐나다</div>
-	
+
 	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="america" data-toggle="dropdown" ara-haspopup="true" aria-expanded="false">
-			America
+		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+			S.America<span class="caret"></span>
 		</button>
-		<div class="dropdown-menu" aria-labelledby="america">
-			<div class="dropdown-item" onclick="weatherCall(sanfrancisco)">샌프란시스코</div>
-			<div class="dropdown-item" onclick="weatherCall(florida)">플로리다</div>
+		
+		<ul class="dropdown-menu">
+			<li class="dropdown-submenu">
+				<a class="america" tabindex="-1" href="#">
+					미국<span>▶</span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a tabindex="-1" href="#" onclick="weatherCall(sanfrancisco)">샌프란시스코</a></li>
+					<li><a tabindex="-1" href="#" onclick="weatherCall(florida)">플로리다</a></li>
+				</ul>
+			</li>
+			<li><a tabindex="-1" href="#" onclick="weatherCall(canada)">캐나다</a></li>
+		</ul>
+	</div>
+
+	<div class="btn-group dropdown">
+		<button class="btn btn-secondary dropdown-toggle" type="button" id="northamerica" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			N.America
+		</button>
+		<div class="dropdown-menu" aria-labelledby="northamerica">
+			<div class="dropdown-item" onclick="weatherCall(chile)">칠레</div>
+			<div class="dropdown-item" onclick="weatherCall(peru)">페루</div>
 		</div>
 	</div>
 
 	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="europe" data-toggle="dropdown" ara-haspopup="true" aria-expanded="false">
+		<button class="btn btn-secondary dropdown-toggle" type="button" id="europe" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Europe
 		</button>
 		<div class="dropdown-menu" aria-labelledby="europe">
@@ -52,31 +77,19 @@
 	</div>
 	
 	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="aisa" data-toggle="dropdown" ara-haspopup="true" aria-expanded="false">
+		<button class="btn btn-secondary dropdown-toggle" type="button" id="aisa" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Asia
 		</button>
 		<div class="dropdown-menu" aria-labelledby="asia">
+			<div class="dropdown-item" onclick="weatherCall(china)">중국</div>
 			<div class="dropdown-item" onclick="weatherCall(vietnam)">베트남</div>
 			<div class="dropdown-item" onclick="weatherCall(india)">인도</div>
 			<div class="dropdown-item" onclick="weatherCall(turkey)">터키</div>
-			<div class="dropdown-item" onclick="weatherCall(chile)">칠레</div>
-			<div class="dropdown-item" onclick="weatherCall(peru)">페루</div>
 		</div>
 	</div>
-	
+
 	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="china" data-toggle="dropdown" ara-haspopup="true" aria-expanded="false">
-			China
-		</button>
-		<div class="dropdown-menu" aria-labelledby="china">
-			<div class="dropdown-item" onclick="weatherCall(china)">중국</div>
-			<div class="dropdown-item" onclick="weatherCall(china)">중국</div>
-			<div class="dropdown-item" onclick="weatherCall(china)">중국</div>
-		</div>
-	</div>
-		
-	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="oceania" data-toggle="dropdown" ara-haspopup="true" aria-expanded="false">
+		<button class="btn btn-secondary dropdown-toggle" type="button" id="oceania" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Oceania
 		</button>
 		<div class="dropdown-menu" aria-labelledby="oceania">
@@ -86,9 +99,19 @@
 	</div>
 	<br><br>
 	<div id="map" style="width:940px; height:705px;"></div>
-	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+	  $('.dropdown-submenu a.america').on("click", function(e){
+	    $(this).next('ul').toggle();
+	    e.stopPropagation();
+	    e.preventDefault();
+	  });
+	});
+</script>
 <script type="text/javascript">
 	var temp, humidity, description, windSpeed, clouds;	
 	var spain = {name:"spain", x:"37.740431", y:"-3.798545", zoom:6};
