@@ -281,7 +281,7 @@
 		<a href="http://www.customs.go.kr/kcshome/index.jsp" target="_blank"><img src="img/kcs.png" /></a>
 		<br>
 		<a href="https://www.kamis.or.kr/customer/main/main.do" target="_blank"><img src="img/kamisLogo.png"/></a>
-		<br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<img id="upbutton" onclick="goTop()" width="40" src="img/up.png"/>
 		
 	</div>
