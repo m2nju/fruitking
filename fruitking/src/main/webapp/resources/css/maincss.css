@@ -10,6 +10,7 @@ h2,h4 {
 a, a:hover {
 	color: #000000;
 	text_decoration: none;
+	cursor: pointer;
 }
 .login {
 	text-align: right;

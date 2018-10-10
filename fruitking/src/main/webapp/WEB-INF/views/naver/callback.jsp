@@ -33,14 +33,14 @@
 		apiURL += "&state=" + state;
 		String access_token = ""; // 엑세스 토큰을 저장하기 위한 String 변수
 		String refresh_token = ""; // 리프레시 토큰을 저자하기 위한 String 변수
-		System.out.println("apiURL=" + apiURL);
+		//System.out.println("apiURL=" + apiURL);
 		try {
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
-			System.out.print("responseCode=" + responseCode);
+			//System.out.print("responseCode=" + responseCode);
 			if (responseCode == 200) { // 정상 호출
 				//System.out.println("정상 호출");
 				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -71,7 +71,9 @@
 				session.setAttribute("access_token", access_token);
 				session.setAttribute("refresh_token", refresh_token);
 
+				out.println("<script>alert('ㅎㅇ');</script>");
 				response.sendRedirect("userInfo");
+				
 			}
 		} catch (Exception e) {
 			out.println(e);

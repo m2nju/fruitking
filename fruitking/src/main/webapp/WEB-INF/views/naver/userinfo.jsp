@@ -95,7 +95,7 @@
 			user.setUserEmail(email);
 			Integer isUser = userService.isUser(user);
 			if (isUser == 0) {	//	User가 아니라면
-				System.out.println("fruitking의 회원이 아닙니다. 회원으로 등록합니다.");
+				//System.out.println("fruitking의 회원이 아닙니다. 회원으로 등록합니다.");
 				%>
 				<form method="post" name=registform action="registUser">
 					<input type="hidden" name="userEmail" value="<%=email%>"><br>
@@ -121,7 +121,7 @@
 				((ConfigurableApplicationContext) ac).close();
 			} else {
 				
-				System.out.println("이미 존재하는 회원입니다. userId = " + isUser);
+				//System.out.println("이미 존재하는 회원입니다. userId = " + isUser);
 				
 				user = userService.getUser(isUser.longValue());
 				
@@ -134,6 +134,8 @@
 				
 				response.sendRedirect("./");
 			}
+			out.println("<script>alert('ㅎㅇ');</script>");
+			out.println("<script>alert('1');</script>");
 		} catch (Exception e) {
 			System.out.println(e);
 		}

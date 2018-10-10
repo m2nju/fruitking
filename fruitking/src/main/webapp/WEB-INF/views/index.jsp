@@ -5,7 +5,6 @@
 
 <html>
 <head>
-<<<<<<< HEAD
 	<meta charset="UTF-8">
 	<title>Fruit King</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -273,7 +272,6 @@
 	}
 }
 	</style>
-=======
 <meta charset="UTF-8">
 <title>Fruit King</title>
 <link
@@ -632,9 +630,9 @@ translate3d
 		}).scroll();
 	});
 </script>
->>>>>>> branch 'master' of https://github.com/m2nju/fruitking
 </head>
 <body>
+	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
 		class="navbar-brand" href="./"><img src="img/logo.png"
 		style="width: auto; height: 80px;" /></a>
@@ -657,11 +655,11 @@ translate3d
 
 				String userName = (String) session.getAttribute("userName");
 				if (!(userName == null)) { // 엑세스토큰이 쿠키에 보관되어 있다면 
-					out.println(userName + "님 안녕하세요.");
 			%>
+			
 			<!-- Trigger the modal with a button -->
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-				data-target="#myModal">회원 정보 보기</button>
+			<a class="nav-item nav-link" data-toggle="modal"
+				data-target="#myModal">회원 정보 보기</a>
 
 			<!-- Modal -->
 			<div id="myModal" class="modal fade" role="dialog">
@@ -721,7 +719,6 @@ translate3d
 					</div>
 				</div>
 			</div>
-			<br>
 			<a id="tablinks" class="nav-item nav-link" href="logout">로그아웃</a>
 			<%
 				} else {
