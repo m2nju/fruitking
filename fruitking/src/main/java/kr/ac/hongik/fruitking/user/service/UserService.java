@@ -9,5 +9,6 @@ public interface UserService {
 	public int deleteUser(Long userId);
 	public User registUser(User user);
 	public int getCount();
-	public boolean isUser(User user);
+	public int isUser(User user);
+	public User getUser(Long userId);
 }

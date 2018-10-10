@@ -28,7 +28,15 @@ public class UserServiceImpl implements UserService{
 		int deleteCount = userDao.deleteById(userId);
 		return deleteCount;
 	}
-
+	
+	@Override
+	@Transactional(readOnly=false)
+	public User getUser(Long userId) {
+		System.out.println("UserService의 getUser() 호출");
+		User user = userDao.selectUserById(userId);
+		return user;
+	}
+	
 	@Override
 	@Transactional(readOnly=false)
 	public User registUser(User user) {
@@ -45,12 +53,14 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	@Transactional(readOnly=false)
-	public boolean isUser(User user) {
-		int count =  userDao.countByEmail(user.getUserEmail());
-		if (count == 0) {
-			return false;
-		}else {
-			return true;
+	public int isUser(User user) {	// isUser는 해당 유저의 userId를 반환하는 메소드이며, 회원이 아닐 시에 
+		int userId = 0;
+		try {
+		userId = userDao.selectIdByEmail(user.getUserEmail());
+		System.out.println("유저 아이디는 "+userId);
+		}catch(Exception e) {
+			System.out.println(e);
 		}
+		return userId;
 	}
 }

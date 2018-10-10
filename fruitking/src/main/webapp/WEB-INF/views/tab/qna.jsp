@@ -18,7 +18,7 @@
 		</div>
 
 		<div>
-			<label for="message">Message:</label>
+			<label for="message">내용:</label>
 			<textarea name="message"></textarea>
 		</div>
 

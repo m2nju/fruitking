@@ -42,7 +42,7 @@ public class MainController {
 		List<Notify> list = notifyService.getNotifies(start);
 
 		// 전체 페이지수 구하기
-		int count = notifyService.getCount(); 
+		int count = notifyService.getCount();
 		int pageCount = count / NotifyService.LIMIT;
 		if (count % NotifyService.LIMIT > 0)
 			pageCount++;
@@ -62,49 +62,52 @@ public class MainController {
 
 		return "tab/notify/notify"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/tab/notify.jsp가 열린다.
 	}
-	
-	@GetMapping(path = "/notify/updateNotify")	//공지사항 수정하기
-	public String updateNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
+
+	@GetMapping(path = "/notify/updateNotify") // 공지사항 수정하기
+	public String updateNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id,
+			ModelMap model) {
 		Notify notify = notifyService.getNotify(id);
-		
+
 		model.addAttribute("notify", notify);
 		model.addAttribute("id", id);
-		
+
 		return "tab/notify/updateNotify";
 	}
 
-	@PostMapping(path = "/notify/update")	//공지사항 수정
-	public String update(@ModelAttribute Notify notify, HttpServletRequest request, @RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
+	@PostMapping(path = "/notify/update") // 공지사항 수정
+	public String update(@ModelAttribute Notify notify, HttpServletRequest request,
+			@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
 		String clientIp = request.getRemoteAddr();
 		notifyService.updateNotify(notify, clientIp);
 		model.addAttribute(id);
 		return "tab/notify/viewNotify"; // 해당 path로 리다이렉트 한다.
 	}
-	
-	@GetMapping(path = "/notify/deleteNotify")	//공지사항상세보기
-	public String deleteNotify(@ModelAttribute Notify notify, HttpServletRequest request, @RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
+
+	@GetMapping(path = "/notify/deleteNotify") // 공지사항상세보기
+	public String deleteNotify(@ModelAttribute Notify notify, HttpServletRequest request,
+			@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
 		String clientIp = request.getRemoteAddr();
 		notifyService.deleteNotify(id, clientIp);
-		
+
 		return "redirect:/notify";
 	}
 
-	@GetMapping(path = "/notify/viewNotify")	//공지사항상세보기
+	@GetMapping(path = "/notify/viewNotify") // 공지사항상세보기
 	public String viewNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
 		Notify notify = notifyService.getNotify(id);
-		
+
 		model.addAttribute("notify", notify);
 		model.addAttribute("id", id);
-		
+
 		return "tab/notify/viewNotify";
 	}
 
-	@RequestMapping(value = "/writeNotify")	//공지사항 작성하기
+	@RequestMapping(value = "/writeNotify") // 공지사항 작성하기
 	public String write(HttpServletRequest request) {
 		return "tab/notify/writeNotify";
 	}
 
-	@PostMapping(path = "/write")	//공지사항 추가
+	@PostMapping(path = "/write") // 공지사항 추가
 	public String write(@ModelAttribute Notify notify, HttpServletRequest request) {
 		String clientIp = request.getRemoteAddr();
 		notifyService.addNotify(notify, clientIp);
@@ -120,11 +123,6 @@ public class MainController {
 		return "redirect:/"; // 해당 path로 리다이렉트 한다.
 	}
 
-//	@GetMapping(path = "/happy") // 일반적인 GET메소드 리다이렉션
-//	public String happy() {
-//		return "happy"; // views 디렉토리 밑의 jsp 파일의 파일명, 여기선 main/webapp/WEB-INF/views/happy.jsp가 열린다. (지워도 똑같음 default가 ~~/views/*.jsp 이기 때문임)
-//	}	
-
 	@RequestMapping(value = "/news")
 	public String news(HttpSession session) {
 		return "tab/news";
@@ -137,19 +135,36 @@ public class MainController {
 
 	@RequestMapping(value = "/callBack")
 	public String callBack(HttpServletRequest request) throws Exception {
+		// System.out.println("Controller에서 callBack 호출");
 		return "naver/callback";
 	}
 
-	@RequestMapping(value = "/userinfo")
+	@RequestMapping(value = "/userInfo")
 	public String userInformation(HttpServletRequest request) throws Exception {
 		return "naver/userinfo";
 	}
-	
+
+	@RequestMapping(value = "/logout")
+	public String logout(HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+
+		session.removeAttribute("access_token");
+		session.removeAttribute("refresh_token");
+		session.removeAttribute("userEmail");
+		session.removeAttribute("userName");
+		session.removeAttribute("userAge");
+		session.removeAttribute("userBirth");
+		session.removeAttribute("userIsMan");
+		session.removeAttribute("userGrade");
+
+		return "naver/logout";
+	}
+
 	@RequestMapping(value = "/weather")
 	public String weather(HttpSession session) {
 		return "tab/weather";
 	}
-	
+
 	@RequestMapping(value = "/price")
 	public String price(HttpSession session) {
 		return "tab/price";
@@ -171,7 +186,8 @@ public class MainController {
 	}
 
 	@PostMapping(path = "/getPrice")
-	public String getPrice(@RequestParam(name = "date", required = false, defaultValue = "0") String date,ModelMap model) {
+	public String getPrice(@RequestParam(name = "date", required = false, defaultValue = "0") String date,
+			ModelMap model) {
 		System.out.println(date + "의 가격 예측 모델 API 호출");
 		model.addAttribute("date", date); // 현재 response에 date라는 이름으로 date 값을 저장하는 spring에서 제공하는 메서드임.
 		int price = 0; // API를 통해 얻어온 가격의 값을 여기에 담을 수 있도록.
@@ -179,7 +195,7 @@ public class MainController {
 		URL url = null;
 		URLConnection urlConnection = null;
 		// URL 주소
-		String sUrl = "http://fruitking.tk:5000/price";	// api url 경로
+		String sUrl = "http://fruitking.tk:5000/price"; // api url 경로
 		// 파라미터 이름
 		String paramName = "date";
 		// 파라미터 이름에 대한 값
@@ -188,19 +204,18 @@ public class MainController {
 			// Get방식으로 전송 하기
 			url = new URL(sUrl + "?" + paramName + "=" + paramValue);
 			urlConnection = url.openConnection();
-			
-			if(urlConnection != null) {	// api에  정상적으로 연결이 되었는지 확인
+
+			if (urlConnection != null) { // api에 정상적으로 연결이 되었는지 확인
 				System.out.println("연결 성공!");
-			}
-			else {
+			} else {
 				System.out.println("연결 실패..");
 			}
-			
-			int i;	// StringBuffer를 통해 InputStream을 String의 형태로 변환
+
+			int i; // StringBuffer를 통해 InputStream을 String의 형태로 변환
 			InputStream is = urlConnection.getInputStream();
 			StringBuffer buffer = new StringBuffer();
 			byte[] b = new byte[4096];
-			while( (i = is.read(b)) != -1){ 	
+			while ((i = is.read(b)) != -1) {
 				buffer.append(new String(b, 0, i));
 			}
 			result_str = buffer.toString();
@@ -208,11 +223,8 @@ public class MainController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
-		price = Integer.parseInt(result_str);	// 결과로 전달받은 String 형태의 가격 정보를 Integer 형태로 변환
-		
-		
-		model.addAttribute("price", price);		// Response에 가격을 저장 ( view에서 사용할 수 있도록 )
+		price = Integer.parseInt(result_str); // 결과로 전달받은 String 형태의 가격 정보를 Integer 형태로 변환
+		model.addAttribute("price", price); // Response에 가격을 저장 ( view에서 사용할 수 있도록 )
 
 		return "tab/predict/getPrice";
 	}
@@ -221,11 +233,10 @@ public class MainController {
 	public String chart() {
 		return "chart/chart";
 	}
-	
-	@RequestMapping(value = "/chat2")
-	public String chat() {
-		return "chat/chat";
-	}
-	
 
+	@RequestMapping(value = "/chatting")
+	public String chattest(HttpSession session) throws Exception {
+		System.out.println("채팅 요청");
+		return "tab/chatting";
+	}
 }

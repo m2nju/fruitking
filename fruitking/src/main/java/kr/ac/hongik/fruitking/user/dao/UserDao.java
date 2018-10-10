@@ -1,5 +1,6 @@
 package kr.ac.hongik.fruitking.user.dao;
 
+import static kr.ac.hongik.fruitking.notify.dao.NotifyDaoSqls.SELECT_NOTIFY;
 import static kr.ac.hongik.fruitking.user.dao.UserDaoSqls.*;
 
 import java.util.Collections;
@@ -17,6 +18,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.hongik.fruitking.notify.dto.Notify;
 import kr.ac.hongik.fruitking.user.dto.User;
 
 @Repository
@@ -36,7 +38,13 @@ public class UserDao {
 		Map<String, Integer> params = new HashMap<>();
 		return jdbc.query(SELECT_ALL, params, rowMapper);
 	}
-
+	
+	public User selectUserById(Long userId) {
+		System.out.println("UserDao의 selectUserById() 호출");
+		
+		return jdbc.queryForObject(SELECT_USER_BY_ID, Collections.singletonMap("user_id", userId), rowMapper);
+	}
+	
 	public Long insert(User user) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(user);
 		return insertAction.executeAndReturnKey(params).longValue();
@@ -51,8 +59,8 @@ public class UserDao {
 		return jdbc.queryForObject(SELECT_COUNT, Collections.emptyMap(), Integer.class);
 	}
 	
-	public int countByEmail(String userEmail) {
+	public int selectIdByEmail(String userEmail) {
 		Map<String, ?> params = Collections.singletonMap("user_email", userEmail);
-		return jdbc.queryForObject(COUNT_BY_EMAIL, params, Integer.class);
+		return jdbc.queryForObject(SELECT_ID_BY_EMAIL, params, Integer.class);
 	}
 }

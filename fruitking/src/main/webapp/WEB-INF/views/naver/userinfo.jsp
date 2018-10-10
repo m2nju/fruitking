@@ -1,4 +1,5 @@
-<%@page import="org.springframework.context.ConfigurableApplicationContext"%>
+<%@page
+	import="org.springframework.context.ConfigurableApplicationContext"%>
 <%@page import="kr.ac.hongik.fruitking.user.dto.User"%>
 <%@page import="kr.ac.hongik.fruitking.config.ApplicationConfig"%>
 <%@page
@@ -26,6 +27,7 @@
 <body>
 	<h2>Fruit King 회원 여부 검사 후, 자동으로 회원 등록이 완료됩니다.</h2>
 	<%
+		//System.out.println("userinfo.jsp 호출");
 		String access_token = (String) session.getAttribute("access_token"); // 네이버 엑세스 토큰
 		String refresh_token = (String) session.getAttribute("refresh_token"); // 리프레시 토큰	
 
@@ -84,37 +86,52 @@
 			}
 			int defaultGrade = 2;
 
-			session.setAttribute("userEmail", email);
-			session.setAttribute("userName", name);
-			//session.setAttribute("userAge",age);
-			//session.setAttribute("userBirth",birthday);
-			//session.setAttribute("userIsMan",is_man);
-			//session.setAttribute("userGrade",defaultGrade);
+			
 
 			ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 			UserService userService = ac.getBean(UserService.class);
 
 			User user = new User();
 			user.setUserEmail(email);
-			if (!userService.isUser(user)) {
+			Integer isUser = userService.isUser(user);
+			if (isUser == 0) {	//	User가 아니라면
 				System.out.println("fruitking의 회원이 아닙니다. 회원으로 등록합니다.");
-	%>
-	<form method="post" name=registform action="registUser">
-		<input type="hidden" name="userEmail" value="<%=email%>"><br>
-		<input type="hidden" name="userName" value="<%=name%>"><br>
-		<input type="hidden" name="userAge" value="<%=age%>"><br>
-		<input type="hidden" name="userBirth" value="<%=birthday%>"><br>
-		<input type="hidden" name="userIsMan" value="<%=is_man%>"><br>
-		<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
-
-		<script>
-			document.registform.submit();
-		</script>
-	</form>
-	<%
-		((ConfigurableApplicationContext)ac).close();
+				%>
+				<form method="post" name=registform action="registUser">
+					<input type="hidden" name="userEmail" value="<%=email%>"><br>
+					<input type="hidden" name="userName" value="<%=name%>"><br>
+					<input type="hidden" name="userAge" value="<%=age%>"><br>
+					<input type="hidden" name="userBirth" value="<%=birthday%>"><br>
+					<input type="hidden" name="userIsMan" value="<%=is_man%>"><br>
+					<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
+			
+					<script>
+						document.registform.submit();
+					</script>
+				</form>
+				<%
+				
+				session.setAttribute("userEmail", email);
+				session.setAttribute("userName", name);
+				session.setAttribute("userAge",age);
+				session.setAttribute("userBirth",birthday);
+				session.setAttribute("userIsMan",is_man);
+				session.setAttribute("userGrade",defaultGrade);
+				
+				((ConfigurableApplicationContext) ac).close();
 			} else {
-				System.out.println("이미 존재하는 회원입니다.");
+				
+				System.out.println("이미 존재하는 회원입니다. userId = " + isUser);
+				
+				user = userService.getUser(isUser.longValue());
+				
+				session.setAttribute("userEmail", user.getUserEmail());
+				session.setAttribute("userName", user.getUserName());
+				session.setAttribute("userAge", user.getUserAge());
+				session.setAttribute("userBirth", user.getUserBirth());
+				session.setAttribute("userIsMan", user.getUserIsMan());
+				session.setAttribute("userGrade", user.getUserGrade());
+				
 				response.sendRedirect("./");
 			}
 		} catch (Exception e) {
