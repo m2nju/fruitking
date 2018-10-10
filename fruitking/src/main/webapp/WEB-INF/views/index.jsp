@@ -41,7 +41,7 @@
 			position: absolute;
 			right: 25px;
 			top: 120px;
-			background-color: white;
+			background-color: rgba(255, 255, 255, 0.0);
 			color: #ffffff;
 			text-align: center;
 		}
@@ -439,7 +439,6 @@
 			}
 			oFrame.style.height = String(contentHeight + 30) + "px"; //content 높이 자동 맞춤
 		}
-
 		function openTab(evt) { //tab focus 함수
 			var tablinks = document.getElementsByClassName("nav-item nav-link"); //탭을 불러옵니다. 
 			for (var i = 0, len = tablinks.length; i < len; i++) {
@@ -448,11 +447,9 @@
 			}
 			evt.currentTarget.className += " active"; //클릭한 탭을 활성화시킵니다.
 		}
-
 		function makeTemplate(data, clickedName) {
 			var resultHTML = "";
 			var html = document.getElementById("tabcontent").innerHTML;
-
 			for (var i = 0, len = data.length; i < len; i++) {
 				if (data[i].name === clickedName) {
 					resultHTML = html.replace("{html}", data[i].html);
@@ -461,7 +458,6 @@
 			}
 			document.querySelector(".content").innerHTML = resultHTML;
 		}
-
 		function sendAjax(url, clickedName) {
 			var oReq = new XMLHttpRequest();
 			oReq.addEventListener("load", function() {
@@ -471,7 +467,6 @@
 			oReq.open("GET", url);
 			oReq.send();
 		}
-
 		var tabmenu = document.querySelector("#tabmenu");
 		tabmenu.addEventListener("click", function(evt) {
 			sendAjax("txt/tabmapping.txt", evt.target.innerHTML);
@@ -482,4 +477,3 @@
 	</script>
 </body>
 </html>
-
