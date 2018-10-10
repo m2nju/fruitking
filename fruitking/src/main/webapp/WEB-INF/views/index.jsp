@@ -37,6 +37,9 @@
 	    	}
 	</script>
 	<style>
+		.content{
+			margin-right: 100px;
+		}
 		#floatMenu {
 			position: absolute;
 			right: 25px;
