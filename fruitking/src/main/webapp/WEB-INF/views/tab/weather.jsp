@@ -5,10 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <style>
-a, a:hover {
-	color: #000000;
-	text_decoration: none;
+.countryList{
 	cursor: pointer;
+	display: inline-block;
 }
 	#main_menu {list-style: none;}
 	#main_menu>li {display:inline-block; width:200px; background:#f4f4f4; text-align: center; padding:10px 0;}
@@ -29,21 +28,21 @@ a, a:hover {
 
 </head>
 <body onload="initialize()">
- 	<div onclick="weatherCall(spain)">스페인</div>
-	<div onclick="weatherCall(italia)">이탈리아</div>
-	<div onclick="weatherCall(india)">인도</div>
-	<div onclick="weatherCall(canada)">캐나다</div>
-	<div onclick="weatherCall(chile)">칠레</div>
-	<div onclick="weatherCall(china)">중국</div>
-	<div onclick="weatherCall(vietnam)">베트남</div>
-	<div onclick="weatherCall(newzealand)">뉴질랜드</div>
-	<div onclick="weatherCall(peru)">페루</div>
-	<div onclick="weatherCall(turkey)">터키</div>
-	<div onclick="weatherCall(australia)">오스트레일리아</div>
-	<div onclick="weatherCall(portugal)">포르투갈</div>
-	<div onclick="weatherCall(florida)">플로리다</div>
-	<div onclick="weatherCall(sanfrancisco)">샌프란시스코</div>
-	<br>
+	<div class="countryList" onclick="weatherCall(newzealand)">뉴질랜드</div>
+	<div class="countryList" onclick="weatherCall(vietnam)">베트남</div>
+	<div class="countryList" onclick="weatherCall(sanfrancisco)">샌프란시스코</div>
+ 	<div class="countryList" onclick="weatherCall(spain)">스페인</div>
+	<div class="countryList" onclick="weatherCall(italia)">이탈리아</div>
+	<div class="countryList" onclick="weatherCall(india)">인도</div>
+	<div class="countryList" onclick="weatherCall(china)">중국</div>
+	<div class="countryList" onclick="weatherCall(chile)">칠레</div>
+	<div class="countryList" onclick="weatherCall(canada)">캐나다</div>
+	<div class="countryList" onclick="weatherCall(turkey)">터키</div>
+	<div class="countryList" onclick="weatherCall(peru)">페루</div>
+	<div class="countryList" onclick="weatherCall(portugal)">포르투갈</div>
+	<div class="countryList" onclick="weatherCall(florida)">플로리다</div>
+	<div class="countryList" onclick="weatherCall(australia)">호주</div>
+	<br><br><br>
 	<div id="map" style="width:940px; height:705px;"></div>
 	
 <script type="text/javascript">
