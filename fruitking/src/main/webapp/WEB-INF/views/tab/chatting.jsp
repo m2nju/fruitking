@@ -40,8 +40,6 @@
 				if (msg.type === 'normal') {
 					
 					$('#messages').append('>> ' + decodeURIComponent(msg.message) + '<br>');
-
-					document.getElementById('sendbutton').click();
 				} else {
 					$('#messages').append('<li>' + msg.message + '</li>');
 				}
@@ -55,8 +53,9 @@
 					input = encodeURIComponent('<%=userName%>' + ' : ' + input);
 	
 					sock.send(input);
-					
 					$('#myMessage').val('');
+
+					document.getElementById('sendbutton').click();
 				}
 				$("#mydiv").scrollTop($("#mydiv")[0].scrollHeight);
 			});
