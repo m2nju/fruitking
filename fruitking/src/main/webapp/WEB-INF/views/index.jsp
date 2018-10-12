@@ -47,6 +47,7 @@
 			background-color: rgba(255, 255, 255, 0.0);
 			color: #ffffff;
 			text-align: center;
+			margin-left: 20px;
 		}
 		#floatMenu > a{
 			text-decoration: none;
