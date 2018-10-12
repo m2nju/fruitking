@@ -52,10 +52,27 @@ public class NotifyDao {
 			notify.setRegdate(rs.getDate("regdate"));
 			return notify;
 		}
-
 	}
-
-	public Notify selectNotify(Long id) {		
+	
+	public Notify selectNextNotify(Long id) {
+		int count = jdbc.queryForObject(NEXT_COUNT, Collections.singletonMap("id", id), Integer.class);
+		if(count > 0) {
+			return jdbc.queryForObject(SELECT_NEXT_NOTIFY, Collections.singletonMap("id", id), rowMapper);
+		} else {
+			return jdbc.queryForObject(SELECT_NOTIFY, Collections.singletonMap("id", id), rowMapper);
+		}
+	}
+	
+	public Notify selectPriorNotify(Long id) {
+		int count = jdbc.queryForObject(PRIOR_COUNT, Collections.singletonMap("id", id), Integer.class);
+		if(count > 0) {
+			return jdbc.queryForObject(SELECT_PRIOR_NOTIFY, Collections.singletonMap("id", id), rowMapper);
+		} else {
+			return jdbc.queryForObject(SELECT_NOTIFY, Collections.singletonMap("id", id), rowMapper);
+		}
+	}
+	
+	public Notify selectNotify(Long id) {
 		Notify notify = jdbc.queryForObject(SELECT_NOTIFY, Collections.singletonMap("id", id), rowMapper);
 		return notify;
 	}

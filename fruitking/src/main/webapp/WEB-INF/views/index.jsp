@@ -47,6 +47,7 @@
 			background-color: rgba(255, 255, 255, 0.0);
 			color: #ffffff;
 			text-align: center;
+			padding-left: 20px;
 		}
 		#floatMenu > a{
 			text-decoration: none;
@@ -276,6 +277,9 @@
 				transform: translate3d(-100%, 0, 0);
 			}
 		}
+.navbar {
+	padding-left: 5rem;
+}
 	</style>
 
 </head>

@@ -98,6 +98,12 @@ public class MainController {
 
 		model.addAttribute("notify", notify);
 		model.addAttribute("id", id);
+		
+		Notify nextNotify = notifyService.getNextNotify(id);
+		model.addAttribute("nextNotify", nextNotify);
+		
+		Notify priorNotify = notifyService.getPriorNotify(id);
+		model.addAttribute("priorNotify", priorNotify);
 
 		return "tab/notify/viewNotify";
 	}

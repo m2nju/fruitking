@@ -38,13 +38,13 @@
 
 	<div class="btn-group dropdown">
 		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-			S.America<span class="caret"></span>
+			N.America<span class="caret"></span>
 		</button>
 		
 		<ul class="dropdown-menu">
 			<li class="dropdown-submenu">
 				<a class="america" tabindex="-1" href="#">
-					미국<span>▶</span>
+					미국 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;▶
 				</a>
 				<ul class="dropdown-menu">
 					<li><a tabindex="-1" href="#" onclick="weatherCall(sanfrancisco)">샌프란시스코</a></li>
@@ -56,18 +56,18 @@
 	</div>
 
 	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="northamerica" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			N.America
+		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+			S.America<span class="caret"></span>
 		</button>
-		<div class="dropdown-menu" aria-labelledby="northamerica">
+		<div class="dropdown-menu">
 			<div class="dropdown-item" onclick="weatherCall(chile)">칠레</div>
 			<div class="dropdown-item" onclick="weatherCall(peru)">페루</div>
 		</div>
 	</div>
 
 	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="europe" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Europe
+		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+			Europe<span class="caret"></span>
 		</button>
 		<div class="dropdown-menu" aria-labelledby="europe">
 		 	<div class="dropdown-item" onclick="weatherCall(spain)">스페인</div>
@@ -77,11 +77,11 @@
 	</div>
 	
 	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="aisa" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Asia
+		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+			Asia<span class="caret"></span>
 		</button>
 		<div class="dropdown-menu" aria-labelledby="asia">
-			<div class="dropdown-item" onclick="weatherCall(china)">중국</div>
+			<div class="dropdown-item" onclick="weatherCall(china)">중국  <span>▶</span></div>
 			<div class="dropdown-item" onclick="weatherCall(vietnam)">베트남</div>
 			<div class="dropdown-item" onclick="weatherCall(india)">인도</div>
 			<div class="dropdown-item" onclick="weatherCall(turkey)">터키</div>
@@ -89,8 +89,8 @@
 	</div>
 
 	<div class="btn-group dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="oceania" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Oceania
+		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+			Oceania<span class="caret"></span>
 		</button>
 		<div class="dropdown-menu" aria-labelledby="oceania">
 			<div class="dropdown-item" onclick="weatherCall(australia)">호주</div>
