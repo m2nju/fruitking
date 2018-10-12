@@ -188,14 +188,14 @@ public class MainController {
 	@PostMapping(path = "/getPrice")
 	public String getPrice(@RequestParam(name = "date", required = false, defaultValue = "0") String date,
 			ModelMap model) {
-		//System.out.println(date + "의 가격 예측 모델 API 호출");
-		model.addAttribute("date", date); // 현재 response에 date라는 이름으로 date 값을 저장하는 spring에서 제공하는 메서드임.
+		System.out.println(date + "의 가격 예측 모델 API 호출");
+		model.addAttribute("date", date); // 현재 response에 date라는 이름으로 date 값을 저장하는 spring에서 제공하는 메서드임.	
 		int price = 0; // API를 통해 얻어온 가격의 값을 여기에 담을 수 있도록.
 		String result_str = "";
 		URL url = null;
 		URLConnection urlConnection = null;
 		// URL 주소
-		String sUrl = "http://fruitking.tk:5000/price"; // api url 경로
+		String sUrl = "http://fruitking.tk:5020/price"; // api url 경로
 		// 파라미터 이름
 		String paramName = "date";
 		// 파라미터 이름에 대한 값
