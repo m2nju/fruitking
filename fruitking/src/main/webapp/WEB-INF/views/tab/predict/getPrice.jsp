@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${date}의 사과 예상 가격은 ${price}원 입니다.
+${date}의 바나나 예상 가격은 ${price}원 입니다.
 </body>
 </html>

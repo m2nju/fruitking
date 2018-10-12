@@ -43,7 +43,7 @@
 		%>
 	</div>
 	<div class="expected">
-		<h2>예상가격</h2>
+		<h2>예상가격 조회를 원하는 년, 월을 선택해주세요.</h2>
 		<form method="post" action="getPrice">  
 			date : <input type="month" name="date" value="2018-10"><br>
 			<input type="submit" value="확인"> 
