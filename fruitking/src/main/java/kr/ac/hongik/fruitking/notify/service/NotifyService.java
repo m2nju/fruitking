@@ -7,6 +7,8 @@ import kr.ac.hongik.fruitking.notify.dto.Notify;
 public interface NotifyService {
 	public static final Integer LIMIT = 5;
 	public List<Notify> getNotifies(Integer start);
+	public Notify getNextNotify(Long id);
+	public Notify getPriorNotify(Long id);
 	public Notify getNotify(Long id);
 	public int deleteNotify(Long id, String ip);
 	public Notify addNotify(Notify notify, String ip);

@@ -27,7 +27,9 @@ a, a:hover {
 	margin-right: auto;
 	margin-left: auto;
 }
-
+.navbar {
+	padding-left: 5rem;
+}
 .tablinks.active {
     background-color: rgb(61, 116, 199);
   }
@@ -47,7 +49,7 @@ a, a:hover {
 	margin-right: -8px;
 }
 .content {
-	padding: 3%;
+	padding: 0, 5%;
 }
 .tabcontent {
 	border: none;

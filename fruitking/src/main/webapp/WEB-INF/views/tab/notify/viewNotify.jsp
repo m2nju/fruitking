@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set  var="notify" value="${notify }" scope="session"/>
+<c:set  var="nextNotify" value="${nextNotify }" scope="session"/>
+<c:set  var="priorNotify" value="${priorNotify }" scope="session"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,38 +33,34 @@
 						<td>내용</td>
 						<td colspan="2"><div style="min-height: 200px; text-align: left;">${notify.content }</div></td>
 					</tr>
-					<%-- <%
-						if(nextNotify.getId() == notify.getId()){
-					%>
-						<tr>
-							<td>윗글</td>
-							<td colspan="2">윗글이 없습니다.</td>
-						</tr>
-					<%
-						} else {
-					%>
-						<tr>
-							<td>윗글</td>
-							<td colspan="2"><a href="view.jsp?id=<%=nextNotify.getId() %>"><%= nextNotify.getTitle() %></a></td>
-						</tr>
-					<%
-						}
-						if(priorNotify.getId() == notify.getId()){
-					%>
-						<tr>
-							<td>아랫글</td>
-							<td colspan="2">아랫글이 없습니다.</td>
-						</tr>
-					<%
-						} else {
-					%>
-						<tr>
-							<td>아랫글</td>
-							<td colspan="2"><a href="view.jsp?id=<%=priorNotify.getId()%>"><%= priorNotify.getTitle() %></a></td>
-						</tr>
-					<%
-						}
-					%> --%>
+					<c:choose>
+						<c:when test="${nextNotify.id == notify.id }">
+							<tr>
+								<td>윗글</td>
+								<td colspan="2">윗글이 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:when test="${nextNotify.id > notify.id }">
+							<tr>
+								<td>윗글</td>
+								<td colspan="2"><a href="viewNotify?id=${nextNotify.id }">${nextNotify.title }</a></td>
+							</tr>
+						</c:when>
+					</c:choose>
+					<c:choose>
+						<c:when test="${priorNotify.id == notify.id }">
+							<tr>
+								<td>아랫글</td>
+								<td colspan="2">아랫글이 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:when test="${priorNotify.id < notify.id }">
+							<tr>
+								<td>아랫글</td>
+								<td colspan="2"><a href="viewNotify?id=${priorNotify.id }">${priorNotify.title }</a></td>
+							</tr>
+						</c:when>
+					</c:choose>
 				</tbody>
 			</table>
 			<a href="javascript:history.go(-1)" class="btn btn-primary">목록</a>

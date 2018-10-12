@@ -32,6 +32,20 @@ public class NotifyServiceImpl implements NotifyService{
 	
 	@Override
 	@Transactional
+	public Notify getNextNotify(Long id) {
+		Notify notify = notifyDao.selectNextNotify(id);
+		return notify;
+	}
+	
+	@Override
+	@Transactional
+	public Notify getPriorNotify(Long id) {
+		Notify notify = notifyDao.selectPriorNotify(id);
+		return notify;
+	}
+	
+	@Override
+	@Transactional
 	public Notify getNotify(Long id) {
 		Notify notify = notifyDao.selectNotify(id);
 		return notify;

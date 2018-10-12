@@ -273,6 +273,10 @@
 				transform: translate3d(-100%, 0, 0);
 			}
 		}
+.navbar {
+	padding-left: 5rem;
+	text-align: center;
+}
 	</style>
 
 </head>
