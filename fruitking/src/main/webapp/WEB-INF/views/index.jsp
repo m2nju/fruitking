@@ -304,8 +304,8 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">		
 			<div id="tabmenu" class="navbar-nav">
-				<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">날씨 및 조세</a>
-				<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">경매 및 판매가</a>
+				<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">주요 생산지 날씨</a>
+				<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">수입량 및 수입가격</a>
 				<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">관련 뉴스</a>
 				<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">공지사항</a>
 				<a id="tablinks" class="nav-item nav-link" onclick="openTab(event)">문의하기</a>
@@ -483,7 +483,7 @@
 		}
 		var tabmenu = document.querySelector("#tabmenu");
 		tabmenu.addEventListener("click", function(evt) {
-			sendAjax("txt/tabmapping.txt", evt.target.innerHTML);
+			sendAjax("txt/tabui.txt", evt.target.innerHTML);
 		})
 	</script>
 	<script id="tabcontent" type="my-template">

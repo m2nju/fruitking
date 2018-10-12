@@ -1,18 +1,10 @@
 [
     {
-        "name" : "사이트 소개",
-        "html" : "info"
-    },
-    {
-        "name" : "과일 거래량",
-        "html" : "volume"
-    },
-    {
-        "name" : "날씨 및 조세",
+        "name" : "주요 생산지 날씨",
         "html" : "weather"
     },
     {
-        "name" : "경매 및 판매가",
+        "name" : "수입량 및 수입가격",
         "html" : "price"
     },
     {
