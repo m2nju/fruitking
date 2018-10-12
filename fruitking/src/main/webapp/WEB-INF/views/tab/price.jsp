@@ -9,15 +9,15 @@
 			String chartName = null;
 		%>
 		<form method=post>
-			<input type="radio" name="chart" value="바나나" >바나나
-			<input type="radio" name="chart" value="포도" >포도
-			<input type="submit" value="검색">
+			<input type="radio" name="chart" value="banana" >banana
+			<input type="radio" name="chart" value="grape" >grape
+			<input type="submit" value="search">
 		</form>
 		<%
 			chartName = request.getParameter("chart");
 			if(chartName != null){
 		%>
-		<iframe src="./bananaChart" id="Iframe" style="display: block; width: 80%; height: 600px;" frameborder="0" onLoad="autosize()"></iframe>
+		<iframe src="./<%=chartName%>Chart" id="Iframe" style="display: block; width: 80%; height: 600px;" frameborder="0" onLoad="autosize()"></iframe>
 		 <%
 		 }%>
 	</body>
