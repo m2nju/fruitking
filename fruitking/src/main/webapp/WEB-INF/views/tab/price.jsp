@@ -25,15 +25,16 @@
 <body>
 	<div class="chart">
 		<%
-			String chartName = null;
+			String chartName = request.getParameter("chart");
 		%>
 		<form method=post>
-			<input type="radio" name="chart" value="banana">바나나
-			<input type="radio" name="chart" value="grape">포도
+			<% if(chartName != null && chartName.equals("banana")) {%><input type="radio" name="chart" value="banana" checked="checked">바나나<%}else{ %>
+			<input type="radio" name="chart" value="banana">바나나<%}%>
+			<% if(chartName != null && chartName.equals("grape")) {%><input type="radio" name="chart" value="grape" checked="checked">포도<%}else{ %>
+			<input type="radio" name="chart" value="grape">포도<%} %>
 			<input type="submit" value="조회">
 		</form>
 		<%
-			chartName = request.getParameter("chart");
 			if(chartName != null){
 		%>
 		<iframe src="./<%=chartName%>Chart" id="Iframe" style="display: block; width: 100%; height: 500px;" frameborder="0""></iframe>
