@@ -38,13 +38,13 @@
 
 	<div class="btn-group dropdown">
 		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-			S.America<span class="caret"></span>
+			N.America<span class="caret"></span>
 		</button>
 		
 		<ul class="dropdown-menu">
 			<li class="dropdown-submenu">
 				<a class="america" tabindex="-1" href="#">
-					미국  <span>▶</span>
+					미국 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;▶
 				</a>
 				<ul class="dropdown-menu">
 					<li><a tabindex="-1" href="#" onclick="weatherCall(sanfrancisco)">샌프란시스코</a></li>
@@ -57,9 +57,9 @@
 
 	<div class="btn-group dropdown">
 		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-			N.America<span class="caret"></span>
+			S.America<span class="caret"></span>
 		</button>
-		<div class="dropdown-menu" aria-labelledby="northamerica">
+		<div class="dropdown-menu">
 			<div class="dropdown-item" onclick="weatherCall(chile)">칠레</div>
 			<div class="dropdown-item" onclick="weatherCall(peru)">페루</div>
 		</div>

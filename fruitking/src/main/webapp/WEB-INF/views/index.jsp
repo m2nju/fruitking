@@ -279,7 +279,6 @@
 		}
 .navbar {
 	padding-left: 5rem;
-	text-align: center;
 }
 	</style>
 

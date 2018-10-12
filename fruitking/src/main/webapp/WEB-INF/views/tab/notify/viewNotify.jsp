@@ -63,7 +63,7 @@
 					</c:choose>
 				</tbody>
 			</table>
-			<a href="javascript:history.go(-1)" class="btn btn-primary">목록</a>
+			<a href="../notify" class="btn btn-primary">목록</a>
 			<a href="updateNotify?id=${notify.id }" class="btn btn-primary">수정</a>
 			<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteNotify?id=${notify.id }" class="btn btn-primary pull-right">삭제</a>
 		</div>
