@@ -19,7 +19,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="20"></td>
+						<td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="40"></td>
 					</tr>
 					<% String writer = (String)session.getAttribute("userName"); %>
 					<input type="hidden" class="form-control" placeholder="작성자" name="writer" value="<%=writer %>"maxlength="20">

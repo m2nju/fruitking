@@ -7,13 +7,15 @@
 	<title>Fruit King</title>
 	<style type="text/css">
 	.chart {
-		width: 80%;
+		width: 70%;
 		position: relative;
+		float: left;
 	}
 	
 	.expected {
-		width: 20%;
+		width: 25%;
 		position: relative;
+		float: right;
 	}
 	</style>
 </head>
