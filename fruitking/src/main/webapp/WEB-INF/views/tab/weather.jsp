@@ -81,7 +81,7 @@
 			Asia<span class="caret"></span>
 		</button>
 		<div class="dropdown-menu" aria-labelledby="asia">
-			<div class="dropdown-item" onclick="weatherCall(china)">중국  <span>▶</span></div>
+			<div class="dropdown-item" onclick="weatherCall(china)">중국 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;▶
 			<div class="dropdown-item" onclick="weatherCall(vietnam)">베트남</div>
 			<div class="dropdown-item" onclick="weatherCall(india)">인도</div>
 			<div class="dropdown-item" onclick="weatherCall(turkey)">터키</div>

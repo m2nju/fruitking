@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="getPrice">  
+<form method="post" action="getPrice">
 date : <input type="text" name="date"><br>
 <input type="submit" value="확인"> 
 </body>
