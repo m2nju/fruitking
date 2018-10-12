@@ -205,7 +205,7 @@ public class MainController {
 		// 파라미터 이름
 		String paramName = "date";
 		// 파라미터 이름에 대한 값
-		String paramValue = date;
+		String paramValue = date+"-01";
 		try {
 			// Get방식으로 전송 하기
 			url = new URL(sUrl + "?" + paramName + "=" + paramValue);

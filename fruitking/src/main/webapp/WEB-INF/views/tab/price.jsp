@@ -45,7 +45,7 @@
 	<div class="expected">
 		<h2>예상가격</h2>
 		<form method="post" action="getPrice">  
-			date : <input type="text" name="date"><br>
+			date : <input type="month" name="date" value="2018-10"><br>
 			<input type="submit" value="확인"> 
 		</form>
 	</div>
