@@ -6,17 +6,20 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Fruit King</title>
 	<style type="text/css">
-	.chart {
-		width: 70%;
-		position: relative;
-		float: left;
-	}
-	
-	.expected {
-		width: 25%;
-		position: relative;
-		float: right;
-	}
+		body {
+			height: 600px;
+		}
+		.chart {
+			width: 70%;
+			position: relative;
+			float: left;
+		}
+		
+		.expected {
+			width: 25%;
+			position: relative;
+			float: right;
+		}
 	</style>
 </head>
 <body>
@@ -33,13 +36,17 @@
 			chartName = request.getParameter("chart");
 			if(chartName != null){
 		%>
-		<iframe src="./<%=chartName%>Chart" id="Iframe" style="display: block; width: 100%; height: 600px;" frameborder="0""></iframe>
+		<iframe src="./<%=chartName%>Chart" id="Iframe" style="display: block; width: 100%; height: 500px;" frameborder="0""></iframe>
 		<%
 			}
 		%>
 	</div>
 	<div class="expected">
 		<h2>예상가격</h2>
+		<form method="post" action="getPrice">  
+			date : <input type="text" name="date"><br>
+			<input type="submit" value="확인"> 
+		</form>
 	</div>
 	
 </body>
