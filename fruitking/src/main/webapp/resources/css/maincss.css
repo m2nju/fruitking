@@ -12,10 +12,6 @@ a, a:hover {
 	text_decoration: none;
 	cursor: pointer;
 }
-.login {
-	text-align: right;
-	margin-right: 10px;
-}
 .container {
   padding-right: 15px;
   padding-left: 15px;
