@@ -35,14 +35,18 @@
 		<%
 			if(chartName != null){
 		%>
-		<iframe src="./<%=chartName%>Chart" id="Iframe" style="display: block; width: 100%; height: 600px;" frameborder="0""></iframe>
+		<iframe src="./<%=chartName%>Chart" id="Iframe" style="display: block; width: 100%; height: 400px;" frameborder="0""></iframe>
 		<%
 			}
 		%>
 	</div>
+	
 	<div class="expected">
 		<h2>예상가격</h2>
+		<form method="post" action="getPrice">  
+			date : <input type="text" name="date"><br>
+			<input type="submit" value="확인">
+		</form>
 	</div>
-	
 </body>
 </html>
