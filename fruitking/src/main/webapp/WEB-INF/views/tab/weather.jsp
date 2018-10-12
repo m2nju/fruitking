@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.0/jquery.flexslider-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 	.dropdown-submenu {
 	    position: relative;
@@ -113,7 +116,7 @@
 	});
 </script>
 <script type="text/javascript">
-	var temp, humidity, description, windSpeed, clouds;	
+	var temp, humidity, description, windSpeed, clouds;
 	var spain = {name:"spain", x:"37.740431", y:"-3.798545", zoom:6};
 	var italia = {name:"italia", x:"42.747164", y:"12.482229", zoom:6};
 	var india = {name:"india", x:"23.155863", y:"79.274986", zoom:5};
@@ -191,6 +194,12 @@
 	}
 </script>
 <script>
+$.get("/txt/locations.txt", function(data) {
+    var lines = data.split("\n");
+    $.each(lines, function(n, elem) {
+        alert(elem);
+    })
+})
 	function initialize() {
 		var locations = [
 			    ['florida', 27.760675, -81.416535, 6],

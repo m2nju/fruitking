@@ -424,7 +424,8 @@
 						<div class="category">
 							<p>과일 키워드 기준으로 뉴스를 크롤링하여 빠른 시간에 트렌트를 파악</p>
 						</div>
-					</div></li>
+					</div>
+				</li>
 			</ul>
 		</div>
 		</section>
@@ -470,10 +471,11 @@
 			}
 			document.querySelector(".content").innerHTML = resultHTML;
 		}
+		var data;
 		function sendAjax(url, clickedName) {
 			var oReq = new XMLHttpRequest();
 			oReq.addEventListener("load", function() {
-				var data = JSON.parse(oReq.responseText);
+				data = JSON.parse(oReq.responseText);
 				makeTemplate(data, clickedName);
 			});
 			oReq.open("GET", url);
