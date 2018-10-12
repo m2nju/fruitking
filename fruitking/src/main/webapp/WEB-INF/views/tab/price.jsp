@@ -36,7 +36,7 @@
 			if(chartName != null){
 		%>
 		<iframe src="./<%=chartName%>Chart" id="Iframe" style="display: block; width: 100%; height: 400px;" frameborder="0""></iframe>
-		<%
+		<%		/**/
 			}
 		%>
 	</div>
