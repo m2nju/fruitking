@@ -30,8 +30,8 @@
 		<form method=post>
 			<% if(chartName != null && chartName.equals("banana")) {%><input type="radio" name="chart" value="banana" checked="checked">바나나<%}else{ %>
 			<input type="radio" name="chart" value="banana">바나나<%}%>
-			<% if(chartName != null && chartName.equals("grape")) {%><input type="radio" name="chart" value="grape" checked="checked">포도<%}else{ %>
-			<input type="radio" name="chart" value="grape">포도<%} %>
+			<% if(chartName != null && chartName.equals("lemon")) {%><input type="radio" name="chart" value="lemon" checked="checked">레몬<%}else{ %>
+			<input type="radio" name="chart" value="lemon">레몬<%} %>
 			<input type="submit" value="조회">
 		</form>
 		<%
