@@ -23,7 +23,7 @@
 	<div class="chart">
 		<%
 			String chartName = request.getParameter("chart");
-		/**/
+	
 		%>
 		<form method=post>
 			<% if(chartName != null && chartName.equals("banana")) {%><input type="radio" name="chart" value="banana" checked="checked">바나나<%}else{ %>
