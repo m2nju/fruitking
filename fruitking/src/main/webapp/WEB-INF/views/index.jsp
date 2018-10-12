@@ -39,6 +39,7 @@
 	<style>
 		.content{
 			background-color: #fff;
+			margin-right: 100px;
 		}
 		#floatMenu {
 			position: absolute;
