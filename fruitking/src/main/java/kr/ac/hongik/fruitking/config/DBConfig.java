@@ -20,13 +20,13 @@ public class DBConfig implements TransactionManagementConfigurer {
 	private String password = "password";	// Fruitking의 Database에 연결하기 위한 기본적인 정보들.
 
 	@Bean
-	public DataSource dataSource() {		// Datasource 라이브러리를 import하여 연결, connection pool을 활용하여 connect 요청시에 소요되는 시간을 절약할 수 있다.	
+	public DataSource dataSource() {		// Datasource 라이브러리를 import하여 연결하고 Spring의 Bean으로 등록함으로써 필요에 따라 자동으로 생성되도록 한다.
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(driverClassName);
 		dataSource.setUrl(url);
 		dataSource.setUsername(username);
 		dataSource.setPassword(password);	
-		
+		// connection pool을 활용하여 connect 요청시에 소요되는 시간을 절약할 수 있다.	
 		// 초기에 생성되는 커넥션의 개수 설정
 		dataSource.setInitialSize(5);
 
