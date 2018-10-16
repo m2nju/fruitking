@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h1>문의하기</h1><br>
+	<!-- 문의하기는 관리자 이메일로 즉시 메일을 전송하는 기능으로, formspree의 API를 이용한다. -->
 	<form action="https://formspree.io/2mingju@naver.com" method="POST">
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>

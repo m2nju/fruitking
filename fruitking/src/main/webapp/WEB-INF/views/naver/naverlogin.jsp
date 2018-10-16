@@ -7,8 +7,7 @@
 <title>네이버로그인</title>
 </head>
 <body>
-	<%
-		//System.out.println("naverlogin.jsp 호출");
+	<%	// 네이버 로그인 요청시
 		String clientId = "ravoW4uifW7U6hs5l8QL";//애플리케이션 클라이언트 아이디값";
 		String redirectURI = URLEncoder.encode("http://fruitking.tk/callBack", "UTF-8");	// Callback 받을 경로
 		SecureRandom random = new SecureRandom();

@@ -16,7 +16,7 @@
 <title>네이버로그인</title>
 </head>
 <body>
-	<%
+	<%	
 		String clientId = "ravoW4uifW7U6hs5l8QL";//애플리케이션 클라이언트 아이디값";
 		String clientSecret = "d0HHEwl4dF";//애플리케이션 클라이언트 시크릿값";
 		String code = request.getParameter("code");
