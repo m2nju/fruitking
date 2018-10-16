@@ -1,13 +1,9 @@
 package kr.ac.hongik.fruitking.controller;
-
-import java.io.IOException;
+// Fruitking 웹 어플리케이션에 들어오는 대부분의 요청을 처리하는 Main Controller.
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,12 +23,12 @@ import kr.ac.hongik.fruitking.notify.service.NotifyService;
 import kr.ac.hongik.fruitking.user.dto.User;
 import kr.ac.hongik.fruitking.user.service.UserService;
 
-@Controller
+@Controller	// 해당 클래스는 컨트롤러임을 명시
 public class MainController {
-	@Autowired
+	@Autowired	// nofityService에 관한 프로퍼티들을 같은 이름을 기준으로 spring에서 알아서 매핑해주도록 설정
 	NotifyService notifyService;
 
-	@Autowired
+	@Autowired	// 위와 동일
 	UserService userService;
 
 	@GetMapping(path = "/notify") // 프로젝트명 fruitking 뒤에 들어오는 경로 ex: http://localhost:8080/fruitking/notify 배포시
@@ -123,7 +119,7 @@ public class MainController {
 	@RequestMapping(path = "/registUser")
 	public String write(@ModelAttribute User user, HttpServletRequest request) {
 		String clientIp = request.getRemoteAddr();
-		//System.out.println("clientIp : " + clientIp);
+		System.out.println("clientIp : " + clientIp);
 		userService.registUser(user);
 
 		return "redirect:/"; // 해당 path로 리다이렉트 한다.
