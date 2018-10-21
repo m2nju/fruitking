@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-
+	
 	<h1>공지사항</h1>
 	<br>
 	<div>
