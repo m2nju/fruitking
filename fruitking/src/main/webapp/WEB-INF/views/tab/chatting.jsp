@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Chat Room</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script type="text/javascript"
-	src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
 </head>
 <body>
 	<div id="mydiv" style="overflow-y:auto; overflow-x:hidden; width:100%; height: 500px;">
@@ -39,7 +37,7 @@
 				// console.log(type(msg));
 				if (msg.type === 'normal') {	//	정상적인 채팅 메세지일 때
 					$('#messages').append('>> ' + decodeURIComponent(msg.message) + '<br>');	// 전송 받은 메세지를 URI 디코딩한다.
-					document.getElementById('sendbutton').click();	// 서버로부터 메세지가 왔을 때, 메세지가 한 줄 밑으로 내려가 있는 현상을 수정하기 위해 전송 버튼이 눌리게 함.
+					//document.getElementById('sendbutton').click();	// 서버로부터 메세지가 왔을 때, 메세지가 한 줄 밑으로 내려가 있는 현상을 수정하기 위해 전송 버튼이 눌리게 함.
 				} else {
 					$('#messages').append('<li>' + msg.message + '</li>');
 				}

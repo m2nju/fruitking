@@ -82,7 +82,7 @@ public class MainController {
 		return "tab/notify/viewNotify"; // 해당 path로 리다이렉트 한다.
 	}
 
-	@GetMapping(path = "/notify/deleteNotify") // 공지사항상세보기
+	@GetMapping(path = "/notify/deleteNotify") // 공지사항지우기
 	public String deleteNotify(@ModelAttribute Notify notify, HttpServletRequest request,
 			@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
 		String clientIp = request.getRemoteAddr();
@@ -251,5 +251,21 @@ public class MainController {
 	@RequestMapping(value = "lemonChart")
 	public String chartlemon(HttpSession session) throws Exception {
 		return "tab/chart/lemon";
+	}
+	@RequestMapping(value = "getS")
+	public String a(HttpSession session) throws Exception {
+		return "session/getSession";
+	}
+	@RequestMapping(value = "infoS")
+	public String b(HttpSession session) throws Exception {
+		return "session/infoSession";
+	}
+	@RequestMapping(value = "removeS")
+	public String c(HttpSession session) throws Exception {
+		return "session/removeAttribute";
+	}
+	@RequestMapping(value = "setS")
+	public String d(HttpSession session) throws Exception {
+		return "session/setSession";
 	}
 }
