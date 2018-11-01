@@ -252,20 +252,5 @@ public class MainController {
 	public String chartlemon(HttpSession session) throws Exception {
 		return "tab/chart/lemon";
 	}
-	@RequestMapping(value = "getS")
-	public String a(HttpSession session) throws Exception {
-		return "session/getSession";
-	}
-	@RequestMapping(value = "infoS")
-	public String b(HttpSession session) throws Exception {
-		return "session/infoSession";
-	}
-	@RequestMapping(value = "removeS")
-	public String c(HttpSession session) throws Exception {
-		return "session/removeAttribute";
-	}
-	@RequestMapping(value = "setS")
-	public String d(HttpSession session) throws Exception {
-		return "session/setSession";
-	}
+
 }
