@@ -38,7 +38,7 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_6z_sVa7_dirTxeWwFTWhExf4V2UyfMU&callback=initMap&region=KR"></script>
 </head>
 <body onload="initialize()">
-
+	<!-- 나라 리스트들을 버튼으로 구현  -->
 	<div class="btn-group dropdown">
 		<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
 			N.America<span class="caret"></span>
@@ -84,7 +84,7 @@
 			Asia<span class="caret"></span>
 		</button>
 		<div class="dropdown-menu" aria-labelledby="asia">
-			<div class="dropdown-item" onclick="weatherCall(china)">중국  <span>▶</span></div>
+			<div class="dropdown-item" onclick="weatherCall(china)">중국 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;▶</div>
 			<div class="dropdown-item" onclick="weatherCall(vietnam)">베트남</div>
 			<div class="dropdown-item" onclick="weatherCall(india)">인도</div>
 			<div class="dropdown-item" onclick="weatherCall(turkey)">터키</div>
@@ -115,7 +115,7 @@
 	  });
 	});
 </script>
-<script type="text/javascript">
+<script type="text/javascript">	//제공하는 나라 리스트
 	var temp, humidity, description, windSpeed, clouds;
 	var spain = {name:"spain", x:"37.740431", y:"-3.798545", zoom:6};
 	var italia = {name:"italia", x:"42.747164", y:"12.482229", zoom:6};
@@ -133,16 +133,16 @@
 	var portugal = {name:"portugal", x:"39.600134", y:"-8.075996", zoom:7};
 	
 	var weatherIconImgURL;
-	function weatherCall(city){
-		name = city.name;
-		x = city.x;
-		y = city.y;
+	function weatherCall(city){	//선택된 지역의 날씨를 가져오는 함수
+		name = city.name;	//지역 이름
+		x = city.x;	//지역의 x좌표
+		y = city.y;	//지역의 y좌표
 		zoom = city.zoom;
 		var key = "1042afb6d0833b90b43ecbaccad5b137";
 		var apiURI = "http://api.openweathermap.org/data/2.5/weather?q="+name+"&appid="+key;
 		$.ajax({
 			url: apiURI,
-			success: function(result) {
+			success: function(result) {	//api 호출로 선택된 지역의 온도, 습도, 구름량 등 정보를 가져옴
 				temp = (result.main.temp - 273.15).toFixed(2) + "˚C";
 				humidity = result.main.humidity + "%";
 				description = result.weather[0].description;
@@ -150,15 +150,15 @@
 				clouds = result.clouds.all + "%";
 			}
 		});
-		mapLoad(name, x, y, zoom);
+		mapLoad(name, x, y, zoom);	//확대 지도를 부르는 함수
 	};
 </script>
 <script>
-	function mapLoad(name, x, y, zoom) {
+	function mapLoad(name, x, y, zoom) {	//클릭시 확대 되는 지도
 		var zoomLevel = zoom; // 첫 로딩시 보일 지도의 확대 레벨
 		var markerTitle = name; // 현재 위치 마커에 마우스를 올렸을때 나타나는 이름
 		var markerMaxWidth = 300;
-		//말풍선
+		//말풍선에 들어가는 나라별 날씨
 		var contentString	= '<div>' +
 			'<h2>' + name + '</h2>'+
 			'온도 : <div class="weatherInfo" id="temp">'+ temp +'</div><br>' +
@@ -169,38 +169,32 @@
 			'</div>';
 	
 		var myLatlng = new google.maps.LatLng(x, y);
-		var mapOptions = {
+		var mapOptions = {	//업로드 할 지도에 추가하는 옵션
 			zoom: zoomLevel,
 			center: myLatlng,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
 		var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-		var marker = new google.maps.Marker({
+		var marker = new google.maps.Marker({	//지도에 추가할 마커
 			position: myLatlng,
 			map: map,
 			title: markerTitle
 		});
-		var infowindow = new google.maps.InfoWindow(
+		var infowindow = new google.maps.InfoWindow(	//마커 안에 표현되는 값들
 			{
 				content: contentString,
 				maxWidth: markerMaxWidth
 			}
 		);
 		
-		google.maps.event.addListener(marker, 'click', function() {
+		google.maps.event.addListener(marker, 'click', function() {	//마커 클릭시 표현하는 함수
 			infowindow.open(map, marker);
 		});
 	}
 </script>
 <script>
-$.get("/txt/locations.txt", function(data) {
-    var lines = data.split("\n");
-    $.each(lines, function(n, elem) {
-        alert(elem);
-    })
-})
-	function initialize() {
+	function initialize() {	//페이지 시작시 보이는 나라 리스트
 		var locations = [
 			    ['florida', 27.760675, -81.416535, 6],
 			    ['san francisco', 37.768852, -122.422174, 5],
@@ -208,7 +202,7 @@ $.get("/txt/locations.txt", function(data) {
 			    ['portugal', 39.600134, -8.075996, 5]
 			];
 		
-		var map = new google.maps.Map(document.getElementById('map'), {
+		var map = new google.maps.Map(document.getElementById('map'), { //지도 옵션 세팅
 			zoom: 2,
 			center: new google.maps.LatLng(35, 150),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -228,11 +222,11 @@ $.get("/txt/locations.txt", function(data) {
 					clouds = result.clouds.all + "%";
 				}
 			});
-			marker = new google.maps.Marker({
+			marker = new google.maps.Marker({	//마커가 표시될 지역 세팅
 				position: new google.maps.LatLng(locations[i][1], locations[i][2]),
 				map: map
 			});
-			0
+			//마커에 들어가는 날씨 값
 			contentString	= '<div>' +
 			'<h2>' + name + '</h2>'+
 			'온도 : <div class="weatherInfo" id="temp">'+ temp +'</div><br>' +
@@ -242,14 +236,14 @@ $.get("/txt/locations.txt", function(data) {
 			'운량 : <div class="weatherInfo" id="clouds">' + clouds + '</div><br>' +
 			'</div>';
 			
-			infowindow = new google.maps.InfoWindow(
+			infowindow = new google.maps.InfoWindow(	//마커 클릭시 보이는 값들
 				{
 					content: contentString,
 					maxWidth: 300
 				}
 			);
 			
-			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {	//마커 클릭시 값을 보이게 하는 함수
 				return function() {
 					infowindow.setContent(contentString);
 					infowindow.open(map, marker);
@@ -259,6 +253,5 @@ $.get("/txt/locations.txt", function(data) {
 		
 	}
 </script>
-</head>
 </body>
 </html>

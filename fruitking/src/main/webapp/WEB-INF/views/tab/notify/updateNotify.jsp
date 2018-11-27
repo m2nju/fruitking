@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set  var="notify" value="${notify }" scope="session"/>
+<c:set  var="notify" value="${notify }" scope="session"/>	<!--수정하는 공지사항의 정보 가져옴  -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,3 +35,4 @@
 	</div>
 </body>
 </html>
+

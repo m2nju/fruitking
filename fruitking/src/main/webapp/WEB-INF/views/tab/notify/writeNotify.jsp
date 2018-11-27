@@ -21,7 +21,7 @@
 					<tr>
 						<td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="40"></td>
 					</tr>
-					<% String writer = (String)session.getAttribute("userName"); %>
+					<% String writer = (String)session.getAttribute("userName"); //현재 로그인한 유저의 이름을 자동으로 채움%>
 					<input type="hidden" class="form-control" placeholder="작성자" name="writer" value="<%=writer %>"maxlength="20">
 					
 					<tr>			
@@ -34,3 +34,4 @@
 	</div>
 </body>
 </html>
+

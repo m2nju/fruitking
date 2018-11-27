@@ -33,7 +33,7 @@
 						<td>내용</td>
 						<td colspan="2"><div style="min-height: 200px; text-align: left;">${notify.content }</div></td>
 					</tr>
-					<c:choose>
+					<c:choose>	<!--다음 공지사항이 있는지 확인해서 다음 글을 볼 수 있도록 구현  -->
 						<c:when test="${nextNotify.id == notify.id }">
 							<tr>
 								<td>윗글</td>
@@ -47,7 +47,7 @@
 							</tr>
 						</c:when>
 					</c:choose>
-					<c:choose>
+					<c:choose>	<!--이전 공지사항이 있는지 확인해서 이전 글을 볼 수 있도록 구현  -->
 						<c:when test="${priorNotify.id == notify.id }">
 							<tr>
 								<td>아랫글</td>
@@ -68,6 +68,6 @@
 			<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteNotify?id=${notify.id }" class="btn btn-primary pull-right">삭제</a>
 		</div>
 	</div>
-
 </body>
 </html>
+
