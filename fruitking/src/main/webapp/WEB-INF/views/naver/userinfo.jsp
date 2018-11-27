@@ -50,8 +50,7 @@
 			while ((inputLine = br.readLine()) != null) {
 				response1.append(inputLine);
 			}
-			br.close();
-			/*out.println(response1.toString()); // 네이버에서 받아온 회원 정보를 출력 */
+			br.close();	
 
 			String id = "";
 			String nickname = "";
@@ -72,7 +71,8 @@
 			JSONParser parser2 = new JSONParser();
 			Object obj2 = parser2.parse(response2); // obj는 response 오브젝트
 			JSONObject jsonObj2 = (JSONObject) obj2; // 다시 그대로 반복하여 json 오브젝트로
-
+			
+			// 회원 등록을 진행하기 위하여 네이버에서 받아온 회원 정보들을 지역변수에 저장함
 			id = jsonObj2.get("id").toString();
 			nickname = jsonObj2.get("nickname").toString();
 			email = jsonObj2.get("email").toString();
@@ -84,15 +84,15 @@
 			} else if (jsonObj2.get("gender").toString().equals("W")) {
 				is_man = false;
 			}
-			int defaultGrade = 2;
+			int defaultGrade = 2;	// 회원 가입시 기본 회원 등급은 2(일반회원)이다.
 
 			ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-			UserService userService = ac.getBean(UserService.class);
+			UserService userService = ac.getBean(UserService.class);	// DB에 해당 유저의 data가 있는지 조회하기 위한 UserService 객체 생성
 			
 			User user = new User();
 			user.setUserEmail(email);
-			Integer isUser = userService.isUser(user);
-			if (isUser == 0) {	//	User가 아니라면
+			Integer isUser = userService.isUser(user);	// 해당 email로 등록된 User가 있는지 검사해본다. 만약 있다면, 해당 회원의 ID가 반환된다.
+			if (isUser == 0) {	//	등록된 User가 아니라면
 				//System.out.println("fruitking의 회원이 아닙니다. 회원으로 등록합니다.");
 				%>
 				<form method="post" name=registform action="registUser">
@@ -104,31 +104,29 @@
 					<input type="hidden" name="userGrade" value="<%=defaultGrade%>"><br>
 			
 					<script>
-						document.registform.submit();
+						document.registform.submit();	// registUser를 처리하는 Controller에서 처리할 수 있도록, 회원 등록을 위한 value들을 User class의 프로퍼티로 저장
 					</script>
 				</form>
 				<%
-				
 				session.setAttribute("userEmail", email);
 				session.setAttribute("userName", name);
 				session.setAttribute("userAge",age);
 				session.setAttribute("userBirth",birthday);
 				session.setAttribute("userIsMan",is_man);
-				session.setAttribute("userGrade",defaultGrade);
+				session.setAttribute("userGrade",defaultGrade);	// 회원 정보들을 session에 저장해둠
 				
 				((ConfigurableApplicationContext) ac).close();
 			} else {
-				
 				//System.out.println("이미 존재하는 회원입니다. userId = " + isUser);
 				
-				user = userService.getUser(isUser.longValue());
+				user = userService.getUser(isUser.longValue());	// 이미 등로된 유저라면 해당 유저의 정보를 DB로부터 읽어온다.
 				
 				session.setAttribute("userEmail", user.getUserEmail());
 				session.setAttribute("userName", user.getUserName());
 				session.setAttribute("userAge", user.getUserAge());
 				session.setAttribute("userBirth", user.getUserBirth());
 				session.setAttribute("userIsMan", user.getUserIsMan());
-				session.setAttribute("userGrade", user.getUserGrade());
+				session.setAttribute("userGrade", user.getUserGrade());	// 회원 정보들을 session에 저장해둠
 
 				response.sendRedirect("./");
 			}

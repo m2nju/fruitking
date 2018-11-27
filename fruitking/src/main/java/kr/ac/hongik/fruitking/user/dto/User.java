@@ -1,5 +1,5 @@
 package kr.ac.hongik.fruitking.user.dto;
-
+//DTO는 Data Transfer Object로서 DB와의 connection에 비용이 많이 드는 것을 고려해, 한 번의 호출로 data를 서비스하기 위하여 사용.
 public class User {
 	private int userId;
 	private String userEmail;

@@ -16,8 +16,7 @@
 <title>네이버로그인</title>
 </head>
 <body>
-	<%
-		//System.out.println("callback.jsp 호출");
+	<%	
 		String clientId = "ravoW4uifW7U6hs5l8QL";//애플리케이션 클라이언트 아이디값";
 		String clientSecret = "d0HHEwl4dF";//애플리케이션 클라이언트 시크릿값";
 		String code = request.getParameter("code");
@@ -54,24 +53,20 @@
 				res.append(inputLine);
 			}
 			br.close();
-			if (responseCode == 200) {
-				//System.out.println("response Code가 200입니다.(정상 호출)");
-				//out.println(res.toString());	// res에 들어있는 문자열 출력	
+			if (responseCode == 200) {	
 				JSONParser parser = new JSONParser();
 				Object obj = parser.parse(res.toString());
 				// res에 저장된 json형식의 String을 파싱하여 object로
 				JSONObject jsonObj = (JSONObject) obj; // obj를 json 전용 object으로 변환하여 저장
 
 				access_token = (String) jsonObj.get("access_token"); // 엑세스 토큰을 변수에 저장함
-				//out.println("<br><br>access_token : " + access_token);
 
 				refresh_token = (String) jsonObj.get("refresh_token"); // 리프레시 토큰을 저장함
-				//out.println("<br>refresh_token : " + refresh_token);
 
 				session.setAttribute("access_token", access_token);
-				session.setAttribute("refresh_token", refresh_token);
+				session.setAttribute("refresh_token", refresh_token);	// session에 받아온 토큰들을 저장함
 
-				response.sendRedirect("userInfo");
+				response.sendRedirect("userInfo");	// userInfo로 리다이렉트
 				
 			}
 		} catch (Exception e) {

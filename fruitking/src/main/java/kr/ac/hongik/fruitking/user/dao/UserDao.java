@@ -1,5 +1,5 @@
 package kr.ac.hongik.fruitking.user.dao;
-
+//DAO는 Data Access Object로서, Database에 접근하기 위한 추상 인터페이스를 제공하는 객체이다. 
 import static kr.ac.hongik.fruitking.user.dao.UserDaoSqls.*;
 
 import java.util.Collections;

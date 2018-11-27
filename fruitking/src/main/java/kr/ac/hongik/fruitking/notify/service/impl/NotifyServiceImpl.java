@@ -1,7 +1,5 @@
 package kr.ac.hongik.fruitking.notify.service.impl;
 
-import static kr.ac.hongik.fruitking.notify.dao.NotifyDaoSqls.SELECT_NOTIFY;
-
 import java.util.Date;
 import java.util.List;
 
@@ -83,10 +81,7 @@ public class NotifyServiceImpl implements NotifyService{
 		notify.setRegdate(new Date());
 		Long id = notifyDao.insert(notify);
 		notify.setId(id);
-		
-//		if(1 == 1)
-//			throw new RuntimeException("test exception");
-//			
+
 		Log log = new Log();
 		log.setIp(ip);
 		log.setMethod("insert");

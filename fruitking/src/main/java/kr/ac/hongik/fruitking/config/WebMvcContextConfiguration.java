@@ -1,6 +1,6 @@
 package kr.ac.hongik.fruitking.config;
-
-import org.springframework.beans.factory.annotation.Autowired;
+// Dispatcher Servlet이 참조하는 Context의 정보를 담고 있는 Class. 
+// Spring MVC 구조에서, Dispatcher Servlet은 Handler mapping을 통해 요청을 처리할 Controller를 선택하고, Handler Adapter로부터 전달  받은 View의 이름을 View Resolver에게 넘겨준다.
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,17 +17,17 @@ import kr.ac.hongik.fruitking.interceptor.LogInterceptor;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages= {"kr.ac.hongik.fruitking.controller"})
+@ComponentScan(basePackages= {"kr.ac.hongik.fruitking.controller"})	// Controller들을 참조할 Package의 경로.
 public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	@Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {	// css, img, js, txt 등의 확장자들은 resource 하위의 디렉토리에서 찾도록 한다.
         registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/").setCachePeriod(31556926);
         registry.addResourceHandler("/img/**").addResourceLocations("/resources/img/").setCachePeriod(31556926);
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/").setCachePeriod(31556926);
         registry.addResourceHandler("/txt/**").addResourceLocations("/resources/txt/").setCachePeriod(31556926);
     }
 	
-    // default servlet handler를 사용하게 합니다.
+    // 별다른 요구가 없는 경우 default servlet handler를 사용.
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
@@ -46,7 +46,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
         return resolver;
     } 
     
-    @Override
+    @Override	// 매 페이지 요청시 console에 log를 남겨 Debug를 수월하게 하기 위한 Interceptor를 등록하는 method.
 	public void addInterceptors(InterceptorRegistry registry) {
     		registry.addInterceptor(new LogInterceptor());
 	}

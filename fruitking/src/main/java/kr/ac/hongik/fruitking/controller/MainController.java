@@ -1,13 +1,9 @@
 package kr.ac.hongik.fruitking.controller;
-
-import java.io.IOException;
+// Fruitking 웹 어플리케이션에 들어오는 대부분의 요청을 처리하는 Main Controller.
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,16 +23,19 @@ import kr.ac.hongik.fruitking.notify.service.NotifyService;
 import kr.ac.hongik.fruitking.user.dto.User;
 import kr.ac.hongik.fruitking.user.service.UserService;
 
-@Controller
+@Controller	// 해당 클래스는 컨트롤러임을 명시
 public class MainController {
-	@Autowired
+	@Autowired	// nofityService에 관한 프로퍼티들을 같은 이름을 기준으로 spring에서 알아서 매핑해주도록 설정
 	NotifyService notifyService;
 
-	@Autowired
+	@Autowired	// 위와 동일
 	UserService userService;
+	
+	// 기본적으로 Bussiness logic을 수행하기 위해서 DAO class를 직접 호출되지 않고, service class들을 통해 호출할 수 있도록 한다. 
+	// 이는 layered architecture 특성을 반영한 것으로, Spring 설정 파일을 프리젠테이션 레이어쪽과 나머지를 분리한다.
 
 	@GetMapping(path = "/notify") // 프로젝트명 fruitking 뒤에 들어오는 경로 ex: http://localhost:8080/fruitking/notify 배포시
-									// ROOT로 만들면 http://fruitking.cf/notify
+									// ROOT로 만들면 http://fruitking.tk/notify
 	public String list(@RequestParam(name = "start", required = false, defaultValue = "0") int start, ModelMap model) {
 		// start로 시작하는 방명록 목록 구하기
 		List<Notify> list = notifyService.getNotifies(start);
@@ -66,7 +65,7 @@ public class MainController {
 	@GetMapping(path = "/notify/updateNotify") // 공지사항 수정하기
 	public String updateNotify(@RequestParam(name = "id", required = false, defaultValue = "0") Long id,
 			ModelMap model) {
-		Notify notify = notifyService.getNotify(id);
+		Notify notify = notifyService.getNotify(id);	
 
 		model.addAttribute("notify", notify);
 		model.addAttribute("id", id);
@@ -83,7 +82,7 @@ public class MainController {
 		return "tab/notify/viewNotify"; // 해당 path로 리다이렉트 한다.
 	}
 
-	@GetMapping(path = "/notify/deleteNotify") // 공지사항상세보기
+	@GetMapping(path = "/notify/deleteNotify") // 공지사항지우기
 	public String deleteNotify(@ModelAttribute Notify notify, HttpServletRequest request,
 			@RequestParam(name = "id", required = false, defaultValue = "0") Long id, ModelMap model) {
 		String clientIp = request.getRemoteAddr();
@@ -120,15 +119,6 @@ public class MainController {
 		return "redirect:/notify"; // 해당 path로 리다이렉트 한다.
 	}
 
-	@RequestMapping(path = "/registUser")
-	public String write(@ModelAttribute User user, HttpServletRequest request) {
-		String clientIp = request.getRemoteAddr();
-		//System.out.println("clientIp : " + clientIp);
-		userService.registUser(user);
-
-		return "redirect:/"; // 해당 path로 리다이렉트 한다.
-	}
-
 	@RequestMapping(value = "/news")
 	public String news(HttpSession session) {
 		return "tab/news";
@@ -150,9 +140,18 @@ public class MainController {
 		return "naver/userinfo";
 	}
 
-	@RequestMapping(value = "/logout")
+	@RequestMapping(path = "/registUser")
+	public String write(@ModelAttribute User user, HttpServletRequest request) {
+		String clientIp = request.getRemoteAddr();
+		System.out.println("clientIp : " + clientIp);
+		userService.registUser(user);
+
+		return "redirect:/"; // index.jsp로 리다이렉트 한다.
+	}
+
+	@RequestMapping(value = "/logout")	// logout에 관한 기능을 수행하는 메소드. 현재 세션에 기록된 로그온 회원 정보들을 지움으로써 로그아웃을 수행한다.
 	public String logout(HttpServletRequest request) throws Exception {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();	// Spring에서 제공하는 HttpSession Class를 사용함으로서 Http에 독립적으로 수행할 수 있다.
 
 		session.removeAttribute("access_token");
 		session.removeAttribute("refresh_token");
@@ -163,7 +162,7 @@ public class MainController {
 		session.removeAttribute("userIsMan");
 		session.removeAttribute("userGrade");
 
-		return "naver/logout";
+		return "redirect:/";	// 세션에서 User에 관한 데이터들을 모두 지우고 index.jsp로 리다이렉트
 	}
 
 	@RequestMapping(value = "/weather")
@@ -201,13 +200,13 @@ public class MainController {
 		URL url = null;
 		URLConnection urlConnection = null;
 		// URL 주소
-		String sUrl = "http://fruitking.tk:5020/price"; // api url 경로
+		String sUrl = "http://fruitking.tk:5020/price"; // Flask api URL 경로
 		// 파라미터 이름
 		String paramName = "date";
 		// 파라미터 이름에 대한 값
-		String paramValue = date+"-01";
+		String paramValue = date+"-01";	// 월(month)에 대한 정보까지만 받기 때문에, 뒤에 01이라는 문자열을 붙여서 파라미터로 활용한다.
 		try {
-			// Get방식으로 전송 하기
+			// Get방식으로 전송
 			url = new URL(sUrl + "?" + paramName + "=" + paramValue);
 			urlConnection = url.openConnection();
 
@@ -217,20 +216,20 @@ public class MainController {
 				System.out.println("연결 실패..");
 			}
 
-			int i; // StringBuffer를 통해 InputStream을 String의 형태로 변환
-			InputStream is = urlConnection.getInputStream();
-			StringBuffer buffer = new StringBuffer();
+			int i; 
+			InputStream is = urlConnection.getInputStream();	// API 연결 응답으로 받은 InputStream을 받아 저장
+			StringBuffer buffer = new StringBuffer();	// StringBuffer를 통해 InputStream을 StringBuffer의 형태로 변환
 			byte[] b = new byte[4096];
 			while ((i = is.read(b)) != -1) {
-				buffer.append(new String(b, 0, i));
+				buffer.append(new String(b, 0, i));	
 			}
-			result_str = buffer.toString();
+			result_str = buffer.toString();	// StringBuffer로 변환한 API 응답 결과를 String으로 저장
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		price = Integer.parseInt(result_str); // 결과로 전달받은 String 형태의 가격 정보를 Integer 형태로 변환
-		model.addAttribute("price", price); // Response에 가격을 저장 ( view에서 사용할 수 있도록 )
+		price = Integer.parseInt(result_str);	// 결과로 전달받은 String 형태의 가격 정보를 Integer 형태로 변환
+		model.addAttribute("price", price);	// Response에 가격을 저장 ( view에서 사용할 수 있도록 )
 
 		return "tab/predict/getPrice";
 	}
@@ -253,4 +252,5 @@ public class MainController {
 	public String chartlemon(HttpSession session) throws Exception {
 		return "tab/chart/lemon";
 	}
+
 }
